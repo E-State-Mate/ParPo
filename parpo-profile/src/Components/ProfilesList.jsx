@@ -4,14 +4,15 @@ import { rows, columns} from '../Lib/ProfileData'
 import { Button, Grid, FormControl, InputAdornment, Input } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 
-const ProfileList = () => {
+const ProfileList = ({isProfileSelected, openAddUserModal}) => {
+
 
   return (
     <div style={{ height: 400, width: '100%' }}>
         <Grid container mb={2}>
             <Grid item md={4} />
             <Grid item xs={0} md={2}>
-                <Button variant='contained'>Add User</Button>
+                <Button variant='contained' onClick={() => openAddUserModal()}>Add User</Button>
             </Grid>
             <Grid item xs={0} md={2}>
                 <Button variant='contained' color='secondary' disabled>Remove User(s)</Button>
@@ -36,6 +37,8 @@ const ProfileList = () => {
         pageSize={5}
         rowsPerPageOptions={[5]}
         checkboxSelection
+        disableSelectionOnClick	
+        onRowClick={(e) => isProfileSelected(e)}
       />
     </div>
   )

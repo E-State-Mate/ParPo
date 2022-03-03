@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
@@ -6,6 +6,8 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import ProfileList from './ProfilesList'
 import ProfileContainer from './ProfileContainer'
+import ProfileModal from './ProfileModal';
+import AddUser from './AddUser';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -42,6 +44,28 @@ function a11yProps(index) {
 
 export default function TabContainer() {
   const [value, setValue] = React.useState(0);
+  const [profileSelect, setProfileSelect] = useState(false);
+  const [userSelected, setUserSelected] = useState('')
+  const [addingUser, setAddingUser] = useState(false)
+
+  const isProfileSelected = (e) => {
+    setProfileSelect(true);
+    setUserSelected(e.id)
+  }
+
+  const openAddUserModal = (e) => {
+    setAddingUser(true);
+  }
+
+  const closeModal = () => {
+    setProfileSelect(false)
+    setAddingUser(false)
+  }
+
+  useEffect(() => {
+    console.log(profileSelect)
+  }, [profileSelect])
+
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -56,7 +80,9 @@ export default function TabContainer() {
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
-        <ProfileList />
+        { profileSelect && <ProfileModal id={userSelected} closeModal={closeModal}/>}
+        { addingUser && <AddUser closeModal={closeModal}/>}
+        <ProfileList isProfileSelected={isProfileSelected} openAddUserModal={openAddUserModal}/>
       </TabPanel>
       <TabPanel value={value} index={1}>
         <ProfileContainer />

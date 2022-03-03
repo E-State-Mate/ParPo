@@ -71,7 +71,7 @@ export const ProfileDetails = (props) => {
                 name="firstName"
                 onChange={handleChange}
                 required
-                value={values.firstName}
+                value={props.fName}
                 variant="outlined"
               />
             </Grid>
@@ -86,7 +86,7 @@ export const ProfileDetails = (props) => {
                 name="lastName"
                 onChange={handleChange}
                 required
-                value={values.lastName}
+                value={props.lName}
                 variant="outlined"
               />
             </Grid>
@@ -101,7 +101,7 @@ export const ProfileDetails = (props) => {
                 name="email"
                 onChange={handleChange}
                 required
-                value={values.email}
+                value={props.email}
                 variant="outlined"
               />
             </Grid>
@@ -115,14 +115,13 @@ export const ProfileDetails = (props) => {
                 label="Phone Number"
                 name="phone"
                 onChange={handleChange}
-                type="number"
-                value={values.phone}
+                value={props.phone}
                 variant="outlined"
               />
             </Grid>
             <Grid
               item
-              md={6}
+              md={12}
               xs={12}
             >
               <TextField
@@ -131,35 +130,9 @@ export const ProfileDetails = (props) => {
                 name="country"
                 onChange={handleChange}
                 required
-                value={values.country}
+                value={values.location}
                 variant="outlined"
               />
-            </Grid>
-            <Grid
-              item
-              md={6}
-              xs={12}
-            >
-              <TextField
-                fullWidth
-                label="Select State"
-                name="state"
-                onChange={handleChange}
-                required
-                select
-                SelectProps={{ native: true }}
-                value={values.state}
-                variant="outlined"
-              >
-                {states.map((option) => (
-                  <option
-                    key={option.value}
-                    value={option.value}
-                  >
-                    {option.label}
-                  </option>
-                ))}
-              </TextField>
             </Grid>
           </Grid>
         </CardContent>
@@ -171,12 +144,21 @@ export const ProfileDetails = (props) => {
             p: 2
           }}
         >
+        { props.editing ? 
           <Button
-            color="primary"
-            variant="contained"
+          color="primary"
+          variant="contained"
           >
             Save details
           </Button>
+          :
+          <Button
+          color="primary"
+          variant="contained"
+          >
+            Edit Profile
+          </Button>
+        }  
         </Box>
       </Card>
     </form>
