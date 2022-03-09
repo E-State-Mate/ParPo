@@ -27,7 +27,7 @@
                 setError("") 
                 setLoading(true)
                 await login(emailRef.current.value, passwordRef.current.value) 
-                navigate('/')
+                navigate('/onboarding')
             }   catch {
                 setError('Failed to Log In')
 
@@ -35,14 +35,15 @@
             setLoading(false)
         }
 
-        // Google Login 
+        // Google Login
+        // CHANGES NEEDED: This function needs to check whether or not the Google account is already in the authentication table.
         function googleLogin() {
             return signInWithPopup(googleAuthentication, provider)
             .then((result) => {
             setError("")
             setLoading(true)
-            console.log(result)
-            navigate('/')
+            // console.log(result)
+            navigate('/onboarding')
             setLoading(false)
 
             })
@@ -73,7 +74,7 @@
                             <br/>
                             <Button disabled={loading} className="w-100" type="submit">Log In</Button>
                             <br/><br/>
-                            <Button disabled={loading} onClick={googleLogin}>
+                            <Button disabled={loading} onClick={googleLogin} variant='light'>
                             <img style={{
                                 width:20}} 
                                 src="https://drraymondasemente.com/wp-content/uploads/2017/08/google_logo1600.png" 

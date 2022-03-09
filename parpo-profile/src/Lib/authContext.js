@@ -1,14 +1,13 @@
 import React, { useContext, useState, useEffect, createContext } from 'react'
 import { auth } from "../firebase"
-import { sendSignInLinkToEmail } from "firebase/auth";
 
 const AuthContext = createContext()
 
-const actionCodeSettings = {
-    url: 'https://www.estatemateservices.com',
-    // This must be true.
-    handleCodeInApp: true,
-  };
+// const actionCodeSettings = {
+//     url: 'https://www.estatemateservices.com',
+//     // This must be true.
+//     handleCodeInApp: true,
+//   };
 
 // sendSignInLinkToEmail(auth, email, actionCodeSettings)
 //   .then(() => {

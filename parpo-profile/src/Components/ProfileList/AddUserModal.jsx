@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Box, Button, MenuItem, Modal, TextField, Typography } from '@mui/material'
+import { Box, Button, Divider, MenuItem, Modal, TextField, Typography } from '@mui/material'
 import { sendSignInLinkToEmail } from "firebase/auth";
 import { auth } from '../../firebase'
 
@@ -23,19 +23,19 @@ const style = {
 
   const roles = [
     {
-        value: 'user',
-        label: 'User',
-        desc: 'Users can only view organization holdings'
+        value: 'viewer',
+        label: 'Viewer',
+        desc: 'Viewers can only view organization holdings'
     },
     {
         value: 'manager',
         label: 'Manager',
-        desc: 'Managers can edit holdings but can not add/modify users.'
+        desc: 'Managers can only add viewers.'
     },
     {
         value: 'admin',
         label: 'Admin',
-        desc: 'Admins can modify both holdings and users.'
+        desc: 'Admins can add/modify both holdings and viewers.'
     }
   ]
 const AddUserModal = ({open, handleClose}) => {
@@ -81,11 +81,12 @@ const AddUserModal = ({open, handleClose}) => {
                         select
                         sx={{mb: 2}}
                     >
-                        {roles.map((role) => (
-                            <MenuItem key={role.value} value={role.value}>
+                        {roles.map((role,index) => (
+                            <div key={role.value} value={role.value} style={{padding: '1rem 1rem'}}>
                                     <Typography gutterBottom><b>{role.label}</b></Typography>
                                     <Typography variant='caption'>{role.desc}</Typography>
-                            </MenuItem>
+                                    {index !==roles.length-1 && <Divider sx={{mt:2}} /> }
+                            </div>
                         ))}   
                     </TextField>
                     <Button variant='contained' type='submit'>Submit</Button>
