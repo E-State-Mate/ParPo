@@ -1,0 +1,11 @@
+[
+    { "id": 1, "lastName": "Snow", "firstName": "Jon", "email": "jon@snow.com", "phone": "(407) 885-1232", "location": "The Wall, Westeros", "lastOnline": "2/3/22" },
+    { "id": 2, "lastName": "Lannister", "firstName": "Cersei", "email": "meanie@paysdebts.com", "phone": "(407) 565-5432", "location": "Under the Rubble, KL", "lastOnline": "2/3/22" },
+    { "id": 3, "lastName": "Lannister", "firstName": "Jaime", "email": "righthandman@paysdebts.com", "phone": "(407) 556-5433", "location": "Red Keep, KL", "lastOnline": "2/3/22" },
+    { "id": 4, "lastName": "Leonardo", "firstName": "Da Vinci", "email": "imakehelicopters@firenze.it", "phone": "(407) 565-5432", "location": "Florence, Tuscany, IT", "lastOnline": "2/3/22" },
+    { "id": 5, "lastName": "Leonardo", "firstName": "DiCaprio", "email": "@firenze.it", "phone": "(407) 565-5432", "location": "Somewhere in the northern Atlantic...", "lastOnline": "2/3/22" },
+    { "id": 6, "lastName": "Marcus", "firstName": "Aurelius", "email": "roman@emperor.com", "phone": "(123) 456-7890", "location": "Rome, Lazio, IT", "lastOnline": "2/3/22" },
+    { "id": 7, "lastName": "Tom", "firstName": "Wombsgans", "email": "tom.w@waystarroyco.co", "phone": "(212) 122-9999", "location": "New York, NY", "lastOnline": "2/3/22" },
+    { "id": 8, "lastName": "Jane", "firstName": "Eyre", "email": "jane@thornfieldhall.com", "phone": "+51 (122) 222-2222", "location": "Bakersfield, Derbyshire", "lastOnline": "2/3/22" },
+    { "id": 9, "lastName": "Victor", "firstName": "Frankenstein", "email": "vic@weirdgothvibes.com", "phone": "+1 (987) 666-7654", "location": "Somewhere in the Arctic", "lastOnline": "2/3/22" }
+]

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   Box,
   Button,
@@ -9,6 +9,8 @@ import {
   Grid,
   TextField
 } from '@mui/material';
+import { db } from '../firebase';
+import { collection, getDocs } from 'firebase/firestore'
 
 const states = [
   {
@@ -16,12 +18,24 @@ const states = [
     label: 'Alabama'
   },
   {
+    value: 'alaska',
+    label: 'Alaska'
+  },
+  {
+    value: 'arizona',
+    label: 'Arizona'
+  },
+  {
+    value: 'florida',
+    label: 'Florida'
+  },
+  {
     value: 'new-york',
     label: 'New York'
   },
   {
-    value: 'san-francisco',
-    label: 'San Francisco'
+    value: 'california',
+    label: 'California'
   }
 ];
 
@@ -34,6 +48,30 @@ export const ProfileDetails = (props) => {
     state: 'Alabama',
     country: 'USA'
   });
+
+  const [users, setUsers] = useState('')
+  const [userData, setUserData] = useState('')
+
+  useEffect(async () => {
+      // const getData = async () => {
+      //     console.log(db)
+      //     const data = await db.collection('users')
+      //     console.log(data)
+      //     setUsers(data)
+      // }
+      const getData = async () => {
+          const querySnapshot = await getDocs(collection(db, "users"));
+          querySnapshot.forEach((doc) => {
+            const data = doc.data()
+            setUserData(data);
+          });
+      }
+      getData()
+  }, [])
+
+  useEffect(() => {
+    console.log(userData)
+  }, [userData])
 
   const handleChange = (event) => {
     setValues({
@@ -71,7 +109,7 @@ export const ProfileDetails = (props) => {
                 name="firstName"
                 onChange={handleChange}
                 required
-                value={values.firstName}
+                value={userData.firstName || ''}
                 variant="outlined"
               />
             </Grid>
@@ -86,7 +124,7 @@ export const ProfileDetails = (props) => {
                 name="lastName"
                 onChange={handleChange}
                 required
-                value={values.lastName}
+                value={userData.lastName || ''}
                 variant="outlined"
               />
             </Grid>
@@ -101,7 +139,7 @@ export const ProfileDetails = (props) => {
                 name="email"
                 onChange={handleChange}
                 required
-                value={values.email}
+                value={userData.email || ''}
                 variant="outlined"
               />
             </Grid>
@@ -116,7 +154,7 @@ export const ProfileDetails = (props) => {
                 name="phone"
                 onChange={handleChange}
                 type="number"
-                value={values.phone}
+                value={userData.phone || ''}
                 variant="outlined"
               />
             </Grid>
@@ -131,7 +169,7 @@ export const ProfileDetails = (props) => {
                 name="country"
                 onChange={handleChange}
                 required
-                value={values.country}
+                value={userData.country || ''}
                 variant="outlined"
               />
             </Grid>
@@ -148,7 +186,7 @@ export const ProfileDetails = (props) => {
                 required
                 select
                 SelectProps={{ native: true }}
-                value={values.state}
+                value={userData.state || ''}
                 variant="outlined"
               >
                 {states.map((option) => (
