@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Box, Button, MenuItem, Modal, TextField, Typography } from '@mui/material'
 import { sendSignInLinkToEmail } from "firebase/auth";
-import { auth } from '../firebase'
+import { auth } from '../../firebase'
 
 const actionCodeSettings = {
     url: 'www.estatemateservices.com',

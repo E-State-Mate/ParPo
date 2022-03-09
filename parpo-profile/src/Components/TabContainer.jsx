@@ -4,10 +4,13 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import ProfileList from './ProfilesList'
-import ProfileContainer from './ProfileContainer'
+import ProfileList from './ProfileList/ProfilesList'
+import ProfileContainer from './Profile/ProfileContainer'
 import ProfileModal from './ProfileModal';
-import AddUser from './AddUser';
+import { Button } from '@mui/material';
+import { useNavigate } from 'react-router-dom'
+import { useAuth } from "../Lib/authContext"
+
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -47,6 +50,21 @@ export default function TabContainer() {
   const [profileSelect, setProfileSelect] = useState(false);
   const [userSelected, setUserSelected] = useState('')
   const [addingUser, setAddingUser] = useState(false)
+  const [error, setError] = useState("")
+
+  const { currentUser, logout } = useAuth()
+  const navigate = useNavigate()
+
+  async function handleLogout() {
+      setError('')
+
+      try {
+          await logout()
+          await navigate('/login')
+      }   catch {
+          setError('Could not Log Out')
+      }
+    }
 
   const isProfileSelected = (e) => {
     setProfileSelect(true);
@@ -74,6 +92,7 @@ export default function TabContainer() {
   return (
     <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+        <Button variant='contained' onClick={handleLogout} label='Logout' style={{position: 'absolute', right: 0, bottom: 0, margin: '1rem'}}>Logout</Button>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
           <Tab label="Profile List" {...a11yProps(0)} />
           <Tab label="Profile" {...a11yProps(1)} />
@@ -81,7 +100,6 @@ export default function TabContainer() {
       </Box>
       <TabPanel value={value} index={0}>
         { profileSelect && <ProfileModal id={userSelected} closeModal={closeModal}/>}
-        { addingUser && <AddUser closeModal={closeModal}/>}
         <ProfileList isProfileSelected={isProfileSelected} openAddUserModal={openAddUserModal}/>
       </TabPanel>
       <TabPanel value={value} index={1}>

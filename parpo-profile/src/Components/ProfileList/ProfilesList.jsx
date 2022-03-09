@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { DataGrid, GridSearchIcon } from '@mui/x-data-grid';
-import { rows, columns} from '../Lib/ProfileData'
+import { rows, columns} from '../../Lib/ProfileData'
 import { Button, Grid, FormControl, InputAdornment, Input } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import { useState } from 'react';

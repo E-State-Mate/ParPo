@@ -9,7 +9,7 @@ import {
   Grid,
   TextField
 } from '@mui/material';
-import { db } from '../firebase';
+import { db } from '../../firebase';
 import { collection, getDocs } from 'firebase/firestore'
 
 const states = [
