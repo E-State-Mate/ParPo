@@ -44,6 +44,8 @@ const ProfileList = () => {
         pageSize={5}
         rowsPerPageOptions={[5]}
         checkboxSelection
+        disableSelectionOnClick	
+        onRowClick={(e) => console.log(e)}
       />
     </div>
   )

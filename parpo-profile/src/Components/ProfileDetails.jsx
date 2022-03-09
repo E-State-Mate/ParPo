@@ -160,7 +160,7 @@ export const ProfileDetails = (props) => {
             </Grid>
             <Grid
               item
-              md={6}
+              md={12}
               xs={12}
             >
               <TextField
@@ -209,12 +209,21 @@ export const ProfileDetails = (props) => {
             p: 2
           }}
         >
+        { props.editing ? 
           <Button
-            color="primary"
-            variant="contained"
+          color="primary"
+          variant="contained"
           >
             Save details
           </Button>
+          :
+          <Button
+          color="primary"
+          variant="contained"
+          >
+            Edit Profile
+          </Button>
+        }  
         </Box>
       </Card>
     </form>

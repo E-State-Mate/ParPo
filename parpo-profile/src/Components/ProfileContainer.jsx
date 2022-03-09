@@ -1,8 +1,17 @@
+import React, { useState, useEffect } from 'react'
 import { Box, Container, Grid, Typography } from '@mui/material';
 import { Profile } from './Profile';
 import { ProfileDetails } from './ProfileDetails';
 
 const Account = () => {
+  const [fName, setFName] = useState('Jon')
+  const [lName, setLName] = useState('Snow')
+  const [email, setEmail] = useState('jon@snow.com')
+  const [phone, setPhone] = useState('(407) 885-1232')
+  const [location, setLocation] = useState('Westeros')
+  const [profilePic, setProfPic] = useState()
+  const [editing, setEditing] = useState(false);
+
     return(
 <>
     <Box
@@ -29,7 +38,7 @@ const Account = () => {
             md={6}
             xs={12}
           >
-            <Profile />
+            <Profile profilePic={profilePic}/>
           </Grid>
           <Grid
             item
@@ -37,7 +46,7 @@ const Account = () => {
             md={6}
             xs={12}
           >
-            <ProfileDetails />
+            <ProfileDetails fName={fName} lName={lName} email={email} phone={phone} editing={editing} />
           </Grid>
         </Grid>
       </Container>
