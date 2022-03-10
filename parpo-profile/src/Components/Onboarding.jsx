@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { Card, Container, Form, Button, Row, Col } from 'react-bootstrap' 
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../Lib/authContext'
+import { db } from '../firebase';
+import { doc, setDoc } from 'firebase/firestore'
 
 
 const Onboarding = () => {
@@ -10,15 +12,35 @@ const Onboarding = () => {
     const [name, setName] = useState(['','']);
 
     useEffect(() => {
-    //   console.log(currentUser)
-      setName(currentUser.displayName.split(' '))
+      console.log(currentUser)
+      currentUser.displayName !== null && setName(currentUser.displayName.split(' '))
     }, [currentUser])
+
+    useEffect(() => {
+        const addUserToDB = async () => {
+            await setDoc(doc(db, "users", currentUser.uid), {
+                uid: currentUser.uid
+            })
+        }
+        addUserToDB();
+    }, [])
 
     // useEffect(() => console.log(name), [name])
     
     // Needs to write data to all_users collection in Firebase (using Firestore)
-    const handleSubmit = (e) => {
-        console.log(e)
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        console.log(e.target[1].value)
+        const firstName = e.target[1].value;
+        const lastName = e.target[2].value;
+        const phone = e.target[3].value;
+        await setDoc(doc(db, "users", currentUser.uid), {
+            firstName, lastName, phone
+        })
+        navigate('/')
+    }
+
+    const handleSkip = () => {
         navigate('/')
     }
 
@@ -28,7 +50,7 @@ const Onboarding = () => {
             <Card>  
                 <Card.Body>
                     <h2 className="text-center mb-4">New Profile</h2>
-                    <Form onSubmit={handleSubmit}>
+                    <Form onSubmit={handleSubmit} >
                         <p>Profile Pic</p>
                         <Form.Group id="email">
                             <Form.Label>Email</Form.Label>
@@ -49,13 +71,13 @@ const Onboarding = () => {
                         <br/>
                         <Row>
                             <Col>
-                                <Button className='w-100' type='submit'>Skip</Button>
+                                <Button className='w-100' href='/' variant='outline-secondary' type='link'>Skip</Button>
                             </Col>
                             <Col>
                                 
                             </Col>
                             <Col>
-                                <Button className="w-100" type="submit">Next</Button>
+                                <Button className="w-100" variant='outline-primary' type="submit">Next</Button>
                             </Col>
                         </Row>
                     </Form>

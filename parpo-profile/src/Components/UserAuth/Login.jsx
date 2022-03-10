@@ -1,15 +1,14 @@
-    import React, { useRef, useState } from 'react'
+    import React, { useEffect, useRef, useState } from 'react'
     import { Card, Form, Button, Alert } from 'react-bootstrap' 
     import { useAuth } from '../../Lib/authContext'
     import { Link, useNavigate } from 'react-router-dom'
     import { GoogleAuthProvider, signInWithPopup } from "firebase/auth"
     import { googleAuthentication } from "../../firebase"
     import { Container } from 'react-bootstrap'
-
-
+    import { db } from '../../firebase'
+    import { doc, getDoc } from 'firebase/firestore'
     
     const provider = new GoogleAuthProvider();
-
 
     export default function Login() {
         const emailRef = useRef()
@@ -18,17 +17,17 @@
         const [error, setError] = useState("")
         const [loading, setLoading] = useState(false)
         const navigate = useNavigate()
-
+        const { currentUser } = useAuth();
     
         async function handleSubmit(event) {
             event.preventDefault()
-
+            
             try { 
                 setError("") 
                 setLoading(true)
-                await login(emailRef.current.value, passwordRef.current.value) 
-                navigate('/onboarding')
-            }   catch {
+                await login(emailRef.current.value, passwordRef.current.value)
+            }   catch (error){
+                // console.log(error)
                 setError('Failed to Log In')
 
             }
@@ -53,6 +52,18 @@
             })
             
         }
+
+        // Handles routing if login is correct
+        useEffect(() => {
+            const checkIfUserExists = async() => {
+                const docRef = doc(db, "users", currentUser.uid);
+                const docSnap = await getDoc(docRef);
+
+                docSnap.exists() ? navigate('/') : navigate('/onboarding')
+            }
+
+            checkIfUserExists();
+        }, [currentUser])
 
     return (        
         <>
