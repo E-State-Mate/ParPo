@@ -15,10 +15,11 @@ function App() {
           <AuthProvider>
             <Routes>
               <Route exact path='/' element={<PrivateRoute><TabContainer /></PrivateRoute>} />
-                  <Route path='/login' element={<Login />} />
-                  <Route path='/forgot-password' element={<ForgotPassword />} />
-                  <Route path='/signup' element={<Signup />} />
-                  <Route path='/onboarding' element={<PrivateRoute><Onboarding /></PrivateRoute>} />
+                  <Route path='login' element={<Login />} />
+                  <Route path='forgot-password' element={<ForgotPassword />} />
+                  <Route path='signup' element={<Signup />} />
+                  <Route path='onboarding' element={<PrivateRoute><Onboarding /></PrivateRoute>} />
+                  <Route path='*' element={<Login />} />
             </Routes>
           </AuthProvider>
         </Router>
