@@ -35,7 +35,7 @@ const Onboarding = () => {
         const phone = e.target[3].value;
         await setDoc(doc(db, "users", currentUser.uid), {
             firstName, lastName, phone
-        })
+        }, {merge: true})
         navigate('/')
     }
 

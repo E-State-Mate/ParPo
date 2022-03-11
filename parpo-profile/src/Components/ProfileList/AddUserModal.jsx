@@ -48,25 +48,13 @@ const AddUserModal = ({open, handleClose}) => {
         setRole(e.target[2].value)
         try{
             sendSignInLinkToEmail(auth, e.target[0].value, {
-                url: 'https://parpo-authentication.netlify.app',
+                url: 'https://parpo-authentication.netlify.app/signup',
                 handleCodeInApp: true
             })
         } catch (error){
             console.log(error)
         }
     }
-
-    // const signUpWithEmail = async () => {
-    //     await sendSignInLinkToEmail(auth, email, actionCodeSettings)
-    //         .then(() => {
-    //             console.log('toots')
-    //             window.localStorage.setItem('emailForSignIn', email);
-    //         })
-    //         .catch((error) => {
-    //             const errorCode = error.code;
-    //             const errorMessage = error.message;
-    //         });
-    // }
 
   return (
     <div>

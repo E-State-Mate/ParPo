@@ -33,12 +33,14 @@
         }
 
         // Google Login
-        // CHANGES NEEDED: This function needs to check whether or not the Google account is already in the authentication table.
+        // CHANGES NEEDED: THIS OVERWRITES THE EMAIL/PASS LOGIN -- NEED TO FIGURE OUT HOW TO MERGE.
         function googleLogin() {
             return signInWithPopup(googleAuthentication, provider)
             .then((result) => {
                 setError("")
                 setLoading(true)
+            })
+            .then(() => {
                 setLoading(false)
             })
             .catch((error) => {
@@ -53,8 +55,8 @@
                 const docSnap = await getDoc(docRef);
                 docSnap.exists() ? navigate('/') : navigate('/onboarding')
             }
-
-            checkIfUserExists();
+    
+            checkIfUserExists()
         }, [currentUser])
 
     return (        
