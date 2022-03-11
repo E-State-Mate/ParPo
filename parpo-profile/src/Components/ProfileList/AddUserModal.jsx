@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Box, Button, Divider, MenuItem, Modal, TextField, Typography } from '@mui/material'
-import { sendSignInLinkToEmail } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, sendSignInLinkToEmail } from "firebase/auth";
 import { auth } from '../../firebase'
 
 const actionCodeSettings = {
@@ -47,6 +47,11 @@ const AddUserModal = ({open, handleClose}) => {
         setEmail(e.target[0].value)
         setRole(e.target[2].value)
         try{
+            // getAuth().createUser({
+            //     email: e.target[0].value
+            // }).then((userRecord) => {
+            //     console.log('Successfully created new user: ', userRecord.uid);
+            // }
             sendSignInLinkToEmail(auth, e.target[0].value, {
                 url: 'https://parpo-authentication.netlify.app/signup',
                 handleCodeInApp: true

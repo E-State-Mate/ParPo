@@ -2,13 +2,14 @@ import React, { useEffect, useRef, useState } from 'react'
 import { Card, Container, Form, Button, Alert } from 'react-bootstrap' 
 import { useAuth } from '../../Lib/authContext'
 import { Link, useNavigate } from 'react-router-dom'
+import { EmailAuthProvider, linkWithCredential } from 'firebase/auth'
 import '../../animations.css'
 
 export default function Signup() {
     const emailRef = useRef()
     const passwordRef = useRef()
     const passwordConfirmRef = useRef()
-    const { signup } = useAuth()
+    const { signup, currentUser } = useAuth()
     const [error, setError] = useState("")
     const [loading, setLoading] = useState(false)
     const [nextPage, setNextPage] = useState(false);
@@ -25,7 +26,15 @@ export default function Signup() {
             setLoading(true)
             console.log("error: ", error)
             console.log("loading: ", loading)
-            await signup(emailRef.current.value, passwordRef.current.value) 
+            const credential = EmailAuthProvider.credential(emailRef.current.value, passwordRef.current.value);
+            linkWithCredential(currentUser, credential)
+            .then((usercred) => {
+                const user = usercred.user
+                console.log("Account linking success: ", user)
+            }).catch((error) => {
+                console.log("Account linking error: ", error)
+            })
+            // await signup(emailRef.current.value, passwordRef.current.value) 
             console.log(emailRef.current.value, passwordRef.current.value)
             setNextPage(true)
         }   catch {
@@ -37,8 +46,14 @@ export default function Signup() {
     }
 
     useEffect(() => {
-        setTimeout( navigate("/onboarding"), 2000)
+        if(nextPage){
+            setTimeout( navigate("/onboarding"), 2000)
+        }
     }, [nextPage])
+
+    useEffect(() => {
+        console.log(currentUser);
+    }, [currentUser])
 
   return (  
     <Container className={'scale-in-center d-flex align-items-center justify-content-center ' + (nextPage ? ' slide-out-right' : undefined)} style={{ minHeight: "100vh" }}>

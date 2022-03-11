@@ -27,7 +27,9 @@ const Onboarding = () => {
     }, [])
 
     useEffect(() => {
-        setTimeout( navigate("/onboarding"), 2000)
+        if(nextPage){
+            setTimeout( navigate("/"), 2000)
+        }
     }, [nextPage])
 
 
@@ -43,11 +45,11 @@ const Onboarding = () => {
         await setDoc(doc(db, "users", currentUser.uid), {
             firstName, lastName, phone
         }, {merge: true})
-        navigate('/')
+        setNextPage(true)
     }
 
     const handleSkip = () => {
-        navigate('/')
+        setNextPage(true)
     }
 
   return (
