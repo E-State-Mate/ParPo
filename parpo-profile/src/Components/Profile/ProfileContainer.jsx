@@ -32,20 +32,10 @@ const Account = () => {
           container
           spacing={3}
         >
-          <Grid
-            item
-            lg={4}
-            md={6}
-            xs={12}
-          >
+          <Grid item xs={12}>
             <Profile profilePic={profilePic}/>
           </Grid>
-          <Grid
-            item
-            lg={8}
-            md={6}
-            xs={12}
-          >
+          <Grid item xs={12}>
             <ProfileDetails fName={fName} lName={lName} email={email} phone={phone} editing={editing} />
           </Grid>
         </Grid>

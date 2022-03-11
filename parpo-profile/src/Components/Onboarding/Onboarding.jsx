@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { Card, Container, Form, Button, Row, Col } from 'react-bootstrap' 
 import { Link, useNavigate } from 'react-router-dom'
-import { useAuth } from '../Lib/authContext'
-import { db } from '../firebase';
+import { useAuth } from '../../Lib/authContext'
+import { db } from '../../firebase';
 import { doc, setDoc } from 'firebase/firestore'
 
 
@@ -10,6 +10,7 @@ const Onboarding = () => {
     const navigate = useNavigate();
     const { currentUser } = useAuth();
     const [name, setName] = useState(['','']);
+    const [nextPage, setNextPage] = useState(false);
 
     useEffect(() => {
       console.log(currentUser)
@@ -24,15 +25,20 @@ const Onboarding = () => {
         addUserToDB();
     }, [])
 
+    useEffect(() => {
+        setTimeout( navigate("/onboarding"), 2000)
+    }, [nextPage])
+
+
     // useEffect(() => console.log(name), [name])
     
     // Needs to write data to all_users collection in Firebase (using Firestore)
     const handleSubmit = async (e) => {
         e.preventDefault();
         console.log(e.target[1].value)
-        const firstName = e.target[1].value;
-        const lastName = e.target[2].value;
-        const phone = e.target[3].value;
+        const firstName = e.target[0].value;
+        const lastName = e.target[1].value;
+        const phone = e.target[2].value;
         await setDoc(doc(db, "users", currentUser.uid), {
             firstName, lastName, phone
         }, {merge: true})
@@ -48,13 +54,10 @@ const Onboarding = () => {
         <div className="w-100"  style={{ maxWidth: "400px"}}>
             <Card>  
                 <Card.Body>
-                    <h2 className="text-center mb-4">New Profile</h2>
+                    <h2 className="text-center mb-4">One more thing...</h2>
+                    <p style={{textAlign: 'center'}}>We want to know a little more about you!</p>
                     <Form onSubmit={handleSubmit} >
                         <p>Profile Pic</p>
-                        <Form.Group id="email">
-                            <Form.Label>Email</Form.Label>
-                            <Form.Control type="email" required defaultValue={currentUser.email}/>
-                        </Form.Group>
                         <Form.Group id="firstName">
                             <Form.Label>First Name</Form.Label>
                             <Form.Control type="firstName" required defaultValue={name[0]}/>

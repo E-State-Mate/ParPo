@@ -1,13 +1,8 @@
-import {
-    Avatar,
-    Box,
-    Button,
-    Card,
-    CardActions,
-    CardContent,
-    Divider,
-    Typography
-  } from '@mui/material';
+import React, { useEffect, useState } from 'react'
+import { Avatar, Box, Button, Card, CardActions, CardContent, Divider, Typography } from '@mui/material';
+import { db } from '../../firebase'
+import { doc, getDoc } from 'firebase/firestore'
+import { useAuth } from '../../Lib/authContext';
   
   const user = {
     avatar: '/static/images/avatars/avatar_6.png',
@@ -18,8 +13,31 @@ import {
     timezone: 'GTM-7'
   };
   
-  export const Profile = (props) => (
-    <Card {...props}>
+  export const Profile = (props) => {
+
+    const [profileData, setProfileData] = useState({
+      firstName: '',
+      lastName: '',
+      phone: '',
+      location: ''
+    });
+    
+    const { currentUser } = useAuth();
+  
+    const getProfileData = async () => {
+      if(currentUser.uid !== null){
+        const docRef = doc(db, "users", currentUser.uid)
+        const docSnap = await getDoc(docRef);
+        
+        setProfileData(docSnap.data());
+      }
+    }
+  
+    useEffect(() => { 
+      getProfileData() 
+    }, [currentUser])
+    return(
+      <Card {...props}>
       <CardContent>
         <Box
           sx={{
@@ -41,7 +59,7 @@ import {
             gutterBottom
             variant="h5"
           >
-            {user.name}
+            {`${profileData.firstName} ${profileData.lastName}`}
           </Typography>
           <Typography
             color="textSecondary"
@@ -68,4 +86,6 @@ import {
         </Button>
       </CardActions>
     </Card>
-  );
+
+    )
+};

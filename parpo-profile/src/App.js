@@ -3,11 +3,11 @@ import TabContainer  from './Components/TabContainer'
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import Login from "./Components/UserAuth/Login"
 import PrivateRoute from './Components/PrivateRoute';
-import Onboarding from './Components/Onboarding'
+import Onboarding from './Components/Onboarding/Onboarding'
 import './App.css';
 import { AuthProvider } from './Lib/authContext';
 import ForgotPassword from './Components/UserAuth/ForgotPassword';
-import Signup from './Components/UserAuth/Signup';
+import Signup from './Components/Onboarding/Signup';
 
 function App() {
   return (
