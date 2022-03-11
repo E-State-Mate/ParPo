@@ -25,7 +25,7 @@ export default function Signup() {
             console.log("loading: ", loading)
             await signup(emailRef.current.value, passwordRef.current.value) 
             console.log(emailRef.current.value, passwordRef.current.value)
-            navigate("/")
+            navigate("/onboarding")
         }   catch {
             setError('Failed to create an account')
         }
