@@ -38,11 +38,6 @@ const AuthContext = createContext()
           return unsubscribe
       }, [])
 
-    useEffect(() => {
-        console.log(auth)
-    }, [auth])
-  
-  
       const value = {
           currentUser,
           signup,

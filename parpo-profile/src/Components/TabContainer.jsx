@@ -81,11 +81,6 @@ export default function TabContainer() {
     setAddingUser(false)
   }
 
-  useEffect(() => {
-    console.log(profileSelect)
-  }, [profileSelect])
-
-
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };

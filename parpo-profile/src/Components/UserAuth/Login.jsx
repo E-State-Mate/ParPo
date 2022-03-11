@@ -21,15 +21,13 @@
     
         async function handleSubmit(event) {
             event.preventDefault()
-            
             try { 
                 setError("") 
                 setLoading(true)
                 await login(emailRef.current.value, passwordRef.current.value)
             }   catch (error){
-                // console.log(error)
+                console.log(error)
                 setError('Failed to Log In')
-
             }
             setLoading(false)
         }
@@ -39,18 +37,13 @@
         function googleLogin() {
             return signInWithPopup(googleAuthentication, provider)
             .then((result) => {
-            setError("")
-            setLoading(true)
-            // console.log(result)
-            navigate('/onboarding')
-            setLoading(false)
-
+                setError("")
+                setLoading(true)
+                setLoading(false)
             })
             .catch((error) => {
-            console.log(error)
-
-            })
-            
+                console.log(error)
+            }) 
         }
 
         // Handles routing if login is correct
@@ -58,7 +51,6 @@
             const checkIfUserExists = async() => {
                 const docRef = doc(db, "users", currentUser.uid);
                 const docSnap = await getDoc(docRef);
-
                 docSnap.exists() ? navigate('/') : navigate('/onboarding')
             }
 

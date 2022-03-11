@@ -18,9 +18,8 @@ const Onboarding = () => {
 
     useEffect(() => {
         const addUserToDB = async () => {
-            await setDoc(doc(db, "users", currentUser.uid), {
-                uid: currentUser.uid
-            })
+            const docRef = doc(db, 'users', currentUser.uid);
+            await setDoc(docRef, {uid: currentUser.uid}, {merge: true})
         }
         addUserToDB();
     }, [])
