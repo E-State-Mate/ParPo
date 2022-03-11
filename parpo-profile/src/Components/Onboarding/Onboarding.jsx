@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../Lib/authContext'
 import { db } from '../../firebase';
 import { doc, setDoc } from 'firebase/firestore'
+import '../../animations.css'
 
 
 const Onboarding = () => {
@@ -50,7 +51,7 @@ const Onboarding = () => {
     }
 
   return (
-    <Container className='d-flex align-items-center justify-content-center' style={{ minHeight: "100vh" }}>
+    <Container className={'slide-in-left d-flex align-items-center justify-content-center ' + (nextPage ? ' slide-out-right' : undefined)} style={{ minHeight: "100vh" }}>
         <div className="w-100"  style={{ maxWidth: "400px"}}>
             <Card>  
                 <Card.Body>
