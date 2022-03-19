@@ -6,10 +6,11 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import ProfileList from './ProfileList/ProfilesList'
 import ProfileContainer from './Profile/ProfileContainer'
-import ProfileModal from './ProfileModal';
 import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from "../Lib/authContext"
+import { db } from '../firebase'
+import { doc, getDoc } from 'firebase/firestore'
 
 
 function TabPanel(props) {
@@ -51,6 +52,9 @@ export default function TabContainer() {
   const [userSelected, setUserSelected] = useState('')
   const [addingUser, setAddingUser] = useState(false)
   const [error, setError] = useState("")
+  const [userData, setUserData] = useState({
+    role: ''
+  });
   
 
   const { currentUser, logout } = useAuth()
@@ -85,6 +89,22 @@ export default function TabContainer() {
     setValue(newValue);
   };
 
+  const getProfileData = async () => {
+    if(currentUser.uid !== null){
+      const docRef = doc(db, "users", currentUser.uid)
+      const docSnap = await getDoc(docRef);
+      setUserData(docSnap.data());
+    }
+  }
+
+  useEffect(() => {
+    getProfileData();
+  }, [currentUser])
+
+  useEffect(() => {
+    console.log(userData.role)
+  }, [userData])
+
   return (
     <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
@@ -95,12 +115,12 @@ export default function TabContainer() {
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
-        { profileSelect && <ProfileModal id={userSelected} closeModal={closeModal}/>}
         <ProfileList isProfileSelected={isProfileSelected} openAddUserModal={openAddUserModal}/>
       </TabPanel>
       <TabPanel value={value} index={1}>
         <ProfileContainer />
       </TabPanel>
+      <h3 style={{position: 'absolute', bottom: 0, margin: '1rem'}}>{`You are signed in as a: ${userData.role}`}</h3>
     </Box>
   );
 }

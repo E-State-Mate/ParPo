@@ -28,7 +28,6 @@ import { useAuth } from '../../Lib/authContext';
       if(currentUser.uid !== null){
         const docRef = doc(db, "users", currentUser.uid)
         const docSnap = await getDoc(docRef);
-        
         setProfileData(docSnap.data());
       }
     }
