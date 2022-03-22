@@ -46,6 +46,7 @@ const AddUserModal = ({open, handleClose}) => {
         e.preventDefault(); 
         setEmail(e.target[0].value)
         setRole(e.target[2].value)
+        sendAddUser()
         try{
             sendSignInLinkToEmail(auth, e.target[0].value, {
                 url: 'https://parpo-authentication.netlify.app/signup',
@@ -54,6 +55,11 @@ const AddUserModal = ({open, handleClose}) => {
         } catch (error){
             console.log(error)
         }
+    }
+
+    const sendAddUser = async () => {
+        const response = await fetch('https://us-central1-auth-development-92670.cloudfunctions.net/sendEmail')
+        .then(response => console.log(response))
     }
 
   return (
