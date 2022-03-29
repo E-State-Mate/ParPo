@@ -1,6 +1,6 @@
 export const columns = [
-    { field: 'fName', headerName: 'First name', width: 130 },
-    { field: 'lName', headerName: 'Last name', width: 130 },
+    { field: 'firstName', headerName: 'First name', width: 130 },
+    { field: 'lastName', headerName: 'Last name', width: 130 },
     { field: 'email', headerName: 'Email', width: 200 },
     { field: 'phone', headerName: 'Phone number', width: 200 },
     { field: 'location', headerName: 'Location', width: 280 },

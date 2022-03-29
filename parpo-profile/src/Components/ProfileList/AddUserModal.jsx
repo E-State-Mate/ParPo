@@ -39,11 +39,13 @@ const style = {
         desc: 'Admins can add/modify both holdings and viewers.'
     }
   ]
-const AddUserModal = ({open, handleClose}) => {
+const AddUserModal = ({open, handleClose, isUserAdded}) => {
     const [email, setEmail] = useState('')
     const [role, setRole] = useState('')
+    const [msg, setMsg] = useState(false)
 
     const handleSubmit = (e) => {
+        console.log(e.target[0].value)
         e.preventDefault(); 
         setEmail(e.target[0].value)
         setRole(e.target[2].value)
@@ -60,7 +62,14 @@ const AddUserModal = ({open, handleClose}) => {
 
     const sendAddUser = async () => {
         const response = await fetch(`https://us-central1-auth-development-92670.cloudfunctions.net/addUser/?email=${email}&role=${role}`, {mode: 'cors'})
-        .then(response => console.log(response))
+        .then(() => {
+            setMsg('Invite sent to user\'s email')
+            isUserAdded()
+        })
+        .catch((e) => {
+            setMsg('Issue adding user. Try again later.')
+            console.log(e);
+        })
     }
 
   return (
@@ -68,6 +77,7 @@ const AddUserModal = ({open, handleClose}) => {
         <Modal open={open} onClose={handleClose}>
             <Box sx={style}>
                 <Typography variant='h4' gutterBottom style={{textAlign: 'center'}}>Add user</Typography>
+                {/* NEED TO ADD CONFIRMATION OF REQUEST HANDLER */}
                 <form onSubmit={(e) => handleSubmit(e)}>
                     <TextField fullWidth label='Email'/>
                     <FormHelperText sx={{mb: 2, mt: 1, pl: 1}}>Enter user email</FormHelperText>
@@ -81,6 +91,7 @@ const AddUserModal = ({open, handleClose}) => {
                     </TextField>
                     <FormHelperText sx={{mb: 2, mt: 1, pl: 1}}>Select user's role</FormHelperText>
                     <Button variant='contained' type='submit'>Submit</Button>
+                    {msg!==false && <p>{msg}</p>}
                 </form>
             </Box>
         </Modal>

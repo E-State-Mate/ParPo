@@ -60,16 +60,7 @@ export default function TabContainer() {
   const { currentUser, logout } = useAuth()
   const navigate = useNavigate()
 
-  async function handleLogout() {
-      setError('')
-
-      try {
-          await logout()
-          await navigate('/login')
-      }   catch {
-          setError('Could not Log Out')
-      }
-    }
+ 
 
   const isProfileSelected = (e) => {
     setProfileSelect(true);
@@ -108,7 +99,6 @@ export default function TabContainer() {
   return (
     <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <Button variant='contained' onClick={handleLogout} label='Logout' style={{position: 'absolute', right: 0, bottom: 0, margin: '1rem'}}>Logout</Button>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
           <Tab label="Profile List" {...a11yProps(0)} />
           <Tab label="Profile" {...a11yProps(1)} />
@@ -120,7 +110,7 @@ export default function TabContainer() {
       <TabPanel value={value} index={1}>
         <ProfileContainer />
       </TabPanel>
-      <h3 style={{position: 'absolute', bottom: 0, margin: '1rem'}}>{`You are signed in as a: ${userData.role}`}</h3>
+      
     </Box>
   );
 }
