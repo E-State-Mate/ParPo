@@ -53,7 +53,7 @@
             const checkIfUserExists = async() => {
                 const docRef = doc(db, "users", currentUser.uid);
                 const docSnap = await getDoc(docRef);
-                docSnap.exists() ? navigate('/') : navigate('/onboarding')
+                docSnap.exists() ? navigate('/holdings') : navigate('/onboarding')
             }
     
             checkIfUserExists()

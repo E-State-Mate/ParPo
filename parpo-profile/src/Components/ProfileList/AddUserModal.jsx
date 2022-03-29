@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import { Box, Button, Divider, MenuItem, Modal, TextField, Typography } from '@mui/material'
+import { Box, Button, Divider, FormHelperText, InputLabel, MenuItem, Modal, TextField, Typography } from '@mui/material'
 import { sendSignInLinkToEmail } from "firebase/auth";
 import { auth } from '../../firebase'
+import { Select } from '@mui/material';
 
 const actionCodeSettings = {
     url: 'www.estatemateservices.com',
@@ -38,11 +39,13 @@ const style = {
         desc: 'Admins can add/modify both holdings and viewers.'
     }
   ]
-const AddUserModal = ({open, handleClose}) => {
+const AddUserModal = ({open, handleClose, isUserAdded}) => {
     const [email, setEmail] = useState('')
     const [role, setRole] = useState('')
+    const [msg, setMsg] = useState(false)
 
     const handleSubmit = (e) => {
+        console.log(e.target[0].value)
         e.preventDefault(); 
         setEmail(e.target[0].value)
         setRole(e.target[2].value)
@@ -58,32 +61,37 @@ const AddUserModal = ({open, handleClose}) => {
     }
 
     const sendAddUser = async () => {
-        const response = await fetch('https://us-central1-auth-development-92670.cloudfunctions.net/sendEmail')
-        .then(response => console.log(response))
+        const response = await fetch(`https://us-central1-auth-development-92670.cloudfunctions.net/addUser/?email=${email}&role=${role}`, {mode: 'cors'})
+        .then(() => {
+            setMsg('Invite sent to user\'s email')
+            isUserAdded()
+        })
+        .catch((e) => {
+            setMsg('Issue adding user. Try again later.')
+            console.log(e);
+        })
     }
 
   return (
     <div>
         <Modal open={open} onClose={handleClose}>
             <Box sx={style}>
+                <Typography variant='h4' gutterBottom style={{textAlign: 'center'}}>Add user</Typography>
+                {/* NEED TO ADD CONFIRMATION OF REQUEST HANDLER */}
                 <form onSubmit={(e) => handleSubmit(e)}>
-                    <TextField fullWidth label='Email'
-                        helperText='Enter user email'
-                        sx={{mb: 2}}/>
-                    <TextField fullWidth label='Role'
-                        helperText='Select user role'
-                        select
-                        sx={{mb: 2}}
-                    >
-                        {roles.map((role,index) => (
-                            <div key={role.value} value={role.value} style={{padding: '1rem 1rem'}}>
-                                    <Typography gutterBottom><b>{role.label}</b></Typography>
-                                    <Typography variant='caption'>{role.desc}</Typography>
-                                    {index !==roles.length-1 && <Divider sx={{mt:2}} /> }
-                            </div>
-                        ))}   
+                    <TextField fullWidth label='Email'/>
+                    <FormHelperText sx={{mb: 2, mt: 1, pl: 1}}>Enter user email</FormHelperText>
+                    <TextField select label='Role' fullWidth>
+                    {roles.map((role,index) => (
+                        <MenuItem key={role.value} value={role.value} style={{padding: '1rem 1rem', display: 'block'}} divider={index<roles.length-1 ? true : false}>
+                                <Typography gutterBottom><b>{role.label}</b></Typography>
+                                <Typography variant='caption'>{role.desc}</Typography>
+                        </MenuItem>
+                    ))}
                     </TextField>
+                    <FormHelperText sx={{mb: 2, mt: 1, pl: 1}}>Select user's role</FormHelperText>
                     <Button variant='contained' type='submit'>Submit</Button>
+                    {msg!==false && <p>{msg}</p>}
                 </form>
             </Box>
         </Modal>

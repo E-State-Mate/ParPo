@@ -43,11 +43,11 @@ const Onboarding = () => {
         await setDoc(doc(db, "users", currentUser.uid), {
             firstName, lastName, phone
         }, {merge: true})
-        navigate('/')
+        navigate('/holdings')
     }
 
     const handleSkip = () => {
-        navigate('/')
+        navigate('/holdings')
     }
 
   return (
@@ -74,7 +74,7 @@ const Onboarding = () => {
                         <br/>
                         <Row>
                             <Col>
-                                <Button className='w-100' href='/' variant='outline-secondary' type='link'>Skip</Button>
+                                <Button className='w-100' href='/holdings' variant='outline-secondary' type='link'>Skip</Button>
                             </Col>
                             <Col>
                                 

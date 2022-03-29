@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import TabContainer  from './Components/TabContainer'
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import Login from "./Components/UserAuth/Login"
@@ -8,18 +7,23 @@ import './App.css';
 import { AuthProvider } from './Lib/authContext';
 import ForgotPassword from './Components/UserAuth/ForgotPassword';
 import Signup from './Components/Onboarding/Signup';
+import HoldingList from './Pages/HoldingList';
+import Layout from './Components/Layout';
 
 function App() {
   return (
         <Router>
           <AuthProvider>
             <Routes>
-              <Route exact path='/' element={<PrivateRoute><TabContainer /></PrivateRoute>} />
+              <Route exact path='/' element={<Layout />}>
+                  <Route path='profile' element={<PrivateRoute><TabContainer /></PrivateRoute>} />
                   <Route path='login' element={<Login />} />
                   <Route path='forgot-password' element={<ForgotPassword />} />
                   <Route path='signup' element={<Signup />} />
                   <Route path='onboarding' element={<PrivateRoute><Onboarding /></PrivateRoute>} />
+                  <Route path='holdings' element={<PrivateRoute><HoldingList /></PrivateRoute>} />
                   <Route path='*' element={<Login />} />
+                </Route>
             </Routes>
           </AuthProvider>
         </Router>
