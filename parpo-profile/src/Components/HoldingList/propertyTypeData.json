@@ -1,0 +1,42 @@
+[
+    {
+        "propertyType": "Residential",
+        "image": "./Assets/download.png"    
+    },
+    {
+        "propertyType": "Office",
+        "image": "image.jpg"
+    },
+    {
+        "propertyType": "Industrial",
+        "image": "image.jpg"
+    },
+    {
+        "propertyType": "Retail",
+        "image": "image.jpg"
+    },
+    {
+        "propertyType": "Restaurant",
+        "image": "image.jpg"
+    },
+    {
+        "propertyType": "Shopping Center",
+        "image": "image.jpg"
+    },
+    {
+        "propertyType": "Health Care",
+        "image": "image.jpg"
+    },
+    {
+        "propertyType": "Hospitality",
+        "image": "image.jpg"
+    },
+    {
+        "propertyType": "Entertainment",
+        "image": "image.jpg"
+    },
+    {
+        "propertyType": "Land",
+        "image": "image.jpg"
+    }
+]
