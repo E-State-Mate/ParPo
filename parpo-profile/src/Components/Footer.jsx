@@ -36,8 +36,8 @@ const Footer = () => {
       }
   
   return (
-    <div style={{position: 'absolute', bottom: 0, width: '100%'}}>
-     <Grid container alignItems='center' id='footer-main-ctr'>
+    <div id='footer'>
+     <Grid container alignItems='center' id='footer-main-ctr' mt={2}>
         <Grid item sm={10} md={4} className='footer-txt'>
           <h3>ParPo</h3>
           <p></p>

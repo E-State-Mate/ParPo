@@ -1,21 +1,24 @@
-import React from 'react'
-import Button from '@mui/material/Button';
-import ButtonGroup from '@mui/material/ButtonGroup';
-import propertyType from './propertyTypeData.json'
+import React, { useState } from 'react'
+import { Card, CardContent, Icon, Typography } from '@mui/material'
+import { SvgIcon } from '@mui/material'
+import CheckIcon from '@mui/icons-material/Check';
 
+const PropertyType = ({property}) => {
+  const [selected, isSelected] = useState(false)
+  console.log(property)
 
-export default function PropertyType({property}) {
+  // Can add selection logic here
+  const handleSelect = () => { isSelected(!selected); console.log(selected) }
+
   return (
-    <div>
-        <ButtonGroup orientation= "vertical">
-          {propertyType.map(property => (
-            <Button key={property} variant= "default">
-
-              {property.propertyType}
-
-            </Button>
-        ))}
-        </ButtonGroup>
-    </div>
+    <Card className='prop-type-card' onClick={handleSelect}>
+      <CardContent>
+        <CheckIcon className='prop-type-check' color={selected ? 'primary' : 'action'}/>
+        <Typography align='center' sx={{fontSize: '1rem'}}>{property.propertyType}</Typography>
+        <SvgIcon component={property.image} inheritViewBox sx={{width: '100%', fontSize: 50, marginTop: '1rem'}}/>
+      </CardContent>
+    </Card>
   )
 }
+
+export default PropertyType

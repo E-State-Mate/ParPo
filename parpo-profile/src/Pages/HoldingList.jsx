@@ -6,6 +6,8 @@ import Typography from '@mui/material/Typography';
 import ButtonBase from '@mui/material/ButtonBase';
 import PropertyType from '../Components/HoldingList/PropertyType';
 import HoldingCard from '../Components/HoldingList/HoldingCard.js'
+import holdingData from '../Lib/holdingData.json'
+import {propertyTypes} from '../Lib/propertyTypeData'
 
 // When you make components (Filter Type card, Holding card, etc), put them in Components/HoldingList to help keep things organized
 
@@ -13,23 +15,19 @@ import HoldingCard from '../Components/HoldingList/HoldingCard.js'
 const HoldingList = () => {
 
   return (
-    <div style={{height: '100vh'}}>
-      <Grid container width='80%' style={{margin: 'auto'}}>
-        
+    <div id='holding-list-container'>
+      <Grid container width='90%' style={{margin: 'auto'}}>
         {/* Property Filter Boxes */}
-        <Grid item width='300px' style={{backgroundColor: 'lightGray'}}>
-          <p>Property Type</p>
-          <PropertyType />
-          {/* TODO: Want this to be clickable to toggle the check, but don't need to integrate that fully yet */}
+        <Grid item lg />
+        <Grid item md={4} lg={2}>
+          <p style={{margin: '1rem'}}>Property Type</p>
+          {propertyTypes.map(property => ( <PropertyType property={property}/> ))}
         </Grid>
-        
-        <Grid item width='600px'>
-        <p>NUM Properties</p> {/* <-- Also update NUM to count number of properties */}
-          <HoldingCard />
-        
-        {/* Array.map of property data. Use the Figma to determine what each card will need passed in and create a dummy object (to be replaced later) to display everything */}
+        <Grid item md={8} lg={5}>
+          <p style={{margin: '1rem'}}>{holdingData.length} Properties</p>
+          {holdingData.map(holding => ( <HoldingCard holding={holding} /> ))}
         </Grid>
-        
+        <Grid item lg />
       </Grid>
     </div>
   )
