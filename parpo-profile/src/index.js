@@ -4,13 +4,10 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { HoldingContext } from "./Lib/HoldingContext";
 
 ReactDOM.render(
   <React.StrictMode>
-    <HoldingContext>
-      <App />
-    </HoldingContext>
+    <App />
   </React.StrictMode>,
   document.getElementById("root")
 );

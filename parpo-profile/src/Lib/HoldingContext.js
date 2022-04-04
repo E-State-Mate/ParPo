@@ -1,4 +1,4 @@
-import { createContext, useState, useContext } from "react";
+import { createContext, useState } from "react";
 import axios from "axios";
 
 export const HoldingContext = createContext({});
@@ -17,3 +17,5 @@ const HoldingProvider = ({ children }) => {
 
   return <HoldingContext.Provider value={{ getAllHoldings }}>{children}</HoldingContext.Provider>;
 };
+
+export default HoldingProvider;

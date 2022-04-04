@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Card, CardHeader, Grid } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
@@ -8,8 +8,8 @@ import PropertyType from "../Components/HoldingList/PropertyType";
 import HoldingCard from "../Components/HoldingList/HoldingCard.js";
 import holdingData from "../Lib/holdingData.json";
 import { propertyTypes } from "../Lib/propertyTypeData";
-import { HoldingContext } from "../Lib/HoldingContext";
 
+import { HoldingContext } from "../Lib/HoldingContext";
 // When you make components (Filter Type card, Holding card, etc), put them in Components/HoldingList to help keep things organized
 
 const HoldingList = () => {
@@ -17,7 +17,7 @@ const HoldingList = () => {
 
   useEffect(() => {
     getAllHoldings();
-  });
+  }, []);
 
   return (
     <div id="holding-list-container">
@@ -32,7 +32,7 @@ const HoldingList = () => {
         </Grid>
         <Grid item md={8} lg={5}>
           <p style={{ margin: "1rem" }}>{holdingData.length} Properties</p>
-          {holdingData.map((holding) => (
+          {Holdings.map((holding) => (
             <HoldingCard holding={holding} />
           ))}
         </Grid>
