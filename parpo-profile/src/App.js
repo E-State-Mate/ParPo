@@ -9,19 +9,21 @@ import ForgotPassword from './Components/UserAuth/ForgotPassword';
 import Signup from './Components/Onboarding/Signup';
 import HoldingList from './Pages/HoldingList';
 import Layout from './Components/Layout';
+import Company from './Pages/Company';
 
 function App() {
   return (
         <Router>
           <AuthProvider>
             <Routes>
-              <Route exact path='/' element={<Layout />}>
+              <Route exact element={<Layout />}>
                   <Route path='profile' element={<PrivateRoute><TabContainer /></PrivateRoute>} />
                   <Route path='login' element={<Login />} />
                   <Route path='forgot-password' element={<ForgotPassword />} />
                   <Route path='signup' element={<Signup />} />
                   <Route path='onboarding' element={<PrivateRoute><Onboarding /></PrivateRoute>} />
                   <Route path='holdings' element={<PrivateRoute><HoldingList /></PrivateRoute>} />
+                  <Route path='company' element={<PrivateRoute><Company /></PrivateRoute>} />
                   <Route path='*' element={<Login />} />
                 </Route>
             </Routes>

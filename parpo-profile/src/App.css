@@ -44,6 +44,11 @@
   position: relative;
 }
 
+.outlet-container{
+  background-color: #eee;
+  padding: 4rem 0 30rem 0;
+}
+
 .modal-container{
   position: absolute;
   top: 7%;
@@ -126,6 +131,65 @@
   position: absolute;
   right: 1rem;
   padding-bottom: 0.15rem
+}
+
+#users-list{
+  width: 100%;
+  height: 87.5vh;
+}
+
+.featured-card{
+  width: 80%;
+  height: 250px;
+  margin: 1rem auto;
+  position: relative;
+}
+
+.feat-card-top{
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  color: white;
+  font-size: 0.5rem;
+}
+
+.feat-card-top > p{
+  margin: 0;
+}
+
+.feat-card-banner{
+  position: absolute;
+  bottom: 2rem;
+  display: flex;
+  width: 100%;
+  margin: auto;
+  padding: 1rem;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(0,0,0,0.5);
+  color: white;
+}
+
+.feat-card-banner > div > p {
+  margin: 0;
+}
+
+.team-card{
+  width: 80%;
+  height: 250px;
+  margin: 1rem auto;
+  position: relative;
+}
+
+.team-card-center{
+  position: absolute;
+  width: 100%;
+  top: 40%;
+}
+
+.team-card-center > p{
+  text-align: center;
+  color: white;
 }
 
 #footer{
