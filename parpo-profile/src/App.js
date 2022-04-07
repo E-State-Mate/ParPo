@@ -9,6 +9,7 @@ import ForgotPassword from './Components/UserAuth/ForgotPassword';
 import Signup from './Components/Onboarding/Signup';
 import HoldingList from './Pages/HoldingList';
 import Layout from './Components/Layout';
+import HoldingDetails from './Pages/HoldingDetails';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
                   <Route path='signup' element={<Signup />} />
                   <Route path='onboarding' element={<PrivateRoute><Onboarding /></PrivateRoute>} />
                   <Route path='holdings' element={<PrivateRoute><HoldingList /></PrivateRoute>} />
+                  <Route path='holding-details' element={<PrivateRoute><HoldingDetails /></PrivateRoute>} />
                   <Route path='*' element={<Login />} />
                 </Route>
             </Routes>

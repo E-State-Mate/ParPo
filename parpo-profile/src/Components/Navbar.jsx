@@ -8,6 +8,10 @@ const links = [
         route: '/holdings'
     },
     {
+        label: 'Details (temporary)',
+        route: '/holding-details'
+    },
+    {
         label: 'Users',
         route: '/profile'
     },    
@@ -97,13 +101,13 @@ const Navbar = () => {
             onClose={handleMenuClose}
           >
              {links.map(link => (
-               <MenuItem component={Link} to={link.route}>
+               <MenuItem key={link} component={Link} to={link.route}>
                  {link.label}</MenuItem>
              ))}
           </Menu>
         </Grid>
         {links.map(link => (
-            <Grid item md sx={{display: {xs: 'none', md: 'flex'}}} justifyContent='center'> 
+            <Grid key={link} item md sx={{display: {xs: 'none', md: 'flex'}}} justifyContent='center'> 
                 {/* {link.route === '/warehouse' ? 
                     <>
                         <Button component={Link} to={link.route} style={{textDecoration: 'none', color: 'white'}} ref={anchorRef}
