@@ -5,17 +5,17 @@ const FeaturedCard = ({data}) => {
   return (
     <Card className='featured-card' style={{backgroundImage: `url(https://via.placeholder.com/3000/0000FF/808080?Text=Digital.com)`}}> 
         <div className='feat-card-top'>
-            <p>{data.description}</p>
-            <p>{data.sqft} Sq Ft.</p>
-            <p>{data.rating}</p>
+            <p>{data.holdingPropertyType} Building</p>
+            <p>{data.holdingSqft} Sq Ft.</p>
+            <p>{data.CreditRating}</p>
         </div>
         <div className='feat-card-banner'>
             <div>
-                <p>{data.building}</p>
-                <p>{data.address}</p>
+                <p>{data.holdingStreet}</p>
+                <p>Managed by: {data.holdingManager[0]}</p>
             </div>
             <>
-                <p>{data.price}</p>
+                <p>{data.holdingEstimatedValue}</p>
             </>
         </div>
     </Card>
