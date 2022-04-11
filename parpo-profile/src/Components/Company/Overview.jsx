@@ -3,9 +3,7 @@ import ApartmentIcon from '@mui/icons-material/Apartment';
 import SavingsIcon from '@mui/icons-material/Savings';
 import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
 import LayersIcon from '@mui/icons-material/Layers';
-import { Box, Card, CardContent, SvgIcon } from '@mui/material';
-import { Dialog } from '@mui/material';
-import { Divider } from '@mui/material';
+import { Box, Card, CardContent, Divider, Grid, SvgIcon } from '@mui/material';
 
 const stats = [
   {
@@ -33,10 +31,10 @@ const stats = [
 const OverviewCard = ({stat}) => {
   console.log(stat)
   return (
-    <Card sx={{width: '25%', margin: '1rem'}}>
-      <SvgIcon component={stat.icon} inheritViewBox sx={{width: '100%', fontSize: 50, marginTop: '1rem'}}/>
-      <CardContent sx={{margin: 'auto'}} align='center'>
-        <p>{stat.value}</p>
+    <Card sx={{width: '80%', margin: '1rem auto', paddingTop: '8px'}}>
+      <SvgIcon component={stat.icon} inheritViewBox sx={{width: '100%', fontSize: 50, paddingTop: '1rem'}}/>
+      <CardContent sx={{margin: 'auto', padding: '0'}} align='center'>
+        <p style={{fontSize: '1.5rem', fontWeight: 'bold', margin: 0}}>{stat.value}</p>
         <p>{stat.label}</p>
       </CardContent>
     </Card>
@@ -45,15 +43,17 @@ const OverviewCard = ({stat}) => {
 
 const Overview = () => {
   return (
-    <div>
+    <div style={{margin: '2rem auto'}} id='overview'>
       <p style={{textAlign: 'center'}}>Who Are We?</p>
       <h2 style={{textAlign: 'center'}}>Overview</h2>
       <Divider variant='middle' width='20%' sx={{margin: '1rem auto', borderBottomWidth: 4, backgroundColor: '#5ca8b2' }} />
-      <Box sx={{ display: 'flex', justifyContent: 'space-around', width: '90%', margin: 'auto' }}>
-        {stats.map(stat => (
-          <OverviewCard stat={stat} />
-        ))}
-      </Box>
+      <Grid container>
+          {stats.map(stat => (
+            <Grid item xs={12} md={6} lg={3}>
+              <OverviewCard stat={stat} />
+            </Grid>
+          ))}   
+      </Grid>
     </div>
   )
 }

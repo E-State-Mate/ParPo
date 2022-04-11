@@ -87,7 +87,7 @@ const FeaturedHoldings = () => {
   useEffect(() => {console.log(isLoaded)}, [isLoaded])
 
   return (
-    <div style={{margin: '4rem auto', backgroundColor: 'white', padding: '2rem 0'}}>
+    <div style={{margin: '4rem auto', backgroundColor: 'white', padding: '2rem 0'}} id='featured'>
       <p style={{textAlign: 'center'}}>Who Are We?</p>
       <h2 style={{textAlign: 'center'}}>Featured</h2>
       <Divider variant='middle' width='20%' sx={{margin: '1rem auto', borderBottomWidth: 4, backgroundColor: '#5ca8b2' }} />
