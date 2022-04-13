@@ -46,7 +46,7 @@ const ProfileList = () => {
   useEffect(() => { userAdded && getUsers() }, [userAdded])
 
   return (
-    <div style={{ height: 400, width: '100%' }}>
+    <div id='users-list'>
         <AddUserModal open={openAddUser} handleClose={handleClose} isUserAdded={isUserAdded}/>
         <Grid container mb={2}>
             <Grid item md={4} />
@@ -70,19 +70,23 @@ const ProfileList = () => {
             </FormControl>
             </Grid>
         </Grid>
-        {gotUsers ? 
-          <DataGrid
-            rows={users}
-            columns={columns}
-            pageSize={5}
-            rowsPerPageOptions={[5]}
-            checkboxSelection
-            disableSelectionOnClick	
-            onRowClick={(e) => console.log(e)}
-          />
-          :
-          <p>Waiting for users...</p>
-        }
+        <>
+          {gotUsers ? 
+            <DataGrid
+              rows={users}
+              columns={columns}
+              pageSize={5}
+              rowsPerPageOptions={[5]}
+              checkboxSelection
+              disableSelectionOnClick	
+              onRowClick={(e) => console.log(e)}
+              autoHeight
+            />
+            :
+            <p>Waiting for users...</p>
+          }
+        </>
+        
     </div>
   )
 }

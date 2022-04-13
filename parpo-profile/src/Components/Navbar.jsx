@@ -4,6 +4,10 @@ import { Link } from 'react-router-dom'
 
 const links = [
     {
+        label: 'Company',
+        route: '/company'
+    },
+    {
         label: 'Properties',
         route: '/holdings'
     },
