@@ -14,7 +14,7 @@ function Property({data}) {
             <div align='center'>
                 <Card container className='property-card'>
                 {propertyData.map(data => (
-                    <Grid item key={data} className='property-card-item'>
+                    <Grid item key={data} style={{width: '33%'}}>
                         {/* General Icon Format */}
                         <SvgIcon sx={{ fontSize: 60 }} component={data.icon} />
                         <Typography variant='subtitle2' fontSize='1rem'>{data.label}</Typography>
@@ -24,27 +24,27 @@ function Property({data}) {
                     </Grid>
                 ))}
                 </Card>
-            </div><br/>
+            </div><br/> 
 
-            <div align='center'>
-                <Card container className='property-card'>
+            <div>
+                <Card container align='center' className='property-card2'>
                     <div>
                     <SvgIcon sx={{ fontSize: 60 }} component={HouseIcon} />
                     <Typography variant='subtitle2' fontSize='1rem'>Amenities</Typography>
                     <div style={{height: '0.5rem'}}></div>
                     <Typography className='mini-bar'>{miniBar}</Typography>
-                </div>
+                    </div><br/><br/>
 
-                <div>
-                {amenitiesData.map(data => (
-                    <Grid item key={data} >
-                        {/* General Icon Format */}
-                        <Typography variant='caption'>{data}</Typography>
+                    <div style={{columns: 3}}>
+                    {amenitiesData.map(data => (
+                        <Grid item key={data} >
+                            {/* General Icon Format */}
+                            <Typography variant='caption'>{data}</Typography>
                         <div style={{height: '0.5rem'}}></div>
-                    </Grid>
+                        </Grid>
                 
-                ))}
-                </div>
+                    ))}
+                    </div>
                 </Card>
             </div>
             

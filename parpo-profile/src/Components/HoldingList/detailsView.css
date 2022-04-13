@@ -85,6 +85,14 @@ body {
     
 }
 
-.property-card-item {
-    width: 33%;
+.property-card2 {
+    display: block;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    height: auto;
+    padding: 4rem
+
+    
 }
+
