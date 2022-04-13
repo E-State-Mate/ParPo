@@ -13,7 +13,7 @@ const links = [
     },
     {
         label: 'Details (temporary)',
-        route: '/holding-details'
+        route: '/details'
     },
     {
         label: 'Users',
