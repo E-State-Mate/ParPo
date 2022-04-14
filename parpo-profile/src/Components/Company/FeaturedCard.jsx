@@ -11,7 +11,7 @@ const FeaturedCard = ({data}) => {
         <CardActionArea component={Link} to={`property/${data._id}`} className='relative'>
             <div className='feat-card-top'>
                 <p>{data.propertyType} Building</p>
-                <p>{data.sqft} Sq Ft.</p>
+                <p>{data.sqft.toLocaleString()} Sq Ft.</p>
                 <p>{data.creditRating}</p>
             </div>
             <div className='feat-card-banner'>
@@ -20,7 +20,7 @@ const FeaturedCard = ({data}) => {
                     <p>Managed by: {data.manager[0]}</p>
                 </div>
                 <>
-                    <p>{data.estimatedValue}</p>
+                    <p>${data.estimatedValue.toLocaleString()}</p>
                 </>
             </div>
         </CardActionArea>
