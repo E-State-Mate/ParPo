@@ -33,7 +33,7 @@ const Navbar = () => {
 
     let location = useLocation();
 
-    useEffect(() => {console.log(location)}, [location])
+    // useEffect(() => {console.log(location)}, [location])
 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
@@ -80,7 +80,7 @@ const Navbar = () => {
 
   return (
     <Grid container id='navbar' direction='row' alignItems='center'>
-        <Grid sm={1}/>
+        <Grid item sm={1}/>
         <Grid item sm={6} md={4}>
             <h1 style={{color: 'white'}}>ParPo</h1>
         </Grid>
@@ -109,8 +109,9 @@ const Navbar = () => {
             onClose={handleMenuClose}
           >
              {links.map(link => (
-               <MenuItem key={link} component={Link} to={link.route}>
-                 {link.label}</MenuItem>
+                <MenuItem key={link.label} component={Link} to={link.route}>
+                 {link.label}
+                </MenuItem>
              ))}
           </Menu>
         </Grid>

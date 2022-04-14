@@ -81,10 +81,13 @@ const FeaturedHoldings = () => {
   }, [])
 
   useEffect(() => {
-    if(featHoldings.length!==0 && isLoaded===false){setIsLoaded(true); console.log(featHoldings)}
+    if(featHoldings.length!==0 && isLoaded===false){
+      setIsLoaded(true);
+      // console.log(featHoldings)
+    }
   }, [featHoldings])
 
-  useEffect(() => {console.log(isLoaded)}, [isLoaded])
+  // useEffect(() => {console.log(isLoaded)}, [isLoaded])
 
   return (
     <div style={{margin: '4rem auto', backgroundColor: 'white', padding: '2rem 0'}} id='featured'>

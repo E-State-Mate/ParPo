@@ -70,14 +70,14 @@ const ScrollspyNav = (props) => {
                     scrollTargetPosition = 0
                 } else{
                     scrollTargetPosition = document.getElementById(sectionID).offsetTop;
-                    console.log(scrollTargetPosition)
+                    // console.log(scrollTargetPosition)
                 }
 
                 if(scrollTargetPosition === undefined || scrollTargetPosition === 0){
                     scrollTo(window.pageYOffset, 0, scrollDuration);
-                    console.log(scrollTargetPosition)
+                    // console.log(scrollTargetPosition)
                 } else {
-                    console.log(scrollTargetPosition)
+                    // console.log(scrollTargetPosition)
                     scrollTo(window.pageYOffset, scrollTargetPosition, scrollDuration);
                 }
                 
@@ -103,7 +103,7 @@ const ScrollspyNav = (props) => {
                 } else{
                     scrollSectionOffsetTop = document.getElementById(sectionID).offsetTop;
                     if (window.pageYOffset >= scrollSectionOffsetTop && window.pageYOffset < scrollSectionOffsetTop + document.getElementById(sectionID).scrollHeight) {
-                        console.log(sectionID)
+                        // console.log(sectionID)
                         getNavLinkElement(sectionID).classList.add(activeNavClass);
                         getNavLinkElement(sectionID).parentNode.classList.add(activeNavClass);
                         clearOtherNavLinkActiveStyle(sectionID)

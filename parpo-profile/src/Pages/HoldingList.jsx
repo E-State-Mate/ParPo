@@ -21,11 +21,11 @@ const HoldingList = () => {
         <Grid item lg />
         <Grid item md={4} lg={2}>
           <p style={{margin: '1rem'}}>Property Type</p>
-          {propertyTypes.map(property => ( <PropertyType property={property}/> ))}
+          {propertyTypes.map((property, index) => ( <PropertyType property={property} key={index}/> ))}
         </Grid>
         <Grid item md={8} lg={5}>
           <p style={{margin: '1rem'}}>{holdingData.length} Properties</p>
-          {holdingData.map(holding => ( <HoldingCard holding={holding} /> ))}
+          {holdingData.map((holding, index) => ( <HoldingCard holding={holding} key={index}/> ))}
         </Grid>
         <Grid item lg />
       </Grid>

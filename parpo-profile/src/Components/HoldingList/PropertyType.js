@@ -5,7 +5,7 @@ import CheckIcon from '@mui/icons-material/Check';
 
 const PropertyType = ({property}) => {
   const [selected, isSelected] = useState(false)
-  console.log(property)
+  // console.log(property)
 
   // Can add selection logic here
   const handleSelect = () => { isSelected(!selected); console.log(selected) }
