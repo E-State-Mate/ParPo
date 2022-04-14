@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { DataGrid, GridSearchIcon } from '@mui/x-data-grid';
-import { rows, columns} from '../../Lib/ProfileData'
+import { rows, columns} from '../../Lib/data/ProfileData'
 import { db } from '../../firebase'
 import { collection, getDocs } from 'firebase/firestore'
 import { Button, Grid, FormControl, InputAdornment, Input } from '@mui/material';

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Card, Grid, SvgIcon, Typography } from '@mui/material'
 import './detailsView.css'
-import {locationData} from '../../Lib/locationData'
+import {locationData} from '../../Lib/data/locationData'
 
 function Location({data}) {
     const miniBar = (<div className='miniBar'></div>)

@@ -2,7 +2,7 @@ import { Card, Grid } from '@material-ui/core';
 import { SvgIcon, Typography } from '@mui/material';
 import React from 'react'
 import './detailsView.css'
-import {overviewData} from '../../Lib/overviewData'
+import {overviewData} from '../../Lib/data/overviewData'
 
 
 function Overview({data}) {

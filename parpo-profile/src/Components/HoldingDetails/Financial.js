@@ -1,7 +1,7 @@
 import React from 'react'
 import { Card, Grid, SvgIcon, Typography } from '@mui/material'
 import './detailsView.css'
-import {financialData} from '../../Lib/financialData'
+import {financialData} from '../../Lib/data/financialData'
 
 function Financial({data}) {
     const miniBar = (<div className='miniBar'></div>)

@@ -6,8 +6,8 @@ import Typography from '@mui/material/Typography';
 import ButtonBase from '@mui/material/ButtonBase';
 import PropertyType from '../Components/HoldingList/PropertyType';
 import HoldingCard from '../Components/HoldingList/HoldingCard.js'
-import holdingData from '../Lib/holdingData.json'
-import {propertyTypes} from '../Lib/propertyTypeData'
+import holdingData from '../Lib/data/holdingData.json'
+import {propertyTypes} from '../Lib/data/propertyTypeData'
 
 // When you make components (Filter Type card, Holding card, etc), put them in Components/HoldingList to help keep things organized
 

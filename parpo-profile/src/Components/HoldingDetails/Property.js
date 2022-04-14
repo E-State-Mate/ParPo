@@ -1,8 +1,8 @@
 import React from 'react'
 import { Card, Grid, SvgIcon, Typography } from '@mui/material'
 import './detailsView.css'
-import {propertyData} from '../../Lib/propertyData'
-import {amenitiesData} from '../../Lib/amenitiesData'
+import {propertyData} from '../../Lib/data/propertyData'
+import {amenitiesData} from '../../Lib/data/amenitiesData'
 import HouseIcon from '@mui/icons-material/House'
 
 function Property({data}) {

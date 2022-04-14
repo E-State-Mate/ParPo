@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Avatar, Box, Button, Card, CardActions, CardContent, Divider, Typography } from '@mui/material';
 import { db } from '../../firebase'
 import { doc, getDoc } from 'firebase/firestore'
-import { useAuth } from '../../Lib/authContext';
+import { useAuth } from '../../Lib/utils/authContext';
   
   const user = {
     avatar: '/static/images/avatars/avatar_6.png',
@@ -13,7 +13,7 @@ import { useAuth } from '../../Lib/authContext';
     timezone: 'GTM-7'
   };
   
-  export const Profile = (props) => {
+  const Profile = (props) => {
 
     const [profileData, setProfileData] = useState({
       firstName: '',
@@ -85,6 +85,7 @@ import { useAuth } from '../../Lib/authContext';
         </Button>
       </CardActions>
     </Card>
-
     )
 };
+
+export default Profile;

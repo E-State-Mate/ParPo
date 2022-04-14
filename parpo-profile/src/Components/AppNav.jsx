@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Grid, Menu, MenuItem, Stack, Typography } from '@mui/material'
-import ScrollspyNav from '../Lib/scrollSpy';
+import ScrollspyNav from '../Lib/utils/scrollSpy';
 import { Link } from 'react-router-dom';
 
 const navLinks = [
