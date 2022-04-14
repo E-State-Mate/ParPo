@@ -1,10 +1,10 @@
 import { Grid } from '@mui/material';
 import * as React from 'react'
 import Divider from '@mui/material/Divider';
-import Overview from '../Components/HoldingList/Overview';
-import Location from '../Components/HoldingList/Location';
-import Financial from '../Components/HoldingList/Financial'
-import Property from '../Components/HoldingList/Property';
+import Overview from '../Components/HoldingDetails/Overview';
+import Location from '../Components/HoldingDetails/Location';
+import Financial from '../Components/HoldingDetails/Financial'
+import Property from '../Components/HoldingDetails/Property';
 
 
 

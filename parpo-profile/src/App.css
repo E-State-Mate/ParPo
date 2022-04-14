@@ -192,6 +192,36 @@
   color: white;
 }
 
+#header {
+  position: relative;
+  height: 500px;
+  /* background-image: url('./Lib/img/header-skyline.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  filter: blur(2px); */
+}
+
+#header-bg{
+  filter: blur(2px);
+  width: 100%;
+  height: 100%;
+}
+
+#navbar{
+  position: absolute;
+  top: 2%;
+}
+
+#page-title{
+  position: absolute;
+  top: 35%;
+  left: 8.7%;
+  padding: 1rem;
+  background-color: rgba(80,80,80,0.5);
+  color: white;
+}
+
 #footer{
   position: absolute;
   bottom: 0;

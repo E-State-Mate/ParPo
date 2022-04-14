@@ -45,6 +45,7 @@ function App() {
           <AuthProvider>
             <Routes>
               <Route exact element={<Layout />}>
+                  <Route path='profiles' element={<PrivateRoute><TabContainer /></PrivateRoute>} />
                   <Route path='profile' element={<PrivateRoute><TabContainer /></PrivateRoute>} />
                   <Route path='login' element={<Login />} />
                   <Route path='forgot-password' element={<ForgotPassword />} />
