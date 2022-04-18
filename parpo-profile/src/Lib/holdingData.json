@@ -1,10 +1,10 @@
 [
     {
         "buildingName": "Building A",
-        "propertyType": "residential",
+        "propertyType": "Residential",
         "address": "123 ABC Street",
         "city": "Miami",
-        "state": "FL", 
+        "state": "FL",
         "zipCode": 12345,
         "minRange": 550,
         "maxRange": 600,
@@ -13,14 +13,13 @@
         "revenue": 2.7,
         "rating": "A Class",
         "image": "https://static.thenounproject.com/png/1710329-200.png"
-
     },
     {
         "buildingName": "Building B",
-        "propertyType": "office", 
+        "propertyType": "Office",
         "address": "123 ABC Street",
         "city": "Denver",
-        "state": "CO", 
+        "state": "CO",
         "zipCode": 12345,
         "minRange": 550,
         "maxRange": 600,
@@ -29,11 +28,10 @@
         "revenue": 2.7,
         "rating": "B Class",
         "image": "https://static.thenounproject.com/png/1710329-200.png"
-
     },
     {
         "buildingName": "Building C",
-        "propertyType": "industrial",
+        "propertyType": "Industrial",
         "address": "123 ABC Street",
         "city": "Miami",
         "state": "FL",
@@ -45,14 +43,13 @@
         "revenue": 2.7,
         "rating": "C Class",
         "image": "https://static.thenounproject.com/png/1710329-200.png"
-
     },
     {
         "buildingName": "Building D",
-        "propertyType": "retail",
+        "propertyType": "Retail",
         "address": "123 ABC Street",
         "city": "Denver",
-        "state": "CO", 
+        "state": "CO",
         "zipCode": 12345,
         "minRange": 550,
         "maxRange": 600,
@@ -61,11 +58,10 @@
         "revenue": 2.7,
         "rating": "A Class",
         "image": "https://static.thenounproject.com/png/1710329-200.png"
-
     },
     {
         "buildingName": "Building F",
-        "propertyType": "restaurant",
+        "propertyType": "Restaurant",
         "address": "123 ABC Street",
         "city": "Miami",
         "state": "FL",
@@ -77,14 +73,13 @@
         "revenue": 2.7,
         "rating": "A Class",
         "image": "https://static.thenounproject.com/png/1710329-200.png"
-
     },
     {
         "buildingName": "Building G",
-        "propertyType": "shopping center",
+        "propertyType": "Shopping Center",
         "address": "123 ABC Street",
         "city": "Denver",
-        "state": "CO", 
+        "state": "CO",
         "zipCode": 12345,
         "minRange": 550,
         "maxRange": 600,
@@ -93,14 +88,13 @@
         "revenue": 2.7,
         "rating": "A Class",
         "image": "https://static.thenounproject.com/png/1710329-200.png"
-
     },
     {
         "buildingName": "Building H",
-        "propertyType": "health care",
+        "propertyType": "Health Care",
         "address": "123 ABC Street",
         "city": "Denver",
-        "state": "CO", 
+        "state": "CO",
         "zipCode": 12345,
         "minRange": 550,
         "maxRange": 600,
@@ -109,6 +103,5 @@
         "revenue": 2.7,
         "rating": "A Class",
         "image": "https://static.thenounproject.com/png/1710329-200.png"
-
     }
 ]

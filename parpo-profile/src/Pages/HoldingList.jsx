@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Card, CardHeader, Grid } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
@@ -9,37 +9,41 @@ import HoldingCard from "../Components/HoldingList/HoldingCard.js";
 import holdingData from "../Lib/holdingData.json";
 import { propertyTypes } from "../Lib/propertyTypeData";
 
-import { HoldingContext } from "../Lib/HoldingContext";
+import { HoldingContext } from "../Context/HoldingContext";
+import { PropertyTypeContext } from "../Context/PropertyTypeContext";
 // When you make components (Filter Type card, Holding card, etc), put them in Components/HoldingList to help keep things organized
 
 const HoldingList = () => {
-  const { Holdings, getAllHoldings } = useContext(HoldingContext);
+    const { Holdings, getAllHoldings } = useContext(HoldingContext);
+    const { ActivePropertyTypes } = useContext(PropertyTypeContext);
+    console.log("holdings:", Holdings);
+    // TODO: Make dynamic Holdings count based on how many are rendered w/ HoldingCount
+    const [HoldingCount, setHoldingCount] = useState(0);
 
-  useEffect(() => {
-    getAllHoldings();
-  }, []);
+    useEffect(() => {
+        getAllHoldings();
+    }, []);
 
-  return (
-    <div id="holding-list-container">
-      <Grid container width="90%" style={{ margin: "auto" }}>
-        {/* Property Filter Boxes */}
-        <Grid item lg />
-        <Grid item md={4} lg={2}>
-          <p style={{ margin: "1rem" }}>Property Type</p>
-          {propertyTypes.map((property) => (
-            <PropertyType property={property} />
-          ))}
-        </Grid>
-        <Grid item md={8} lg={5}>
-          <p style={{ margin: "1rem" }}>{holdingData.length} Properties</p>
-          {Holdings.map((holding) => (
-            <HoldingCard holding={holding} />
-          ))}
-        </Grid>
-        <Grid item lg />
-      </Grid>
-    </div>
-  );
+    return (
+        <div id="holding-list-container">
+            <Grid container width="90%" style={{ margin: "auto" }}>
+                <Grid item lg />
+                <Grid item md={4} lg={2}>
+                    <p style={{ margin: "1rem" }}>Property Type</p>
+                    {propertyTypes.map((property, i) => (
+                        <PropertyType key={i} property={property} />
+                    ))}
+                </Grid>
+                <Grid item md={8} lg={5}>
+                    <p style={{ margin: "1rem" }}>{Holdings.length} Properties</p>
+                    {Holdings.filter((holding) => ActivePropertyTypes[holding.propertyType]).map((holding, i) => {
+                        return <HoldingCard key={i} holding={holding} />;
+                    })}
+                </Grid>
+                <Grid item lg />
+            </Grid>
+        </div>
+    );
 };
 
 export default HoldingList;

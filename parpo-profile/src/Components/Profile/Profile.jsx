@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Avatar, Box, Button, Card, CardActions, CardContent, Divider, Typography } from '@mui/material';
 import { db } from '../../firebase'
 import { doc, getDoc } from 'firebase/firestore'
-import { useAuth } from '../../Lib/authContext';
+import { useAuth } from '../../Context/AuthContext';
   
   const user = {
     avatar: '/static/images/avatars/avatar_6.png',

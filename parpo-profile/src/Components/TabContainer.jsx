@@ -8,7 +8,7 @@ import ProfileList from './ProfileList/ProfilesList'
 import ProfileContainer from './Profile/ProfileContainer'
 import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom'
-import { useAuth } from "../Lib/authContext"
+import { useAuth } from "../Context/AuthContext"
 import { db } from '../firebase'
 import { doc, getDoc } from 'firebase/firestore'
 

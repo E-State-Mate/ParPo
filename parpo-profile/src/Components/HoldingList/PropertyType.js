@@ -1,24 +1,42 @@
-import React, { useState } from 'react'
-import { Card, CardContent, Icon, Typography } from '@mui/material'
-import { SvgIcon } from '@mui/material'
-import CheckIcon from '@mui/icons-material/Check';
+import React, { useState, useContext } from "react";
+import { Card, CardContent, Icon, Typography } from "@mui/material";
+import { SvgIcon } from "@mui/material";
+import CheckIcon from "@mui/icons-material/Check";
 
-const PropertyType = ({property}) => {
-  const [selected, isSelected] = useState(false)
-  console.log(property)
+import { PropertyTypeContext } from "../../Context/PropertyTypeContext";
 
-  // Can add selection logic here
-  const handleSelect = () => { isSelected(!selected); console.log(selected) }
+const PropertyType = ({ property }) => {
+    const [selected, isSelected] = useState(false);
+    // console.log(property);
 
-  return (
-    <Card className='prop-type-card' onClick={handleSelect}>
-      <CardContent>
-        <CheckIcon className='prop-type-check' color={selected ? 'primary' : 'action'}/>
-        <Typography align='center' sx={{fontSize: '1rem'}}>{property.propertyType}</Typography>
-        <SvgIcon component={property.image} inheritViewBox sx={{width: '100%', fontSize: 50, marginTop: '1rem'}}/>
-      </CardContent>
-    </Card>
-  )
-}
+    const { ActivePropertyTypes, setActivePropertyTypes } = useContext(PropertyTypeContext);
 
-export default PropertyType
+    // Can add selection logic here
+    const handleSelect = () => {
+        setActivePropertyTypes({
+            ...ActivePropertyTypes,
+            [property.propertyType]: !ActivePropertyTypes[property.propertyType],
+        });
+    };
+
+    return (
+        <Card className="prop-type-card" onClick={handleSelect}>
+            <CardContent>
+                <CheckIcon
+                    className="prop-type-check"
+                    color={ActivePropertyTypes[property.propertyType] ? "primary" : "action"}
+                />
+                <Typography align="center" sx={{ fontSize: "1rem" }}>
+                    {property.propertyType}
+                </Typography>
+                <SvgIcon
+                    component={property.image}
+                    inheritViewBox
+                    sx={{ width: "100%", fontSize: 50, marginTop: "1rem" }}
+                />
+            </CardContent>
+        </Card>
+    );
+};
+
+export default PropertyType;
