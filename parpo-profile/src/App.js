@@ -14,48 +14,48 @@ import HoldingProvider from "./Context/HoldingContext";
 import PropertyTypeProvider from "./Context/PropertyTypeContext";
 
 function App() {
-    return (
-        <Router>
-            <AuthProvider>
-                <HoldingProvider>
-                    <PropertyTypeProvider>
-                        <Routes>
-                            <Route exact path="/" element={<Layout />}>
-                                <Route
-                                    path="profile"
-                                    element={
-                                        <PrivateRoute>
-                                            <TabContainer />
-                                        </PrivateRoute>
-                                    }
-                                />
-                                <Route path="login" element={<Login />} />
-                                <Route path="forgot-password" element={<ForgotPassword />} />
-                                <Route path="signup" element={<Signup />} />
-                                <Route
-                                    path="onboarding"
-                                    element={
-                                        <PrivateRoute>
-                                            <Onboarding />
-                                        </PrivateRoute>
-                                    }
-                                />
-                                <Route
-                                    path="holdings"
-                                    element={
-                                        <PrivateRoute>
-                                            <HoldingList />
-                                        </PrivateRoute>
-                                    }
-                                />
-                                <Route path="*" element={<Login />} />
-                            </Route>
-                        </Routes>
-                    </PropertyTypeProvider>
-                </HoldingProvider>
-            </AuthProvider>
-        </Router>
-    );
+  return (
+    <Router>
+      <AuthProvider>
+        <HoldingProvider>
+        <PropertyTypeProvider>
+          <Routes>
+            <Route exact path="/" element={<Layout />}>
+              <Route
+                path="profile"
+                element={
+                  <PrivateRoute>
+                    <TabContainer />
+                  </PrivateRoute>
+                }
+              />
+              <Route path="login" element={<Login />} />
+              <Route path="forgot-password" element={<ForgotPassword />} />
+              <Route path="signup" element={<Signup />} />
+              <Route
+                path="onboarding"
+                element={
+                  <PrivateRoute>
+                    <Onboarding />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="holdings"
+                element={
+                  <PrivateRoute>
+                    <HoldingList />
+                  </PrivateRoute>
+                }
+              />
+              <Route path="*" element={<Login />} />
+            </Route>
+          </Routes>
+          </PropertyTypeProvider>
+        </HoldingProvider>
+      </AuthProvider>
+    </Router>
+  );
 }
 
 export default App;
