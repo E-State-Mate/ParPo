@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Box, Container, Grid, Typography } from '@mui/material';
-import { Profile } from './Profile';
+import Profile from './Profile';
 import { ProfileDetails } from './ProfileDetails';
 
 const Account = () => {

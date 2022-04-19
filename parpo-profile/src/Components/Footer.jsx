@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Button, Divider, Grid, TextField } from '@mui/material'
-import { useAuth } from '../Lib/authContext'
+import { useAuth } from '../Lib/utils/authContext'
 import { db } from '../firebase'
 import { doc, getDoc } from 'firebase/firestore'
 import {useNavigate} from 'react-router-dom'
@@ -53,7 +53,7 @@ const Footer = () => {
         </Grid>
         <Grid item xs={12} md={2}>
           <Grid container>
-            <Grid xs />
+            <Grid item xs />
             <Grid item xs={5} md={12} className='footer-txt'>
               <p><b>Call us</b></p>
               <p>Phone number</p>
@@ -62,7 +62,7 @@ const Footer = () => {
               <p><b>Email us</b></p>
               <p>Email address</p>
             </Grid>
-            <Grid xs />
+            <Grid item xs />
           </Grid>
         </Grid>
       </Grid>

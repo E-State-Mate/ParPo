@@ -29,7 +29,7 @@ const stats = [
 ]
 
 const OverviewCard = ({stat}) => {
-  console.log(stat)
+  // console.log(stat)
   return (
     <Card sx={{width: '80%', margin: '1rem auto', paddingTop: '8px'}}>
       <SvgIcon component={stat.icon} inheritViewBox sx={{width: '100%', fontSize: 50, paddingTop: '1rem'}}/>
@@ -48,8 +48,8 @@ const Overview = () => {
       <h2 style={{textAlign: 'center'}}>Overview</h2>
       <Divider variant='middle' width='20%' sx={{margin: '1rem auto', borderBottomWidth: 4, backgroundColor: '#5ca8b2' }} />
       <Grid container>
-          {stats.map(stat => (
-            <Grid item xs={12} md={6} lg={3}>
+          {stats.map((stat, index) => (
+            <Grid item xs={12} md={6} lg={3} key={index}>
               <OverviewCard stat={stat} />
             </Grid>
           ))}   

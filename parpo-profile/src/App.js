@@ -5,13 +5,15 @@ import Login from "./Components/UserAuth/Login"
 import PrivateRoute from './Components/PrivateRoute';
 import Onboarding from './Components/Onboarding/Onboarding'
 import './App.css';
-import { AuthProvider } from './Lib/authContext';
+import { AuthProvider } from './Lib/utils/authContext';
 import ForgotPassword from './Components/UserAuth/ForgotPassword';
 import Signup from './Components/Onboarding/Signup';
 import HoldingList from './Pages/HoldingList';
 import Layout from './Components/Layout';
 import Company from './Pages/Company';
 import HoldingDetails from './Pages/HoldingDetails';
+import Profiles from './Pages/Profiles';
+import UserProfile from './Pages/UserProfile';
 
 function App() {
 
@@ -45,7 +47,8 @@ function App() {
           <AuthProvider>
             <Routes>
               <Route exact element={<Layout />}>
-                  <Route path='profile' element={<PrivateRoute><TabContainer /></PrivateRoute>} />
+                  <Route path='profiles' element={<PrivateRoute><Profiles /></PrivateRoute>} />
+                  <Route path='profile' element={<PrivateRoute><UserProfile /></PrivateRoute>} />
                   <Route path='login' element={<Login />} />
                   <Route path='forgot-password' element={<ForgotPassword />} />
                   <Route path='signup' element={<Signup />} />

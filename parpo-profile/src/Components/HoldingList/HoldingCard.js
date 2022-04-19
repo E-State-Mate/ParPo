@@ -16,7 +16,7 @@ const rightCol = ['occupancy', 'sqft', 'revenue', 'rating']
 
 const HoldingCard = ({holding}) => {
   const classes = useStyles()
-  console.log(holding)
+  // console.log(holding)
   return (
     <Card className='prop-list-card'>
       <Grid container align='left' style={{height: '100%'}}>

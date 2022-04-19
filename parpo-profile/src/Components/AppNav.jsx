@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Grid, Menu, MenuItem, Stack, Typography } from '@mui/material'
-import ScrollspyNav from '../Lib/scrollSpy';
+import ScrollspyNav from '../Lib/utils/scrollSpy';
 import { Link } from 'react-router-dom';
 
 const navLinks = [
@@ -53,13 +53,11 @@ const AppNav = () => {
             open={Boolean(anchorEl)}
             onClose={handleMenuClose}
           >
-             {navLinks.map(link => (
-                <ScrollspyNav scrollTargetIds={targetId} scrollDuration='800' activeNavClass='active'>
-                    {navLinks.map((link, index) => (
-                        <MenuItem component={Link} to={`#${link.idnm}`} key={index}>{link.navHeading}</MenuItem>
-                    ))}
-                </ScrollspyNav>
-             ))}
+            <ScrollspyNav scrollTargetIds={targetId} scrollDuration='800' activeNavClass='active'>
+                {navLinks.map((link, index) => (
+                    <MenuItem href={`#${link.idnm}`} key={index}>{link.navHeading}</MenuItem>
+                ))}
+            </ScrollspyNav>
           </Menu>
         </Grid>
         <Grid item md={8} sx={{ display: {xs: 'none', md: 'block'}}}>

@@ -16,8 +16,8 @@ const OurTeam = () => {
       <h2 style={{textAlign: 'center'}}>Our Team</h2>
       <Divider variant='middle' width='20%' sx={{margin: '1rem auto', borderBottomWidth: 4, backgroundColor: '#5ca8b2' }} />
       <Grid container>
-        {team.map(member => (
-          <Grid item xs={12} md={6} lg={3}>
+        {team.map((member, index) => (
+          <Grid item xs={12} md={6} lg={3} key={index}>
             <TeamCard data={member} />
           </Grid>
         ))}
