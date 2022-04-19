@@ -4,21 +4,19 @@ import Login from "./Components/UserAuth/Login";
 import PrivateRoute from "./Components/PrivateRoute";
 import Onboarding from "./Components/Onboarding/Onboarding";
 import "./App.css";
-import { AuthProvider } from "./Context/AuthContext";
+import { AuthProvider } from "./Lib/authContext";
 import ForgotPassword from "./Components/UserAuth/ForgotPassword";
 import Signup from "./Components/Onboarding/Signup";
 import HoldingList from "./Pages/HoldingList";
 import Layout from "./Components/Layout";
 
-import HoldingProvider from "./Context/HoldingContext";
-import PropertyTypeProvider from "./Context/PropertyTypeContext";
+import HoldingProvider from "./Lib/HoldingContext";
 
 function App() {
   return (
     <Router>
       <AuthProvider>
         <HoldingProvider>
-        <PropertyTypeProvider>
           <Routes>
             <Route exact path="/" element={<Layout />}>
               <Route
@@ -51,7 +49,6 @@ function App() {
               <Route path="*" element={<Login />} />
             </Route>
           </Routes>
-          </PropertyTypeProvider>
         </HoldingProvider>
       </AuthProvider>
     </Router>
