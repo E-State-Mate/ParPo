@@ -3,8 +3,7 @@ import { Card, Grid, SvgIcon, Typography } from '@mui/material';
 import './detailsView.css';
 import {locationData} from './locationData';
 import Tooltip from '@mui/material/Tooltip';
-import Button from '@mui/material/Button';
-import HelpOutlineOutlinedIcon from '@mui/icons-material/HelpOutlineOutlined';
+
 
 
 function Location({data}) {
