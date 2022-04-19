@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Button, Divider, Grid, TextField } from '@mui/material'
-import { useAuth } from '../Lib/utils/authContext'
+import { useAuth } from '../Context/AuthContext'
 import { db } from '../firebase'
 import { doc, getDoc } from 'firebase/firestore'
 import {useNavigate} from 'react-router-dom'
