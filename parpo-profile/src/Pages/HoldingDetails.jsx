@@ -1,11 +1,11 @@
 import { Grid } from '@mui/material';
-import * as React from 'react'
+import * as React from 'react';
 import Divider from '@mui/material/Divider';
 import Overview from '../Components/HoldingList/Overview';
 import Location from '../Components/HoldingList/Location';
-import Financial from '../Components/HoldingList/Financial'
+import Financial from '../Components/HoldingList/Financial';
 import Property from '../Components/HoldingList/Property';
-
+import Tenant from '../Components/HoldingList/Tenant';
 
 
 const HoldingDetails = () => {
@@ -52,15 +52,15 @@ const HoldingDetails = () => {
       </Grid> 
     </div>
 
-    {/* Tenant
+    {/* Tenant */}
     <div>
       <Grid container justifyContent= 'center' backgroundColor='lightgray'>
         <Grid item width='67%' >
-          <Divider className='dividers' style={{marginTop: '4rem'}}>LOCATION</Divider>
-          <Location />
+          <Divider className='dividers' style={{marginTop: '4rem'}}>TENANT</Divider>
+          <Tenant />
         </Grid>
       </Grid> 
-    </div> */}
+    </div>
     </>
   )
 }

@@ -26,18 +26,6 @@ body {
     height: 12rem
 }
 
-/* .overview-mini-card {
-    border-radius: 1% !important;
-    width: 13rem;
-    height: 10rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    box-shadow: 2px 0px 2px #9c9c9c;;
-    border-bottom: white;
-} */
-
 #overview-card2 {
     display: flex;
     justify-content: center;
@@ -66,8 +54,6 @@ body {
     align-items: center;
     height: 40rem;
     padding: 2rem
-
-    
 }
 
 .financial-card-item {
@@ -80,9 +66,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 55rem;
-    padding: 2rem
-
-    
+    padding: 2rem 
 }
 
 .property-card2 {
@@ -91,8 +75,18 @@ body {
     align-items: center;
     align-self: center;
     height: auto;
-    padding: 4rem
-
-    
+    padding: 4rem  
 }
 
+.tenant-card {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    padding: 2rem 
+}
+
+#tenant-card-item {
+    padding: 2rem
+}
