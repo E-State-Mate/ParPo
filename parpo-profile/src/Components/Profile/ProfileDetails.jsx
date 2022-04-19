@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Box, Button, Card, CardActions, CardContent, CardHeader, Divider, Grid, TextField, Typography } from '@mui/material';
 import { db } from '../../firebase';
 import { doc, getDoc, setDoc } from 'firebase/firestore'
-import { useAuth } from '../../Context/AuthContext';
+import { useAuth } from '../../Context/authContext';
 
 const states = [
   {

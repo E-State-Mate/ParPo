@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react'
 import { Card, Form, Button, Alert } from 'react-bootstrap' 
-import { useAuth } from '../../Context/AuthContext'
+import { useAuth } from '../../Context/authContext'
 import { Link } from 'react-router-dom'
 
 

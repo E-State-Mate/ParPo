@@ -4,7 +4,7 @@ import Login from "./Components/UserAuth/Login";
 import PrivateRoute from "./Components/PrivateRoute";
 import Onboarding from "./Components/Onboarding/Onboarding";
 import "./App.css";
-import { AuthProvider } from "./Context/AuthContext";
+import { AuthProvider } from "./Context/authContext";
 import ForgotPassword from "./Components/UserAuth/ForgotPassword";
 import Signup from "./Components/Onboarding/Signup";
 import HoldingList from "./Pages/HoldingList";
@@ -21,14 +21,7 @@ function App() {
                     <PropertyTypeProvider>
                         <Routes>
                             <Route exact path="/" element={<Layout />}>
-                                <Route
-                                    path="profile"
-                                    element={
-                                        <PrivateRoute>
-                                            <TabContainer />
-                                        </PrivateRoute>
-                                    }
-                                />
+                                <Route path="profile" element={ <PrivateRoute><TabContainer /></PrivateRoute>} />
                                 <Route path="login" element={<Login />} />
                                 <Route path="forgot-password" element={<ForgotPassword />} />
                                 <Route path="signup" element={<Signup />} />
