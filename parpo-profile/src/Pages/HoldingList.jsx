@@ -3,8 +3,8 @@ import { ButtonBase, Card, CardHeader, Grid, Paper, Typography } from "@mui/mate
 import { styled } from "@mui/material/styles";
 import PropertyType from "../Components/HoldingList/PropertyType";
 import HoldingCard from "../Components/HoldingList/HoldingCard.js";
-import holdingData from "../Lib/holdingData.json";
-import { propertyTypes } from "../Lib/propertyTypeData";
+import holdingData from "../Lib/data/holdingData.json";
+import { propertyTypes } from "../Lib/data/propertyTypeData";
 
 import { HoldingContext } from "../Context/HoldingContext";
 import { PropertyTypeContext } from "../Context/PropertyTypeContext";
