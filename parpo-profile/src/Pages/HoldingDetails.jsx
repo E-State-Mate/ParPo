@@ -6,6 +6,7 @@ import Location from '../Components/HoldingDetails/Location';
 import Financial from '../Components/HoldingDetails/Financial'
 import Property from '../Components/HoldingDetails/Property';
 import Tenant from '../Components/HoldingDetails/Tenant';
+import DetailsNav from '../Components/HoldingDetails/DetailsNav';
 
 
 
@@ -13,9 +14,10 @@ const HoldingDetails = () => {
 
   return (
     <>
+    <DetailsNav />
     {/* Overview Section */}
     <div>
-      <Grid container justifyContent= 'center' backgroundColor='lightgray'>
+      <Grid container justifyContent= 'center' backgroundColor='lightgray' id='overview'>
         <Grid item width='67%' >
           <Divider className='dividers' style={{marginTop: '4rem'}}>OVERVIEW</Divider>
           <Overview />
@@ -25,7 +27,7 @@ const HoldingDetails = () => {
 
     {/* Location Section */}
     <div>
-      <Grid container justifyContent= 'center' backgroundColor='lightgray'>
+      <Grid container justifyContent= 'center' backgroundColor='lightgray' id='location'>
         <Grid item width='67%' >
           <Divider className='dividers' style={{marginTop: '4rem'}}>LOCATION</Divider>
           <Location />
@@ -35,7 +37,7 @@ const HoldingDetails = () => {
 
     {/* Financial Section */}
     <div >
-      <Grid container justifyContent= 'center' backgroundColor='lightgray'>
+      <Grid container justifyContent= 'center' backgroundColor='lightgray' id='financial'>
         <Grid item width='67%' >
           <Divider className='dividers' style={{marginTop: '4rem'}}>FINANCIAL</Divider><br/><br/>
           <Financial />
@@ -45,7 +47,7 @@ const HoldingDetails = () => {
 
     {/* Property Section */}
     <div>
-      <Grid container justifyContent= 'center' backgroundColor='lightgray'>
+      <Grid container justifyContent= 'center' backgroundColor='lightgray' id='property'>
         <Grid item width='67%' >
           <Divider className='dividers' style={{marginTop: '4rem'}}>PROPERTY</Divider><br/><br/>
           <Property />
@@ -55,7 +57,7 @@ const HoldingDetails = () => {
 
     {/* Tenant */}
     <div>
-      <Grid container justifyContent= 'center' backgroundColor='lightgray'>
+      <Grid container justifyContent= 'center' backgroundColor='lightgray' id='tenant'>
         <Grid item width='67%' >
           <Divider className='dividers' style={{marginTop: '4rem'}}>TENANT</Divider>
           <Tenant />
