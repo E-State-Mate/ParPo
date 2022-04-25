@@ -1,31 +1,40 @@
 import { Card, Grid } from '@material-ui/core';
 import { SvgIcon, Typography } from '@mui/material';
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './detailsView.css'
 import {overviewData} from '../../Lib/data/overviewData'
+import { getHoldingById } from '../../Lib/utils/holdingsFetcher'
 
 
-function Overview({data}) {
+function Overview({id}) {
   const miniBar = (<div className='miniBar'></div>)
+
+  // useEffect(() => {
+  //   if(featHolding.length === 1 && isLoaded === false){
+  //     setIsLoaded(true);
+  //   }
+  // })
+
 
   return (
     <>
       {/* Overview Section #1 */}
       <div align='center'>
         <Card container id='overview-card'>
-        {overviewData.map(data => (
-          <Grid item key={data}>
+        {/* {overviewData.map(data => ( */}
+          {/* <Grid item key={data}> */}
           
                 {/* General Icon Format */}
-                <SvgIcon sx={{ fontSize: 60 }} component={data.holdingIcon} />
-                <Typography variant='subtitle2' fontSize='1rem'>{data.holdingLabel}</Typography>
-                <Typography variant='caption'>{data.holdingData}</Typography>
-                <div style={{height: '0.5rem'}}></div>
-                <Typography className='mini-bar'>{miniBar}</Typography>
-          </Grid>
-        ))}
+                {/* <SvgIcon sx={{ fontSize: 60 }} component={data.holdingIcon} /> */}
+                {/* <Typography variant='subtitle2' fontSize='1rem'>{data.holdingLabel}</Typography> */}
+                {/* <Typography variant='caption'>{data.holdingData}</Typography> */}
+                {/* <div style={{height: '0.5rem'}}></div> */}
+                {/* <Typography className='mini-bar'>{miniBar}</Typography> */}
+          {/* </Grid> */}
+        {/* ))} */}
         </Card>
       </div>
+
 
       {/* Overview Section #2 */}
       <div>

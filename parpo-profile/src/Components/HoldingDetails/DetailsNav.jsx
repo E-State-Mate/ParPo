@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Grid, Menu, MenuItem, Stack, Typography } from '@mui/material'
-import ScrollspyNav from './scrollSpy.js'
+import ScrollspyNav from '../../Lib/utils/scrollSpy'
 import { Link } from 'react-router-dom';
 
 const detailLinks = [
@@ -28,7 +28,6 @@ const DetailsNav = () => {
   return (
     <Grid container style={{backgroundColor: 'white', boxShadow: 'darkgray 0px 3px'}} alignItems='center' p={1}>
         <Grid item xs={8} md={4} alignItems='center'>
-            {/* <Typography variant='caption'>Breadcrumbs/Breadcrumbs/Breadcrumbs</Typography> */}
         </Grid>
         <Grid item xs />
         <Grid item sm={4} sx={{ display: {md: 'none'}}} textAlign='right'>
