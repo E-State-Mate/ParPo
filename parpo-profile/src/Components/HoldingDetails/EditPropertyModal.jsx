@@ -9,7 +9,33 @@ const EditPropertyModal = ({handleCancel, handleClose}) => {
         const execSummary = e.target[0].value;
         const fullAddress = e.target[2].value;
         const subAddress = e.target[4].value;
-        console.log(execSummary, fullAddress, subAddress);
+        const purchasePrice = e.target[6].value;
+        const irr = e.target[8].value;
+        const grm = e.target[10].value;
+        const cnoi = e.target[12].value;
+        const pfnoi = e.target[14].value;
+        const ccr = e.target[16].value;
+        const pfcr = e.target[18].value;
+        const zone = e.target[20].value;
+        const yearBuilt = e.target[22].value;
+        const plotSize = e.target[24].value;
+        const numberOfFloors = e.target[26].value;
+        const floorPlate = e.target[28].value;
+        const opportunityZone = e.target[30].value;
+        const parkingSpaces = e.target[32].value;
+        const parkingRatio = e.target[34].value;
+        const propertyRatio = e.target[36].value;
+        const amenities = e.target[38].value;
+        const occupancyPercentage = e.target[40].value;
+        const unitType = e.target[42].value;
+        const numberOfTenants = e.target[44].value;
+        const leaseType = e.target[46].value;
+        const leaseRenewal = e.target[48].value;
+        const renewalYear = e.target[50].value;
+        const yearsLeftOnLease = e.target[52].value;
+        const leaseEndDate = e.target[54].value;
+
+        console.log(numberOfFloors, floorPlate, opportunityZone, parkingSpaces, parkingRatio, propertyRatio, amenities)
     }
   return (
     <div id='property-edit-modal-container'>
@@ -72,6 +98,7 @@ const EditPropertyModal = ({handleCancel, handleClose}) => {
 
             <h3>Tenant</h3>
             <p>Occupancy Percentage</p>
+            <TextField fullWidth variant='outlined' label='Enter Occupancy Percentage' />
             {/* DROPDOWN */}
             <p>Unit Type</p>
             <TextField fullWidth variant='outlined' label='Enter Unit Type' />
