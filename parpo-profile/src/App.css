@@ -196,6 +196,38 @@
   color: white;
 }
 
+#details-container{
+  position: relative;
+  background-color: #eee;
+  padding: 0rem 0 30rem 0;
+}
+
+#property-edit-modal-container{
+  position: absolute;
+  top: 0;
+  background-color: rgba(100,100,100,0.3);
+  width: 100%;
+}
+
+#property-edit-modal{
+  width: 80%;
+  margin: 4rem auto;
+  background-color: #eee;
+  padding: 4rem;
+}
+
+#property-edit-modal > h3{
+  color: #5ca8b2;
+  text-align: center;
+}
+
+#property-edit-modal > p {
+  font-weight: bold;
+  font-size: 0.8em;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
 #header {
   position: relative;
   height: 500px;

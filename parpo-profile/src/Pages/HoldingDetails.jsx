@@ -1,67 +1,94 @@
-import { Grid } from '@mui/material';
-import * as React from 'react'
-import Divider from '@mui/material/Divider';
+import React, { useEffect, useState } from 'react'
+import {Button, Divider, Grid} from '@mui/material';
 import Overview from '../Components/HoldingDetails/Overview';
 import Location from '../Components/HoldingDetails/Location';
 import Financial from '../Components/HoldingDetails/Financial'
 import Property from '../Components/HoldingDetails/Property';
-
-
+import EditPropertyModal from '../Components/HoldingDetails/EditPropertyModal';
+import { useAuth } from '../Lib/utils/authContext'
+import { db } from '../firebase'
+import { doc, getDoc } from 'firebase/firestore'
 
 const HoldingDetails = () => {
 
+  const [userData, setUserData] = useState({
+    role: 'N/A'
+  })
+
+  const [editing, setEditing] = useState(false);
+
+  const { currentUser } = useAuth()
+
+  const getProfileData = async () => {
+    if(currentUser.uid !== null){
+      const docRef = doc(db, "users", currentUser.uid)
+      const docSnap = await getDoc(docRef);
+      setUserData(docSnap.data());
+    }
+  }
+
+  const handleCancel = () => {
+    setEditing(false);
+  }
+
+  const handleClose = (data) => {
+    console.log(data);
+    setEditing(false);
+  }
+
+  useEffect(() => getProfileData(), [])
+
+  useEffect(() => {console.log(userData)}, [userData])
+
+  useEffect(() => console.log(editing), [editing])
+
   return (
-    <>
-    {/* Overview Section */}
-    <div>
-      <Grid container justifyContent= 'center' backgroundColor='lightgray'>
-        <Grid item width='67%' >
+    <div id='details-container'>
+      <Grid container justifyContent= 'center'>
+      
+      {/* Edit Property Button (if user is an Admin) */}
+        {(userData.role === 'Admin' && editing === false) && 
+          <Grid item md={8}>
+            <Button variant='contained' size='large' onClick={() => setEditing(true)}>Edit Property</Button>
+          </Grid>
+        }
+      
+      {/* Overview Section */}
+        <Grid item md={8}>
           <Divider className='dividers' style={{marginTop: '4rem'}}>OVERVIEW</Divider>
           <Overview />
         </Grid>
-      </Grid> 
-    </div>
 
     {/* Location Section */}
-    <div>
-      <Grid container justifyContent= 'center' backgroundColor='lightgray'>
-        <Grid item width='67%' >
+        <Grid item md={8}>
           <Divider className='dividers' style={{marginTop: '4rem'}}>LOCATION</Divider>
           <Location />
         </Grid>
-      </Grid> 
-    </div>
 
     {/* Financial Section */}
-    <div >
-      <Grid container justifyContent= 'center' backgroundColor='lightgray'>
-        <Grid item width='67%' >
+        <Grid item md={8}>
           <Divider className='dividers' style={{marginTop: '4rem'}}>FINANCIAL</Divider><br/><br/>
           <Financial />
         </Grid>
-      </Grid> 
-    </div>
 
     {/* Property Section */}
-    <div>
-      <Grid container justifyContent= 'center' backgroundColor='lightgray'>
-        <Grid item width='67%' >
+        <Grid item md={8}>
           <Divider className='dividers' style={{marginTop: '4rem'}}>PROPERTY</Divider><br/><br/>
           <Property />
         </Grid>
       </Grid> 
-    </div>
 
     {/* Tenant
     <div>
-      <Grid container justifyContent= 'center' backgroundColor='lightgray'>
+      <Grid container justifyContent= 'center'>
         <Grid item width='67%' >
           <Divider className='dividers' style={{marginTop: '4rem'}}>LOCATION</Divider>
           <Location />
         </Grid>
       </Grid> 
     </div> */}
-    </>
+    {editing && <EditPropertyModal handleCancel={handleCancel} handleClose={handleClose}/>}
+  </div>
   )
 }
 
