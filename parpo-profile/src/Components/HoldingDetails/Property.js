@@ -50,7 +50,6 @@ function Property({data}) {
             
 
         {/* Pushing the footer down   */}
-        <div style={{marginBottom: '2rem'}}><span><p></p></span></div>
         </>
     )
 }
