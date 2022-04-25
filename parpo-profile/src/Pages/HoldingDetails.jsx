@@ -17,9 +17,9 @@ const HoldingDetails = () => {
   const [userData, setUserData] = useState({
     role: 'N/A'
   })
-
-const HoldingDetails = () => {
   const [featHolding, setFeatHolding] = useState([])
+  const [editing, setEditing] = useState(false);
+  const { currentUser } = useAuth()
 
   const fetchHolding = async (id) => {
     setFeatHolding(await getHoldingById(id));
@@ -32,11 +32,6 @@ const HoldingDetails = () => {
   useEffect(() => {
     console.log(featHolding)
   }, [featHolding])
-
-  
-  const [editing, setEditing] = useState(false);
-
-  const { currentUser } = useAuth()
 
   const getProfileData = async () => {
     if(currentUser.uid !== null){
@@ -76,16 +71,16 @@ const HoldingDetails = () => {
         }
       
       {/* Overview Section */}
-        <Grid item md={8}>
+        {/* <Grid item md={8}>
           <Divider className='dividers' style={{marginTop: '4rem'}}>OVERVIEW</Divider>
           <Overview />
-        </Grid>
+        </Grid> */}
 
     {/* Location Section */}
-        <Grid item md={8}>
+        {/* <Grid item md={8}>
           <Divider className='dividers' style={{marginTop: '4rem'}}>LOCATION</Divider>
           <Location />
-        </Grid>
+        </Grid> */}
 
     {/* Financial Section */}
         <Grid item md={8}>
@@ -112,7 +107,6 @@ const HoldingDetails = () => {
     {editing && <EditPropertyModal handleCancel={handleCancel} handleClose={handleClose}/>}
   </div>
   )
-}
 }
 
 

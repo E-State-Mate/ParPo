@@ -47,9 +47,6 @@ function Property({data}) {
                     </div>
                 </Card>
             </div>
-            
-
-        {/* Pushing the footer down   */}
         </>
     )
 }
