@@ -8,7 +8,7 @@ const FeaturedCard = ({data}) => {
 
   return (
     <Card className='featured-card' style={{backgroundImage: `url(https://via.placeholder.com/3000/0000FF/808080?Text=Digital.com)`}}>
-        <CardActionArea component={Link} to={`property/${data._id}`} className='relative'>
+        <CardActionArea component={Link} to={`/property/${data._id}`} replace className='relative'>
             <div className='feat-card-top'>
                 <p>{data.propertyType} Building</p>
                 <p>{data.sqft.toLocaleString()} Sq Ft.</p>

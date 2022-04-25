@@ -11,6 +11,7 @@ import EditPropertyModal from '../Components/HoldingDetails/EditPropertyModal';
 import { useAuth } from '../Context/AuthContext'
 import { db } from '../firebase'
 import { doc, getDoc } from 'firebase/firestore'
+import { useParams } from 'react-router-dom';
 
 const HoldingDetails = () => {
 
@@ -20,14 +21,16 @@ const HoldingDetails = () => {
   const [featHolding, setFeatHolding] = useState([])
   const [editing, setEditing] = useState(false);
   const { currentUser } = useAuth()
+  let slug = useParams();
 
   const fetchHolding = async (id) => {
     setFeatHolding(await getHoldingById(id));
   }
 
   useEffect(() => {
-    fetchHolding('6251c5b3e595afe162757916');
-  }, [])
+    fetchHolding(slug.slug);
+    // console.log(slug.slug)
+  }, [slug])
   
   useEffect(() => {
     console.log(featHolding)
@@ -71,16 +74,16 @@ const HoldingDetails = () => {
         }
       
       {/* Overview Section */}
-        {/* <Grid item md={8}>
+        <Grid item md={8}>
           <Divider className='dividers' style={{marginTop: '4rem'}}>OVERVIEW</Divider>
           <Overview />
-        </Grid> */}
+        </Grid>
 
     {/* Location Section */}
-        {/* <Grid item md={8}>
+        <Grid item md={8}>
           <Divider className='dividers' style={{marginTop: '4rem'}}>LOCATION</Divider>
           <Location />
-        </Grid> */}
+        </Grid>
 
     {/* Financial Section */}
         <Grid item md={8}>
@@ -93,17 +96,14 @@ const HoldingDetails = () => {
           <Divider className='dividers' style={{marginTop: '4rem'}}>PROPERTY</Divider><br/><br/>
           <Property />
         </Grid>
-      </Grid> 
 
     {/* Tenant */}
-    <div>
-      <Grid container justifyContent= 'center'>
-        <Grid item width='67%' >
-          <Divider className='dividers' style={{marginTop: '4rem'}}>TENANT</Divider>
-          <Tenant />
-        </Grid>
-      </Grid> 
-    </div>
+      <Grid item md={8}>
+        <Divider className='dividers' style={{marginTop: '4rem'}}>TENANT</Divider>
+        <Tenant />
+      </Grid>
+    </Grid>
+
     {editing && <EditPropertyModal handleCancel={handleCancel} handleClose={handleClose}/>}
   </div>
   )

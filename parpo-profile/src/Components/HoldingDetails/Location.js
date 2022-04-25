@@ -12,9 +12,9 @@ function Location({data}) {
         <>
             {/* Overview Section #1 */}
             <div align='center'>
-                <Card container xs={4} id='location-card'>
-                {locationData.map(data => (
-                    <Grid item key={data}>
+                <Card xs={4} id='location-card'>
+                {locationData.map((data, index) => (
+                    <Grid item key={`location-${index}`}>
                         {/* General Icon Format */}
                         <SvgIcon sx={{ fontSize: 60 }} component={data.icon} />
                         <Typography variant='subtitle2' fontSize='1rem'>{data.label}
@@ -22,14 +22,14 @@ function Location({data}) {
                         </Typography>
                         <Typography variant='caption'>{data.data}</Typography>
                         <div style={{height: '0.5rem'}}></div>
-                        <Typography className='mini-bar'>{miniBar}</Typography>
+                        {miniBar}
                     </Grid>
                 ))}
                 </Card>
             </div>
 
             <div align='center'>
-                <Card container id='location-card2'>
+                <Card id='location-card2'>
 
                 </Card>
             </div>

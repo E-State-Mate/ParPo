@@ -13,9 +13,8 @@ const EditPropertyModal = ({handleCancel, handleClose}) => {
     }
   return (
     <div id='property-edit-modal-container'>
-        <div id='property-edit-modal'>
+        <form onSubmit={handleSubmit} id='property-edit-modal'>
             <CloseIcon className='close-btn' onClick={() => handleCancel()}/>
-            <form onSubmit={handleSubmit}>
             <h3>Overview</h3>
             <p>Executive Summary</p>
             <TextField fullWidth variant='outlined' label='Enter summary'/>
@@ -95,8 +94,7 @@ const EditPropertyModal = ({handleCancel, handleClose}) => {
             <TextField fullWidth variant='outlined' label='Enter lease end date' />
             
             <Button variant='contained' type='submit'>Save Changes</Button>
-            </form>
-        </div>
+        </form>
     </div>
   )
 }

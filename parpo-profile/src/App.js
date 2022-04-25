@@ -59,7 +59,7 @@ function App() {
                       <Route path='onboarding' element={<PrivateRoute><Onboarding /></PrivateRoute>} />
                       <Route path='holdings' element={<PrivateRoute><HoldingList /></PrivateRoute>} />
                       <Route path='company' element={<PrivateRoute><Company /></PrivateRoute>} />
-                      <Route path='details' element={<PrivateRoute><HoldingDetails /></PrivateRoute>} />
+                      <Route path='property/:slug' element={<PrivateRoute><HoldingDetails /></PrivateRoute>} />
                       <Route path='*' element={<Login />} />
                     </Route>
                 </Routes>
