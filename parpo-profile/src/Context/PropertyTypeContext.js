@@ -4,16 +4,16 @@ export const PropertyTypeContext = createContext({});
 
 function PropertyTypeProvider({ children }) {
     const [ActivePropertyTypes, setActivePropertyTypes] = useState({
-        Residential: false,
-        Office: false,
-        Industrial: false,
-        Retail: false,
-        Restaurant: false,
-        "Shopping Center": false,
-        "Health Care": false,
-        Hospitality: false,
-        Entertainment: false,
-        Land: false,
+        Residential: true,
+        Office: true,
+        Industrial: true,
+        Retail: true,
+        Restaurant: true,
+        "Shopping Center": true,
+        "Health Care": true,
+        Hospitality: true,
+        Entertainment: true,
+        Land: true,
     });
 
     return (
