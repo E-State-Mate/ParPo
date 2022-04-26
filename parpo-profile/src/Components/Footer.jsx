@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Button, Divider, Grid, TextField } from '@mui/material'
 import { useAuth } from '../Context/AuthContext'
 import { db } from '../firebase'
@@ -34,6 +34,10 @@ const Footer = () => {
             setError('Could not Log Out')
         }
       }
+
+      useEffect(() => {
+        getProfileData();
+      }, [])
   
   return (
     <div id='footer'>
