@@ -12,10 +12,6 @@ const links = [
         route: '/holdings'
     },
     {
-        label: 'Details',
-        route: '/details'
-    },
-    {
         label: 'Users',
         route: '/profiles'
     },    
@@ -32,8 +28,6 @@ const Navbar = () => {
     const anchorRef = useRef(null);
 
     let location = useLocation();
-
-    // useEffect(() => {console.log(location)}, [location])
 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);

@@ -27,8 +27,7 @@ const DetailsNav = () => {
 
   return (
     <Grid container style={{backgroundColor: 'white', boxShadow: 'darkgray 0px 3px'}} alignItems='center' p={1}>
-        <Grid item xs={8} md={4} alignItems='center'>
-        </Grid>
+        <Grid item xs={8} md={4} alignItems='center' />
         <Grid item xs />
         <Grid item sm={4} sx={{ display: {md: 'none'}}} textAlign='right'>
           <Button 

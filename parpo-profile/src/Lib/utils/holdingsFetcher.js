@@ -9,3 +9,15 @@ export const getHoldingById = async(id) => {
     .then(response => response.json())
     return response;
 }
+
+export const updateHolding = async (id, data) => {
+    const response = await fetch(`https://us-central1-auth-development-92670.cloudfunctions.net/updateHolding/?id=${id}`, {
+        mode: 'cors',
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    return response;
+}
