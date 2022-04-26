@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Button, Divider, Grid, TextField } from '@mui/material'
 import { useAuth } from '../Context/AuthContext'
 import { db } from '../firebase'
@@ -34,6 +34,8 @@ const Footer = () => {
             setError('Could not Log Out')
         }
       }
+
+      useEffect(() => {getProfileData()}, [])
   
   return (
     <div id='footer'>
@@ -48,7 +50,7 @@ const Footer = () => {
             <TextField label="Enter email" variant="filled" sx={{width: '70%'}} InputLabelProps={{style: {color: 'white'}}}/>
             <Button alignItems='center'>Subscribe</Button>
           </div> */}
-          <h3 style={{}}>{`You are signed in as a: ${userData.role}`}</h3>
+          <h3>{`You are signed in as a: ${userData.role}`}</h3>
           <Button variant='contained' onClick={handleLogout} label='Logout' style={{margin: '1rem auto'}}>Logout</Button>
         </Grid>
         <Grid item xs={12} md={2}>
