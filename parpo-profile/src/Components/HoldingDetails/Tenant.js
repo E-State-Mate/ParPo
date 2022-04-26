@@ -3,6 +3,8 @@ import { Card, Divider, Grid, SvgIcon, Typography } from '@mui/material'
 import './detailsView.css'
 import {tenantData} from '../../Lib/data/tenantData'
 import HouseIcon from '@mui/icons-material/House'
+import HoldingDetails from '../../Pages/HoldingDetails';
+
 
 function Tenant ({data}) {
     const miniBar = (<div className='miniBar'></div>)

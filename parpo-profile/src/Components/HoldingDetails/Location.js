@@ -3,6 +3,8 @@ import { Card, Grid, SvgIcon, Typography } from '@mui/material';
 import './detailsView.css';
 import {locationData} from '../../Lib/data/locationData';
 import Tooltip from '@mui/material/Tooltip';
+import HoldingDetails from '../../Pages/HoldingDetails';
+
 
 function Location({data}) {
     const miniBar = (<div className='miniBar'></div>)

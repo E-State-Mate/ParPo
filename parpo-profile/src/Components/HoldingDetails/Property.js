@@ -4,6 +4,8 @@ import './detailsView.css'
 import {propertyData} from '../../Lib/data/propertyData'
 import {amenitiesData} from '../../Lib/data/amenitiesData'
 import HouseIcon from '@mui/icons-material/House'
+import HoldingDetails from '../../Pages/HoldingDetails';
+
 
 function Property({data}) {
     const miniBar = (<div className='miniBar'></div>)
