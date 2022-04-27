@@ -21,21 +21,24 @@ const HoldingCard = ({holding}) => {
 
   const [fileURL, setFileURL] = useState(null);
 
-    const getPics = async () => {
-      const storage = getStorage();
-      setFileURL(await getDownloadURL(ref(storage, holding.fileURL)))
-      .catch((error) => console.log(error))
-    }
+  const getPics = async () => {
+    const storage = getStorage();
+    setFileURL(await getDownloadURL(ref(storage, holding.fileURL)))
+    .catch((error) => console.log(error))
+  }
   
-    useEffect(() => {
-      getPics();
-      console.log(fileURL)
-    }, [,fileURL])
-  // console.log(holding)
+  useEffect(() => {
+    getPics();
+    console.log(fileURL)
+  }, [,fileURL])
+
   return (
     <Card className='prop-list-card'>
+      
       <CardActionArea component={Link} to={`/property/${holding._id}`} replace>
+      
       <Grid container align='left' style={{height: '100%'}}>
+        
         <Grid item xs={12} sm={4}>
           <CardMedia
             className= {classes.image}
