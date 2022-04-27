@@ -6,35 +6,75 @@ import Financial from '../Components/HoldingDetails/Financial'
 import Property from '../Components/HoldingDetails/Property';
 import Tenant from '../Components/HoldingDetails/Tenant';
 import DetailsNav from '../Components/HoldingDetails/DetailsNav';
-import { getHoldingById } from '../Lib/utils/holdingsFetcher';
+import { getDetailsByCategory, getHoldingById, getHoldings } from '../Lib/utils/holdingsFetcher';
 import EditPropertyModal from '../Components/HoldingDetails/EditPropertyModal';
 import { useAuth } from '../Context/AuthContext'
 import { db } from '../firebase'
 import { doc, getDoc } from 'firebase/firestore'
 import { useParams } from 'react-router-dom';
 
-const HoldingDetails = () => {
+
+const HoldingDetails = ({data}) => {
 
   const [userData, setUserData] = useState({
     role: 'N/A'
   })
-  const [featHolding, setFeatHolding] = useState([])
+  const [featHolding, setFeatHolding] = useState({})
   const [editing, setEditing] = useState(false);
   const { currentUser } = useAuth()
   let slug = useParams();
 
-  const fetchHolding = async (id) => {
-    setFeatHolding(await getHoldingById(id));
-  }
+//   const fetchHolding = async (id, e) => {
+//     if(featHolding.length === 0){
+//     setFeatHolding(await getHoldingById(id));
+//     console.log(id)
+//     console.log(featHolding)
+//   }  else {
+//     console.log(e)
+//   }}
+
+// useEffect(() => {
+//   fetchHolding(slug.slug)
+// })
+
+  // if(!featHolding.sqft){
+  //   setFeatHolding(await getDetailsByCategory(id));
+  //   // console.log(id)
+  //   // console.log(featHolding)
+  // }  else {
+  //   console.log(e)
+  // }}
+
 
   useEffect(() => {
-    fetchHolding(slug.slug);
-    // console.log(slug.slug)
-  }, [slug])
-  
-  useEffect(() => {
+    const id = slug.slug
+     const fetchHolding = async () => {
+       setFeatHolding(await getHoldingById(id));
+    }
+    fetchHolding()
     console.log(featHolding)
-  }, [featHolding])
+  }, [slug]) //only called when component mounts
+
+  // useEffect(() => {
+  //   getHoldingById(slug.slug);
+  //   // console.log('REFERENCE:', slug.slug)
+  // }, [slug])
+  
+
+  // useEffect(() => {
+  //   getHoldings(slug.slug);
+  //   // console.log(slug.slug)
+  // }, [slug])
+  
+  // useEffect(() => {
+  //   getDetailsByCategory()
+  // })
+
+  // useEffect(() => {
+  //   console.log('current featHolding', featHolding)
+  // }, [featHolding])
+
+
 
   const getProfileData = async () => {
     if(currentUser.uid !== null){
@@ -63,7 +103,7 @@ const HoldingDetails = () => {
   return (
     <div id='details-container'>
     <DetailsNav />
-
+    {/* {console.log('featHolding ==>', featHolding)} */}
       <Grid container justifyContent= 'center'>
       
       {/* Edit Property Button (if user is an Admin) */}
@@ -76,31 +116,31 @@ const HoldingDetails = () => {
       {/* Overview Section */}
         <Grid item md={8}>
           <Divider className='dividers' style={{marginTop: '4rem'}}>OVERVIEW</Divider>
-          <Overview />
+          <Overview featHolding={featHolding} />
         </Grid>
 
     {/* Location Section */}
         <Grid item md={8}>
           <Divider className='dividers' style={{marginTop: '4rem'}}>LOCATION</Divider>
-          <Location />
+          <Location featHolding={featHolding}/>
         </Grid>
 
     {/* Financial Section */}
         <Grid item md={8}>
           <Divider className='dividers' style={{marginTop: '4rem'}}>FINANCIAL</Divider><br/><br/>
-          <Financial />
+          <Financial featHolding={featHolding}/>
         </Grid>
 
     {/* Property Section */}
         <Grid item md={8}>
           <Divider className='dividers' style={{marginTop: '4rem'}}>PROPERTY</Divider><br/><br/>
-          <Property />
+          <Property featHolding={featHolding}/>
         </Grid>
 
     {/* Tenant */}
       <Grid item md={8}>
         <Divider className='dividers' style={{marginTop: '4rem'}}>TENANT</Divider>
-        <Tenant />
+        <Tenant featHolding={featHolding}/>
       </Grid>
     </Grid>
 

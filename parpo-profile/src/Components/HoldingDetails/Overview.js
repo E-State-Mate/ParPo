@@ -2,38 +2,59 @@ import { Card, Grid } from '@material-ui/core';
 import { Divider, SvgIcon, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react'
 import './detailsView.css'
-import {overviewData} from '../../Lib/data/overviewData'
-import { getHoldingById } from '../../Lib/utils/holdingsFetcher'
+import Cottage from '@mui/icons-material/House';
 
 
-function Overview({id}) {
+function Overview(props) {
   const miniBar = (<div className='miniBar'></div>)
 
   // useEffect(() => {
   //   if(featHolding.length === 1 && isLoaded === false){
   //     setIsLoaded(true);
-  //   }
+  //   }  
   // })
 
 
   return (
     <>
       {/* Overview Section #1 */}
-      <div>
-        <Card id='overview-card'>
-        {/* {overviewData.map(data => ( */}
-          {/* <Grid item key={data}> */}
-          
-                {/* General Icon Format */}
-                {/* <SvgIcon sx={{ fontSize: 60 }} component={data.holdingIcon} /> */}
-                {/* <Typography variant='subtitle2' fontSize='1rem'>{data.holdingLabel}</Typography> */}
-                {/* <Typography variant='caption'>{data.holdingData}</Typography> */}
-                {/* <div style={{height: '0.5rem'}}></div> */}
-                {/* <Typography className='mini-bar'>{miniBar}</Typography> */}
-          {/* </Grid> */}
-        {/* ))} */}
-        </Card>
-      </div>
+      {/* <div> */}
+          <Grid container id='overview-card' >
+            <Card>
+              {/* General Icon Format */}
+              <SvgIcon sx={{ fontSize: 60 }} component={Cottage} />
+              <Typography variant='subtitle2' fontSize='1rem'>{props.featHolding.propertyType}</Typography>
+              <Typography variant='caption'>Building</Typography>
+              {/* <Typography className='mini-bar'>{miniBar}</Typography> */}
+
+            </Card>
+            <Card >
+              <SvgIcon sx={{ fontSize: 60 }} component={Cottage} />
+              <Typography variant='subtitle2' fontSize='1rem'>{}</Typography>
+              <Typography variant='caption'>ROI Revenue</Typography>
+              {/* <Typography className='mini-bar'>{miniBar}</Typography> */}
+            </Card>
+            <Card >
+              <SvgIcon sx={{ fontSize: 60 }} component={Cottage} />
+              <Typography variant='subtitle2' fontSize='1rem'>{props.featHolding.rating}</Typography>
+              <Typography variant='caption'>Class Rating</Typography>
+              {/* <Typography className='mini-bar'>{miniBar}</Typography> */}
+            </Card>
+            <Card >
+              <SvgIcon sx={{ fontSize: 60 }} component={Cottage} />
+              <Typography variant='subtitle2' fontSize='1rem'>{props.featHolding.sqft}</Typography>
+              <Typography variant='caption'>Sqft</Typography>
+              {/* <Typography className='mini-bar'>{miniBar}</Typography> */}
+            </Card>
+            <Card >
+              <SvgIcon sx={{ fontSize: 60 }} component={Cottage} />
+              <Typography variant='subtitle2' fontSize='1rem'>{props.featHolding.occupancyPercentage*100}%</Typography>
+              <Typography variant='caption'>Occupancy</Typography>
+              {/* <Typography className='mini-bar'>{miniBar}</Typography> */}
+            </Card>
+          </Grid>
+        
+      {/* </div> */}
 
 
       {/* Overview Section #2 */}

@@ -21,7 +21,9 @@ const FeaturedHoldings = () => {
 
   useEffect(() => {
     fetchHoldings();
+
   }, [])
+
 
   useEffect(() => {
     if(featHoldings.length!==0 && isLoaded===false){
@@ -29,6 +31,8 @@ const FeaturedHoldings = () => {
       // console.log(featHoldings)
     }
   }, [featHoldings])
+
+  
 
   // useEffect(() => {console.log(isLoaded)}, [isLoaded])
 
