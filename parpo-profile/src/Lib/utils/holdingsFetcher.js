@@ -21,3 +21,9 @@ export const updateHolding = async (id, data) => {
     })
     return response;
 }
+
+export const getHoldingsByPropType = async (propertyType) => {
+    const response = await fetch(`https://us-central1-auth-development-92670.cloudfunctions.net/updateHolding/?propertyType=${propertyType}`, { mode: 'cors' })
+    .then(response => response.json())
+    return response
+}
