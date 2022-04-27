@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import FeaturedCard from './FeaturedCard'
 import { css } from '@emotion/react'
 import { Box, Card, CardMedia, Divider, Grid } from '@mui/material'
-import { getHoldings } from '../../Lib/utils/holdingsFetcher';
+import { getFeaturedHoldings } from '../../Lib/utils/holdingsFetcher';
 import {BounceLoader} from 'react-spinners';
 
 const override = css`
@@ -16,7 +16,7 @@ const FeaturedHoldings = () => {
   const [isLoaded, setIsLoaded] = useState(false)
 
   const fetchHoldings = async () => {
-    setFeatHoldings(await getHoldings());
+    setFeatHoldings(await getFeaturedHoldings());
   }
 
   useEffect(() => {
