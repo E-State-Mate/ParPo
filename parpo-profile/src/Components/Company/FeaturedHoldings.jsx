@@ -5,63 +5,6 @@ import { Box, Card, CardMedia, Divider, Grid } from '@mui/material'
 import { getHoldings } from '../../Lib/utils/holdingsFetcher';
 import {BounceLoader} from 'react-spinners';
 
-const featuredProperties = [
-  {
-    image: 'https://www.shutterstock.com/image-photo/modern-glass-building-reflected-evening-city-1661545042',
-    building: 'Vintage Villa',
-    address: '2715 Ash Dr. San Jose, Dubai',
-    price: '$1,350,000',
-    description: 'Commercial Office Building',
-    sqft: '10,000',
-    rating: '4 Star Flex R&D'
-  },
-  {
-    image: 'https://www.shutterstock.com/image-photo/modern-glass-building-reflected-evening-city-1661545042',
-    building: 'Vintage Villa',
-    address: '2715 Ash Dr. San Jose, Dubai',
-    price: '$1,350,000',
-    description: 'Commercial Office Building',
-    sqft: '10,000',
-    rating: '4 Star Flex R&D'
-  },
-  {
-    image: 'https://www.shutterstock.com/image-photo/modern-glass-building-reflected-evening-city-1661545042',
-    building: 'Vintage Villa',
-    address: '2715 Ash Dr. San Jose, Dubai',
-    price: '$1,350,000',
-    description: 'Commercial Office Building',
-    sqft: '10,000',
-    rating: '4 Star Flex R&D'
-  },
-  {
-    image: 'https://www.shutterstock.com/image-photo/modern-glass-building-reflected-evening-city-1661545042',
-    building: 'Vintage Villa',
-    address: '2715 Ash Dr. San Jose, Dubai',
-    price: '$1,350,000',
-    description: 'Commercial Office Building',
-    sqft: '10,000',
-    rating: '4 Star Flex R&D'
-  },
-  {
-    image: 'https://www.shutterstock.com/image-photo/modern-glass-building-reflected-evening-city-1661545042',
-    building: 'Vintage Villa',
-    address: '2715 Ash Dr. San Jose, Dubai',
-    price: '$1,350,000',
-    description: 'Commercial Office Building',
-    sqft: '10,000',
-    rating: '4 Star Flex R&D'
-  },
-  {
-    image: 'https://www.shutterstock.com/image-photo/modern-glass-building-reflected-evening-city-1661545042',
-    building: 'Vintage Villa',
-    address: '2715 Ash Dr. San Jose, Dubai',
-    price: '$1,350,000',
-    description: 'Commercial Office Building',
-    sqft: '10,000',
-    rating: '4 Star Flex R&D'
-  }
-]
-
 const override = css`
   display: block;
   margin: 2rem auto;
