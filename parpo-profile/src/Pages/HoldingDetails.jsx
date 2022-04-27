@@ -24,15 +24,18 @@ const HoldingDetails = ({data}) => {
   const { currentUser } = useAuth()
   let slug = useParams();
 
-  // const fetchHolding = async (id, e) => {
-  //   if(featHolding.length === 0){
-  //   setFeatHolding(await getHoldingById(id));
-  //   // console.log(id)
-  //   // console.log(featHolding)
-  // }  else {
-  //   console.log(e)
-  // }}
+//   const fetchHolding = async (id, e) => {
+//     if(featHolding.length === 0){
+//     setFeatHolding(await getHoldingById(id));
+//     console.log(id)
+//     console.log(featHolding)
+//   }  else {
+//     console.log(e)
+//   }}
 
+// useEffect(() => {
+//   fetchHolding(slug.slug)
+// })
 
   // if(!featHolding.sqft){
   //   setFeatHolding(await getDetailsByCategory(id));
@@ -44,26 +47,32 @@ const HoldingDetails = ({data}) => {
 
 
   useEffect(() => {
+    const id = slug.slug
      const fetchHolding = async () => {
-       setFeatHolding(await getDetailsByCategory(slug.slug));
+       setFeatHolding(await getHoldingById(id));
     }
     fetchHolding()
-    // console.log(slug.slug)
+    console.log(featHolding)
   }, [slug]) //only called when component mounts
 
+  // useEffect(() => {
+  //   getHoldingById(slug.slug);
+  //   // console.log('REFERENCE:', slug.slug)
+  // }, [slug])
+  
 
-  useEffect(() => {
-    getHoldings(slug.slug);
-    // console.log(slug.slug)
-  }, [slug])
+  // useEffect(() => {
+  //   getHoldings(slug.slug);
+  //   // console.log(slug.slug)
+  // }, [slug])
   
   // useEffect(() => {
   //   getDetailsByCategory()
   // })
 
-  useEffect(() => {
-    console.log(featHolding)
-  }, [featHolding])
+  // useEffect(() => {
+  //   console.log('current featHolding', featHolding)
+  // }, [featHolding])
 
 
 
@@ -94,7 +103,7 @@ const HoldingDetails = ({data}) => {
   return (
     <div id='details-container'>
     <DetailsNav />
-    {console.log('featHolding ==>', featHolding)}
+    {/* {console.log('featHolding ==>', featHolding)} */}
       <Grid container justifyContent= 'center'>
       
       {/* Edit Property Button (if user is an Admin) */}
@@ -105,40 +114,34 @@ const HoldingDetails = ({data}) => {
         }
       
       {/* Overview Section */}
-      {/* {featHolding.map(({sqft}) =>{
-
-
-        console.log("SQFT", sqft)
-       return(  */}
         <Grid item md={8}>
           <Divider className='dividers' style={{marginTop: '4rem'}}>OVERVIEW</Divider>
-          <Overview sqft={featHolding.sqft} propertyType={featHolding.propertyType} />
+          <Overview featHolding={featHolding} />
         </Grid>
-        {/* )})} */}
 
     {/* Location Section */}
-        {/* <Grid item md={8}>
+        <Grid item md={8}>
           <Divider className='dividers' style={{marginTop: '4rem'}}>LOCATION</Divider>
-          <Location />
-        </Grid> */}
+          <Location featHolding={featHolding}/>
+        </Grid>
 
     {/* Financial Section */}
-        {/* <Grid item md={8}>
+        <Grid item md={8}>
           <Divider className='dividers' style={{marginTop: '4rem'}}>FINANCIAL</Divider><br/><br/>
-          <Financial />
-        </Grid> */}
+          <Financial featHolding={featHolding}/>
+        </Grid>
 
     {/* Property Section */}
-        {/* <Grid item md={8}>
+        <Grid item md={8}>
           <Divider className='dividers' style={{marginTop: '4rem'}}>PROPERTY</Divider><br/><br/>
-          <Property />
-        </Grid> */}
+          <Property featHolding={featHolding}/>
+        </Grid>
 
     {/* Tenant */}
-      {/* <Grid item md={8}>
+      <Grid item md={8}>
         <Divider className='dividers' style={{marginTop: '4rem'}}>TENANT</Divider>
-        <Tenant />
-      </Grid> */}
+        <Tenant featHolding={featHolding}/>
+      </Grid>
     </Grid>
 
     {editing && <EditPropertyModal handleCancel={handleCancel} handleClose={handleClose}/>}

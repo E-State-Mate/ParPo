@@ -4,9 +4,10 @@ import './detailsView.css';
 import {locationData} from '../../Lib/data/locationData';
 import Tooltip from '@mui/material/Tooltip';
 import HoldingDetails from '../../Pages/HoldingDetails';
+import HouseIcon from '@mui/icons-material/House';
 
 
-function Location({data}) {
+function Location(props) {
     const miniBar = (<div className='miniBar'></div>)
     
   
@@ -15,18 +16,24 @@ function Location({data}) {
             {/* Overview Section #1 */}
             <div align='center'>
                 <Card xs={4} id='location-card'>
-                {locationData.map((data, index) => (
-                    <Grid item key={`location-${index}`}>
+                    <Grid item>
                         {/* General Icon Format */}
-                        <SvgIcon sx={{ fontSize: 60 }} component={data.icon} />
-                        <Typography variant='subtitle2' fontSize='1rem'>{data.label}
-                        {data.tooltip ? (<Tooltip title={data.tooltipData} placement='right'>{data.tooltip}</Tooltip>) : null}
+                        <SvgIcon sx={{ fontSize: 60 }} component={HouseIcon} />
+                        <Typography variant='subtitle2' fontSize='1rem'>Sub Market
                         </Typography>
-                        <Typography variant='caption'>{data.data}</Typography>
+                        <Typography variant='caption'>{props.featHolding.city}</Typography>
                         <div style={{height: '0.5rem'}}></div>
                         {miniBar}
                     </Grid>
-                ))}
+                    <Grid item>
+                        {/* General Icon Format */}
+                        <SvgIcon sx={{ fontSize: 60 }} component={HouseIcon} />
+                        <Typography variant='subtitle2' fontSize='1rem'>Full Address
+                        </Typography>
+                        <Typography variant='caption'>{props.featHolding.street}, {props.featHolding.state} {props.featHolding.zipCode}</Typography>
+                        <div style={{height: '0.5rem'}}></div>
+                        {miniBar}
+                    </Grid>
                 </Card>
             </div>
 

@@ -2,7 +2,6 @@ import { Card, Grid } from '@material-ui/core';
 import { Divider, SvgIcon, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react'
 import './detailsView.css'
-import HoldingDetails from '../../Pages/HoldingDetails';
 import Cottage from '@mui/icons-material/House';
 
 
@@ -12,7 +11,7 @@ function Overview(props) {
   // useEffect(() => {
   //   if(featHolding.length === 1 && isLoaded === false){
   //     setIsLoaded(true);
-  //   }
+  //   }  
   // })
 
 
@@ -24,32 +23,32 @@ function Overview(props) {
             <Card>
               {/* General Icon Format */}
               <SvgIcon sx={{ fontSize: 60 }} component={Cottage} />
-              <Typography variant='subtitle2' fontSize='1rem'>{props.propertyType}</Typography>
+              <Typography variant='subtitle2' fontSize='1rem'>{props.featHolding.propertyType}</Typography>
               <Typography variant='caption'>Building</Typography>
               {/* <Typography className='mini-bar'>{miniBar}</Typography> */}
 
             </Card>
             <Card >
               <SvgIcon sx={{ fontSize: 60 }} component={Cottage} />
-              <Typography variant='subtitle2' fontSize='1rem'>{props.propertyType}</Typography>
+              <Typography variant='subtitle2' fontSize='1rem'>{}</Typography>
               <Typography variant='caption'>ROI Revenue</Typography>
               {/* <Typography className='mini-bar'>{miniBar}</Typography> */}
             </Card>
             <Card >
               <SvgIcon sx={{ fontSize: 60 }} component={Cottage} />
-              <Typography variant='subtitle2' fontSize='1rem'>{props.propertyType}</Typography>
+              <Typography variant='subtitle2' fontSize='1rem'>{props.featHolding.rating}</Typography>
               <Typography variant='caption'>Class Rating</Typography>
               {/* <Typography className='mini-bar'>{miniBar}</Typography> */}
             </Card>
             <Card >
               <SvgIcon sx={{ fontSize: 60 }} component={Cottage} />
-              <Typography variant='subtitle2' fontSize='1rem'>{props.propertyType}</Typography>
+              <Typography variant='subtitle2' fontSize='1rem'>{props.featHolding.sqft}</Typography>
               <Typography variant='caption'>Sqft</Typography>
               {/* <Typography className='mini-bar'>{miniBar}</Typography> */}
             </Card>
             <Card >
               <SvgIcon sx={{ fontSize: 60 }} component={Cottage} />
-              <Typography variant='subtitle2' fontSize='1rem'>{props.propertyType}</Typography>
+              <Typography variant='subtitle2' fontSize='1rem'>{props.featHolding.occupancyPercentage*100}%</Typography>
               <Typography variant='caption'>Occupancy</Typography>
               {/* <Typography className='mini-bar'>{miniBar}</Typography> */}
             </Card>
