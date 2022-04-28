@@ -5,9 +5,10 @@ import { Link } from 'react-router-dom';
 
 const navLinks = [
     {id: 1, idnm: 'overview', navHeading: 'Overview'},
-    {id: 2, idnm: 'featured', navHeading: 'Featured Properties'},
-    {id: 3, idnm: 'team', navHeading: 'Meet our Team'},
-    {id: 4, idnm: 'contact', navHeading: 'Contact'}
+    {id: 2, idnm: 'about', navHeading: 'About Us'},
+    {id: 3, idnm: 'featured', navHeading: 'Featured Properties'},
+    {id: 4, idnm: 'team', navHeading: 'Meet our Team'},
+    {id: 5, idnm: 'contact', navHeading: 'Contact'}
 ]
  
 const AppNav = () => {
@@ -24,12 +25,8 @@ const AppNav = () => {
       };
 
   return (
-    <Grid container style={{backgroundColor: 'white', boxShadow: 'darkgray 0px 3px'}} alignItems='center' p={1}>
-        <Grid item xs={8} md={4} alignItems='center'>
-            <Typography variant='caption'>Breadcrumbs/Breadcrumbs/Breadcrumbs</Typography>
-        </Grid>
-        <Grid item xs />
-        <Grid item sm={4} sx={{ display: {md: 'none'}}} textAlign='right'>
+    <Grid container style={{backgroundColor: 'white', boxShadow: 'darkgray 0px 3px'}} alignItems='center' p={1} sx={{ display: {xs: 'none', md: 'block'}}}>
+        {/* <Grid item sm={4} sx={{ display: 'none'}} textAlign='right'>
           <Button 
             id='nav-menu-btn'
             aria-label="mobile menu button"
@@ -59,12 +56,12 @@ const AppNav = () => {
                 ))}
             </ScrollspyNav>
           </Menu>
-        </Grid>
-        <Grid item md={8} sx={{ display: {xs: 'none', md: 'block'}}}>
+        </Grid> */}
+        <Grid item md={12} sx={{ display: {xs: 'none', md: 'block'}}}>
             <Grid container direction='row' justifyContent='flex-end' alignItems='center'>
                 <ScrollspyNav scrollTargetIds={targetId} scrollDuration='800' activeNavClass='active'>
                     {navLinks.map((link, index) => (
-                        <Button href={`#${link.idnm}`} style={{textDecoration: 'none', color: 'black'}} key={index}>{link.navHeading}</Button>
+                        <Button component='a' href={`#${link.idnm}`} style={{textDecoration: 'none', color: 'black'}} key={index}>{link.navHeading}</Button>
                     ))}
                 </ScrollspyNav>
             </Grid>

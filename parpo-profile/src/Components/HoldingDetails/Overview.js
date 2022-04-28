@@ -1,22 +1,76 @@
-import { Card, Grid } from '@material-ui/core';
+import { Card, CardContent, Grid } from '@material-ui/core';
 import { Divider, SvgIcon, Typography } from '@mui/material';
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './detailsView.css'
 import CottageOutlinedIcon from '@mui/icons-material/CottageOutlined';
 import HomeWorkOutlinedIcon from '@mui/icons-material/HomeWorkOutlined';
+import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
 import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
 import LayersOutlinedIcon from '@mui/icons-material/LayersOutlined';
 import EmojiPeopleOutlinedIcon from '@mui/icons-material/EmojiPeopleOutlined';
 import StickyNote2OutlinedIcon from '@mui/icons-material/StickyNote2Outlined';
+import Layers from '@mui/icons-material/Layers';
 
-
-
+const OverviewCard = ({stat}) => {
+  // console.log(stat)
+  return (
+    <Card sx={{width: '80%', margin: '1rem'}}>
+      <SvgIcon component={stat.icon} inheritViewBox sx={{width: '100%', fontSize: 60, paddingTop: '1rem'}}/>
+      <CardContent sx={{margin: 'auto', padding: '0'}} align='center'>
+        <p style={{fontSize: '1.25rem', fontWeight: 'bold', margin: 0}}>{stat.value}</p>
+        <p>{stat.label}</p>
+      </CardContent>
+    </Card>
+  )
+}
 
 function Overview(props) {
   // const miniBar = (<div className='miniBar'></div>)
 
+  const [ overviewContent, setOverviewContent ] = useState ([])
+
+  useEffect(() => {
+    setOverviewContent([
+      {
+        icon: CottageOutlinedIcon,
+        label: 'Building',
+        value: props.featHolding.propertyType
+      },
+      {
+        icon: CurrencyExchangeIcon,
+        label: 'ROI Revenue',
+        value: props.featHolding.roiRevenue
+      },
+      {
+        icon: StarBorderOutlinedIcon,
+        label: 'Class Rating',
+        value: props.featHolding.rating
+      },
+      {
+        icon: LayersOutlinedIcon,
+        label: 'Square Footage',
+        value: `${props.featHolding.sqft.toLocaleString()} sq. ft.`
+      },
+      {
+        icon: EmojiPeopleOutlinedIcon,
+        label: 'Occupancy',
+        value: `${props.featHolding.occupancyPercentage * 100}%`
+      }
+    ])
+  }, [,props])
+
+  useEffect(() => { console.log(overviewContent) }, [overviewContent])
+
   return (
     <>
+      <Divider className='dividers' style={{marginTop: '6rem'}}>OVERVIEW</Divider>
+      <Grid container spacing={2} justifyContent='center'>
+          {overviewContent.map((stat, index) => (
+            <Grid item xs={8} md={6} lg={3} key={index}>
+              <OverviewCard stat={stat} />
+            </Grid>
+          ))}   
+      </Grid>
       {/* Overview Section #1 */}
           <Grid container id='overview-card' >
             <Card className='mini-card'>

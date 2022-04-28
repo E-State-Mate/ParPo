@@ -1,23 +1,32 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { Button, Grid, Menu, MenuItem } from '@mui/material'
 import { Link, useLocation } from 'react-router-dom'
+import NavDrawer from '../NavDrawer'
+import InfoIcon from '@mui/icons-material/Info';
+import BusinessIcon from '@mui/icons-material/Business';
+import GroupIcon from '@mui/icons-material/Group';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 const links = [
     {
         label: 'Company',
-        route: '/company'
+        route: '/company',
+        icon: 'info'
     },
     {
         label: 'Properties',
-        route: '/holdings'
+        route: '/holdings',
+        icon: 'business'
     },
     {
         label: 'Users',
-        route: '/profiles'
+        route: '/profiles',
+        icon: 'group'
     },    
     {
         label: 'My Profile',
-        route: '/profile'
+        route: '/profile',
+        icon: 'account_circle'
     }   
 ]
 
@@ -50,39 +59,11 @@ const Navbar = () => {
   return (
     <Grid container id='navbar' direction='row' alignItems='center'>
         <Grid item sm={1}/>
-        <Grid item sm={6} md={4}>
-            <h1 style={{color: 'white'}}>ParPo</h1>
+        <Grid item sm={6} md={4} component={Link} to={'/holdings'} style={{textDecoration: 'none'}} sx={{m: 3}}>
+            <h1 style={{color: 'white', textDecoration: 'none'}}>ParPo</h1>
         </Grid>
         <Grid item sm={4} sx={{ display: {md: 'none'}}}>
-          <Button 
-            id='nav-menu-btn'
-            aria-label="mobile menu button"
-            aria-controls="menu-appbar"
-            aria-haspopup="true"
-            onClick={handleMenu}>
-            Menu
-          </Button>
-          <Menu
-            id="menu-appbar"
-            anchorEl={anchorEl}
-            anchorOrigin={{
-              vertical: 'top',
-              horizontal: 'right',
-            }}
-            keepMounted
-            transformOrigin={{
-              vertical: 'top',
-              horizontal: 'right',
-            }}
-            open={Boolean(anchorEl)}
-            onClose={handleMenuClose}
-          >
-             {links.map(link => (
-                <MenuItem key={link.label} component={Link} to={link.route}>
-                 {link.label}
-                </MenuItem>
-             ))}
-          </Menu>
+          <NavDrawer links={links}/>
         </Grid>
         {links.map(link => (
             <Grid key={link.label} item md sx={{display: {xs: 'none', md: 'flex'}}} justifyContent='center' >

@@ -61,45 +61,29 @@ const HoldingDetails = ({data}) => {
     <div id='details-container'>
     <DetailsNav />
     {/* {console.log('featHolding ==>', featHolding)} */}
-      <Grid container justifyContent= 'center'>
-      
       {/* Edit Property Button (if user is an Admin) */}
         {(userData.role === 'Admin' && editing === false) && 
-          <Grid item md={8}>
             <Button variant='contained' size='large' onClick={() => setEditing(true)}>Edit Property</Button>
-          </Grid>
         }
       
       {/* Overview Section */}
-        <Grid item md={8}>
-          <Divider className='dividers' style={{marginTop: '6rem'}}>OVERVIEW</Divider>
-          <Overview featHolding={featHolding} />
-        </Grid>
+      <Overview featHolding={featHolding} />
 
     {/* Location Section */}
-        <Grid item md={8}>
           <Divider className='dividers' style={{marginTop: '6rem'}}>LOCATION</Divider>
           <Location featHolding={featHolding}/>
-        </Grid>
 
     {/* Financial Section */}
-        <Grid item md={8}>
           <Divider className='dividers' style={{marginTop: '6rem'}}>FINANCIAL</Divider><br/><br/>
           <Financial featHolding={featHolding}/>
-        </Grid>
 
     {/* Property Section */}
-        <Grid item md={8}>
           <Divider className='dividers' style={{marginTop: '6rem'}}>PROPERTY</Divider><br/><br/>
           <Property featHolding={featHolding}/>
-        </Grid>
 
     {/* Tenant */}
-      <Grid item md={8}>
         <Divider className='dividers' style={{marginTop: '6rem'}}>TENANT</Divider>
         <Tenant featHolding={featHolding}/>
-      </Grid>
-    </Grid>
 
     {editing && <EditPropertyModal handleCancel={handleCancel} handleClose={handleClose} propertyID={slug.slug} data={featHolding}/>}
   </div>
