@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { Button, ClickAwayListener, Grid, Grow, Menu, MenuItem, MenuList, Paper, Popper } from '@mui/material'
+import { Button, Grid, Menu, MenuItem } from '@mui/material'
 import { Link, useLocation } from 'react-router-dom'
 
 const links = [
@@ -23,26 +23,10 @@ const links = [
 
 const Navbar = () => {
     const [open, setOpen] = useState(false);
-    const [mobOpen, setMobOpen] = useState(false);
     const [anchorEl, setAnchorEl] = useState(null);
     const anchorRef = useRef(null);
 
     let location = useLocation();
-
-  const handleToggle = () => {
-    setOpen((prevOpen) => !prevOpen);
-  };
-
-  const toggleMenu = () => {
-    setMobOpen(!mobOpen);
-  }
-
-  const handleClose = (event) => {
-    if (anchorRef.current && anchorRef.current.contains(event.target)) {
-      return;
-    }
-    setOpen(false);
-  };
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget)
@@ -51,15 +35,6 @@ const Navbar = () => {
   const handleMenuClose = () => {
     setAnchorEl(null);
   };
-
-  function handleListKeyDown(event) {
-    if (event.key === 'Tab') {
-      event.preventDefault();
-      setOpen(false);
-    } else if (event.key === 'Escape') {
-      setOpen(false);
-    }
-  }
 
   // return focus to the button when we transitioned from !open -> open
   const prevOpen = useRef(open);

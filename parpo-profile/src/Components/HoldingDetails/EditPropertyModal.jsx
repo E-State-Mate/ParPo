@@ -1,41 +1,49 @@
-import { Button, Divider, TextField } from '@mui/material'
+import { Button, Divider, Grid, TextField } from '@mui/material'
 import React from 'react'
 import CloseIcon from '@mui/icons-material/Close';
+import { updateHolding } from '../../Lib/utils/holdingsFetcher';
 
-const EditPropertyModal = ({handleCancel, handleClose}) => {
+const EditPropertyModal = ({handleCancel, handleClose, propertyID, data}) => {
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        const execSummary = e.target[0].value;
-        const fullAddress = e.target[2].value;
-        const subAddress = e.target[4].value;
-        const purchasePrice = e.target[6].value;
-        const irr = e.target[8].value;
-        const grm = e.target[10].value;
-        const cnoi = e.target[12].value;
-        const pfnoi = e.target[14].value;
-        const ccr = e.target[16].value;
-        const pfcr = e.target[18].value;
-        const zone = e.target[20].value;
-        const yearBuilt = e.target[22].value;
-        const plotSize = e.target[24].value;
-        const numberOfFloors = e.target[26].value;
-        const floorPlate = e.target[28].value;
-        const opportunityZone = e.target[30].value;
-        const parkingSpaces = e.target[32].value;
-        const parkingRatio = e.target[34].value;
-        const propertyRatio = e.target[36].value;
-        const amenities = e.target[38].value;
-        const occupancyPercentage = e.target[40].value;
-        const unitType = e.target[42].value;
-        const numberOfTenants = e.target[44].value;
-        const leaseType = e.target[46].value;
-        const leaseRenewal = e.target[48].value;
-        const renewalYear = e.target[50].value;
-        const yearsLeftOnLease = e.target[52].value;
-        const leaseEndDate = e.target[54].value;
-
-        console.log(numberOfFloors, floorPlate, opportunityZone, parkingSpaces, parkingRatio, propertyRatio, amenities)
+        const data = {
+            executiveSummary: e.target[0].value,
+            address: e.target[2].value,
+            submarket: e.target[4].value,
+            purchasePrice: e.target[6].value,
+            irr: e.target[8].value,
+            irrYear: e.target[10].value,
+            grm: e.target[12].value,
+            grmYear: e.target[14].value,
+            cnoi: e.target[16].value,
+            cnoiYear: e.target[18].value,
+            pfnoi: e.target[20].value,
+            pfnoiYear: e.target[22].value,
+            capRate: e.target[24].value,
+            capRateYear: e.target[26].value,
+            pfcr: e.target[28].value,
+            pfcrYear: e.target[30].value,
+            zone: e.target[32].value,
+            yearBuilt: e.target[34].value,
+            plotSize: e.target[36].value,
+            numberOfFloors: e.target[38].value,
+            floorPlate: e.target[40].value,
+            opportunityZone: e.target[42].value,
+            parkingSpaces: e.target[44].value,
+            parkingRatio: e.target[46].value,
+            propertyRatio: e.target[48].value,
+            // amenities: e.target[38].value,
+            occupancyPercentage: e.target[50].value,
+            singleOrMultiTenant: e.target[52].value,
+            numberOfTenants: e.target[54].value,
+            leaseType: e.target[56].value,
+            leaseRenewal: e.target[58].value,
+            yearsLeftOnLease: e.target[60].value,
+            leaseEndDate: e.target[62].value,
+            // featured: e.target[56].value
+        }
+        await updateHolding(propertyID, data)
     }
   return (
     <div id='property-edit-modal-container'>
@@ -43,54 +51,114 @@ const EditPropertyModal = ({handleCancel, handleClose}) => {
             <CloseIcon className='close-btn' onClick={() => handleCancel()}/>
             <h3>Overview</h3>
             <p>Executive Summary</p>
-            <TextField fullWidth variant='outlined' label='Enter summary'/>
+            <TextField fullWidth variant='outlined' label='Enter summary' defaultValue={data.executiveSummary}/>
                 <Divider sx={{m: 8, pt: 1, color: '#5ca8b2'}}/>
             
             <h3>Location</h3>
             <p>Full Address</p>
-            <TextField fullWidth variant='outlined' label='Enter address' />
+            <TextField fullWidth variant='outlined' label='Enter address' defaultValue={data.address} />
             <p>Sub Market</p>
-            <TextField fullWidth variant='outlined' label='Enter address' />
+            <TextField fullWidth variant='outlined' label='Enter address' defaultValue={data.submarket}/>
                 <Divider sx={{m: 8, pt: 1, color: '#5ca8b2'}}/>
 
             <h3>Financial</h3>
             <p>Purchase Price</p>
-            <TextField fullWidth variant='outlined' label='Enter purchase price' />
-            <p>Internal Rate of Return (IRR)</p>
-            <TextField fullWidth variant='outlined' label='Enter IRR' />
-            <p>Gross Rent Multiplier (GRM)</p>
-            <TextField fullWidth variant='outlined' label='Enter Gross Rent Multiplier' />
-            <p>Current Net Operating Income (CNOI)</p>
-            <TextField fullWidth variant='outlined' label='Enter GNOI' />
-            <p>Pro Forma Net Operating Income (PFNOI)</p>
-            <TextField fullWidth variant='outlined' label='Enter PFNOI' />
-            <p>Current Cap Rate (CCR)</p>
-            <TextField fullWidth variant='outlined' label='Enter CCR' />
-            <p>Pro Forma Cap Rate (PFCR)</p>
-            <TextField fullWidth variant='outlined' label='Enter PFCR' />
+            <TextField fullWidth variant='outlined' label='Enter purchase price' defaultValue={data.purchasePrice}/>
+            <Grid container>
+                <Grid item md={5}>
+                    <p className='form-prompt'>Internal Rate of Return (IRR)</p>
+                    <TextField fullWidth variant='outlined' label='Enter IRR' defaultValue={data.irr}/>
+                </Grid>
+                <Grid item md={1} />
+                <Grid item md={5}>
+                    <p className='form-prompt'>Internal Rate of Return (IRR) Year</p>
+                    <TextField fullWidth variant='outlined' label='Enter IRR Year' defaultValue={data.irrYear}/>
+                </Grid>
+                <Grid item md={1} />
+            </Grid>
+            <Grid container>
+                <Grid item md={5}>
+                    <p className='form-prompt'>Gross Rent Multiplier (GRM)</p>
+                    <TextField fullWidth variant='outlined' label='Enter Gross Rent Multiplier' defaultValue={data.grm}/>
+                </Grid>
+                <Grid item md={1} />
+                <Grid item md={5}>
+                    <p className='form-prompt'>Gross Rent Multiplier (GRM)</p>
+                    <TextField fullWidth variant='outlined' label='Enter GRM Year' defaultValue={data.grmYear}/>
+                </Grid>
+                <Grid item md={1} />
+            </Grid>
+            <Grid container>
+                <Grid item md={5}>
+                    <p className='form-prompt'>Current Net Operating Income (CNOI)</p>
+                    <TextField fullWidth variant='outlined' label='Enter CNOI' defaultValue={data.cnoi}/>
+                </Grid>
+                <Grid item md={1} />
+                <Grid item md={5}>
+                    <p className='form-prompt'>Current Net Operating Income (CNOI) Reporting Year</p>
+                    <TextField fullWidth variant='outlined' label='Enter CNOI Year' defaultValue={data.cnoiYear}/>
+                </Grid>
+                <Grid item md={1} />
+            </Grid>
+            <Grid container>
+                <Grid item md={5}>
+                    <p className='form-prompt'>Pro Forma Net Operating Income (PFNOI)</p>
+                    <TextField fullWidth variant='outlined' label='Enter PFNOI' defaultValue={data.pfnoi}/>
+                </Grid>
+                <Grid item md={1} />
+                <Grid item md={5}>
+                    <p className='form-prompt'>Pro Forma Net Operating Income (PFNOI) Year</p>
+                    <TextField fullWidth variant='outlined' label='Enter PFNOI Year' defaultValue={data.pfnoiYear}/>
+                </Grid>
+                <Grid item md={1} />
+            </Grid>
+            <Grid container>
+                <Grid item md={5}>
+                    <p className='form-prompt'>Current Cap Rate (CCR)</p>
+                    <TextField fullWidth variant='outlined' label='Enter CCR' defaultValue={data.capRate}/>
+                </Grid>
+                <Grid item md={1} />
+                <Grid item md={5}>
+                    <p className='form-prompt'>Current Cap Rate (CCR) Year</p>
+                    <TextField fullWidth variant='outlined' label='Enter CCR Year' defaultValue={data.capRateYear}/>
+                </Grid>
+                <Grid item md={1} />
+            </Grid>
+            <Grid container>
+                <Grid item md={5}>
+                    <p className='form-prompt'>Pro Forma Cap Rate (PFCR)</p>
+                    <TextField fullWidth variant='outlined' label='Enter PFCR' defaultValue={data.pfcr}/>
+                </Grid>
+                <Grid item md={1} />
+                <Grid item md={5}>
+                    <p className='form-prompt'>Pro Forma Cap Rate (PFCR) Year</p>
+                    <TextField fullWidth variant='outlined' label='Enter PFCR Year' defaultValue={data.pfcrYear}/>
+                </Grid>
+                <Grid item md={1} />
+            </Grid>
                 <Divider sx={{m: 8, pt: 1, color: '#5ca8b2'}}/>
 
             <h3>Property</h3>
             {/* Two dropdowns then... */}
             <p>Zone</p>
-            <TextField fullWidth variant='outlined' label='Enter Zone' />
+            <TextField fullWidth variant='outlined' label='Enter Zone' defaultValue={data.zone}/>
             <p>Year Built</p>
-            <TextField fullWidth variant='outlined' label='Enter year built' />
+            <TextField fullWidth variant='outlined' label='Enter year built' defaultValue={data.yearBuilt}/>
             <p>Plot Size (in sqft)</p>
-            <TextField fullWidth variant='outlined' label='Enter Plot Size' />
+            <TextField fullWidth variant='outlined' label='Enter Plot Size' defaultValue={data.plotSize} />
             <p>Number of Floors</p>
-            <TextField fullWidth variant='outlined' label='Enter Number of Floors' />
+            <TextField fullWidth variant='outlined' label='Enter Number of Floors' defaultValue={data.numberOfFloors}/>
             <p>Floor Plate (in sqft)</p>
-            <TextField fullWidth variant='outlined' label='Enter Floor Plate' />
+            <TextField fullWidth variant='outlined' label='Enter Floor Plate' defaultValue={data.floorPlate}/>
             {/* DROPDOWN FOR OPP ZONE */}
             <p>Opportunity Zone</p>
-            <TextField fullWidth variant='outlined' label='Enter Number of Floors' />
+            <TextField fullWidth variant='outlined' label='Enter Yes or No' defaultValue={data.opportunityZone}/>
             <p>Parking Info</p>
-            <TextField fullWidth variant='outlined' label='Enter Parking Info' />
+            <TextField fullWidth variant='outlined' label='Enter Parking Info' defaultValue={data.parkingRatio}/>
             <p>Parking Ratio</p>
-            <TextField fullWidth variant='outlined' label='Enter Parking Ratio' />
+            <TextField fullWidth variant='outlined' label='Enter Parking Ratio' defaultValue={data.parkingRatio}/>
             <p>Property Ratio</p>
-            <TextField fullWidth variant='outlined' label='Enter Property Ratio' />
+            <TextField fullWidth variant='outlined' label='Enter Property Ratio' defaultValue={data.propertyRatio}/>
             {/* AMENITIES LIST */}
             <p>Amenities</p>
             <TextField fullWidth variant='outlined' label='Enter Amenities (list)' />
@@ -98,27 +166,23 @@ const EditPropertyModal = ({handleCancel, handleClose}) => {
 
             <h3>Tenant</h3>
             <p>Occupancy Percentage</p>
-            <TextField fullWidth variant='outlined' label='Enter Occupancy Percentage' />
+            <TextField fullWidth variant='outlined' label='Enter Occupancy Percentage' defaultValue={data.occupancyPercentage}/>
             {/* DROPDOWN */}
             <p>Unit Type</p>
-            <TextField fullWidth variant='outlined' label='Enter Unit Type' />
+            <TextField fullWidth variant='outlined' label='Enter Unit Type' defaultValue={data.singleOrMultiTenant}/>
             {/* Make conditional if ^^ */}
-            <p># of Tenants (if multi)</p>
-            <TextField fullWidth variant='outlined' label='Enter # of Tenants' />
             {/* DROPDOWN */}
             <p>Lease Type</p>
-            <TextField fullWidth variant='outlined' label='Select Lease Type' />
+            <TextField fullWidth variant='outlined' label='Select Lease Type' defaultValue={data.leaseType}/>
             {/* YES/NO DROPDOWN */}
             <p>Lease Renewal</p>
-            <TextField fullWidth variant='outlined' label='Select Lease Renewal' />
+            <TextField fullWidth variant='outlined' label='Select Lease Renewal' defaultValue={data.leaseRenewal} />
             {/* CONDITIONAL IF ^^ */}
-            <p>Renewal Year (if yes)</p>
-            <TextField fullWidth variant='outlined' label='Select Renewal Year' />
             <p>Years Left on Lease</p>
-            <TextField fullWidth variant='outlined' label='Enter years left on lease' />
+            <TextField fullWidth variant='outlined' label='Enter years left on lease' defaultValue={data.yearsLeftOnLease}/>
             {/* Date Selecter */}
             <p>Lease End Date</p>
-            <TextField fullWidth variant='outlined' label='Enter lease end date' />
+            <TextField fullWidth variant='outlined' label='Enter lease end date' defaultValue={data.leaseEndDate}/>
             
             <Button variant='contained' type='submit'>Save Changes</Button>
         </form>

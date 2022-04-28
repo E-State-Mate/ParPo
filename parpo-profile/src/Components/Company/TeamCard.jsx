@@ -1,13 +1,28 @@
-import React from 'react'
-import { Card } from '@mui/material'
+import React, {useEffect, useState} from 'react'
+import { Card, CardActionArea, CardMedia } from '@mui/material'
+import { getStorage, ref, getDownloadURL } from 'firebase/storage'
 
 const TeamCard = ({data}) => {
+
+  const [fileURL, setFileURL] = useState(null);
+
+  const getPics = async () => {
+    const storage = getStorage();
+    setFileURL(await getDownloadURL(ref(storage, data.pic)))
+    .catch((error) => console.log(error))
+  }
+
+  useEffect(() => { getPics() }, [])
+
   return (
-    <Card className='team-card' style={{backgroundImage: `url(https://via.placeholder.com/3000/0000FF/808080?Text=Digital.com)`}}> 
+    <Card className='team-card'> 
+      <CardActionArea href={data.linkedin}>
+        <CardMedia component='img' image={fileURL} height='250px' />
         <div className='team-card-center'>
-            <p>{data.name}</p>
-            <p>{data.job}</p>
+          <p>{data.name}</p>
+          <p>{data.job}</p>
         </div>
+      </CardActionArea>
     </Card>
   )
 }

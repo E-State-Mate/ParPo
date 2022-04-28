@@ -21,3 +21,9 @@ export const updateHolding = async (id, data) => {
     })
     return response;
 }
+
+export const getFeaturedHoldings = async() => {
+    const response = await fetch('https://us-central1-auth-development-92670.cloudfunctions.net/getFeaturedHoldings', { mode: 'cors'})
+    .then(response => response.json())
+    return response;
+}

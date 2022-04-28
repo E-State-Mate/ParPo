@@ -1,14 +1,27 @@
-import React from 'react'
-import { Card } from '@mui/material'
+import React, { useEffect, useState } from 'react'
+import { Card, CardActionArea, CardMedia } from '@mui/material'
 import { Link } from 'react-router-dom'
-import { useEffect } from 'react'
-import { CardActionArea } from '@mui/material'
+import { getStorage, ref, getDownloadURL} from 'firebase/storage'
 
 const FeaturedCard = ({data}) => {
 
+    const [fileURL, setFileURL] = useState(null);
+
+    const getPics = async () => {
+      const storage = getStorage();
+      setFileURL(await getDownloadURL(ref(storage, data.fileURL)))
+      .catch((error) => console.log(error))
+    }
+  
+    useEffect(() => {
+      getPics();
+      console.log(fileURL)
+    }, [])
+
   return (
-    <Card className='featured-card' style={{backgroundImage: `url(https://via.placeholder.com/3000/0000FF/808080?Text=Digital.com)`}}>
+    <Card className='featured-card'>
         <CardActionArea component={Link} to={`/property/${data._id}`} replace className='relative'>
+        <CardMedia component='img' image={fileURL} height='250px' />
             <div className='feat-card-top'>
                 <p>{data.propertyType} Building</p>
                 <p>{data.sqft.toLocaleString()} Sq Ft.</p>

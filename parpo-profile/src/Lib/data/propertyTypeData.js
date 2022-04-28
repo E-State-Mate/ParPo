@@ -8,11 +8,16 @@ import HealthAndSafetyIcon from '@mui/icons-material/HealthAndSafety';
 import HotelIcon from '@mui/icons-material/Hotel';
 import AttractionsIcon from '@mui/icons-material/Attractions';
 import GrassIcon from '@mui/icons-material/Grass';
+import StoreIcon from '@mui/icons-material/Store';
 
 export const propertyTypes = [
     {
         propertyType: "Residential",
         image: HouseIcon    
+    },
+    {
+        propertyType: "Commercial",
+        image: StoreIcon    
     },
     {
         propertyType: "Office",

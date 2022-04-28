@@ -3,10 +3,10 @@ import TeamCard from './TeamCard'
 import { Divider, Grid } from '@mui/material'
 
 const team = [
-  {name: 'Melissa Veras', job: 'Principal Realtor'},
-  {name: 'Thomas Anders', job: 'Principal Realtor'},
-  {name: 'Will Hunting', job: 'VP of Accounts'},
-  {name: 'Denise Boston', job: 'Denise Boston'}
+  {name: 'Melissa Veras', job: 'Principal Realtor', pic: 'alex.jpg', linkedin: 'https://www.linkedin.com/in/zachtippit/'},
+  {name: 'Thomas Anders', job: 'Principal Realtor', pic: 'nate.jpg', linkedin: 'https://www.linkedin.com/in/zachtippit/'},
+  {name: 'Will Hunting', job: 'VP of Accounts', pic: 'zach.jpg', linkedin: 'https://www.linkedin.com/in/zachtippit/'},
+  {name: 'Denise Boston', job: 'Denise Boston', pic: 'eddie.jpg', linkedin: 'https://www.linkedin.com/in/zachtippit/'}
 ]
 
 const OurTeam = () => {
