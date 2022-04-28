@@ -27,6 +27,7 @@ const ScrollspyNav = (props) => {
     };
 
     const scrollTo = (start, to, duration) => {
+        console.log(start, to, duration)
         let change = to - start,
             currentTime = 0,
             increment = 10;

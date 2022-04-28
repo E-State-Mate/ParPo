@@ -46,7 +46,7 @@
 
 .outlet-container{
   background-color: #eee;
-  padding: 0rem 0 30rem 0;
+  padding: 0rem 0 20rem 0;
 }
 
 .modal-container{
@@ -67,6 +67,32 @@
   background-color: #fff;
   box-shadow: darkgray 2px 2px;
   border-radius: 2px;
+}
+
+#mob-menu-bottom{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  color: darkgray
+}
+
+#mob-menu-logout{
+  display: block;
+  width: 90%;
+  margin: auto;
+}
+
+#mob-menu-btm-txt{
+  width: 100%;
+  text-align: center;
+  font-size: 0.75rem;
+  margin-top: 1rem;
+}
+
+#mob-menu-btn{
+  position: absolute;
+  right: 2rem;
+  top: 1.25rem;
 }
 
 .close-btn{
@@ -106,14 +132,21 @@
   color: #5ca8b2
 }
 
-.prop-list-card-right{
-
-}
-
 .prop-list-card-right-info{
   display: flex;
   align-items: center;
   margin: 1rem 0;
+}
+
+.prop-list-mob-info{
+  display: flex;
+  align-items: center;
+  margin: 0.5rem 0;
+}
+.prop-list-mob-info:last-child{
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
 }
 
 .prop-type-card{
@@ -155,6 +188,8 @@
   left: 1rem;
   color: white;
   font-size: 0.5rem;
+  padding: 1rem;
+  background-image: linear-gradient(to right, rgba(0,0,0,0.5), rgba(0,0,0,0));
 }
 
 .feat-card-top > p{
@@ -188,7 +223,9 @@
 .team-card-center{
   position: absolute;
   width: 100%;
-  top: 40%;
+  top: 30%;
+  background: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 25%, rgba(0,0,0,0.5) 75%, rgba(0,0,0,0) 100%);
+  padding: 1rem;
 }
 
 .team-card-center > p{

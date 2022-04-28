@@ -43,10 +43,12 @@ const OverviewCard = ({stat}) => {
 
 const Overview = () => {
   return (
-    <div style={{margin: '2rem auto'}} id='overview'>
-      <p style={{textAlign: 'center'}}>Who Are We?</p>
-      <h2 style={{textAlign: 'center'}}>Overview</h2>
-      <Divider variant='middle' width='20%' sx={{margin: '1rem auto', borderBottomWidth: 4, backgroundColor: '#5ca8b2' }} />
+    <div id='overview'>
+      <div style={{paddingTop: '2rem'}}>
+        <p style={{textAlign: 'center'}}>Who Are We?</p>
+        <h2 style={{textAlign: 'center'}}>Overview</h2>
+        <Divider variant='middle' width='20%' sx={{margin: '1rem auto', borderBottomWidth: 4, backgroundColor: '#5ca8b2' }} />
+      </div>
       <Grid container>
           {stats.map((stat, index) => (
             <Grid item xs={12} md={6} lg={3} key={index}>

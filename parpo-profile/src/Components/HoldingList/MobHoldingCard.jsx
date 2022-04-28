@@ -59,7 +59,6 @@ const HoldingCard = ({holding}) => {
           />
         </Grid>
 
-        {/* Center column -- includes building name, type, address and price */}
         <Grid item xs={12} sm={4} mt={2}>
           <div className='prop-list-card-title'>
             <Typography variant='h6'>{holding.buildingName}</Typography>
@@ -74,22 +73,21 @@ const HoldingCard = ({holding}) => {
           </div>
         </Grid>
 
-        {/* Right column -- features specific building data */}
-        <Grid item xs={12} sm={4} className='prop-list-card-right' mt={2}>
-          <div className='prop-list-card-right-info'>
-            <PeopleIcon sx={{marginRight: '1rem'}}/>
+        <Grid item xs={12} sm={4} className='prop-list-card-right' ml={6}>
+          <div className='prop-list-mob-info'>
+            <PeopleIcon sx={{marginRight: '4rem'}}/>
             <Typography variant='body2'>{holding.occupancyPercentage*100}% occupancy</Typography>
           </div>
-          <div className='prop-list-card-right-info'>
-            <LayersIcon sx={{marginRight: '1rem'}}/>
+          <div className='prop-list-mob-info'>
+            <LayersIcon sx={{marginRight: '4rem'}}/>
             <Typography variant='body2'>{loading ? sqft : sqft.toLocaleString()} Sq Ft</Typography>
           </div>
-          <div className='prop-list-card-right-info'>
-            <AccountBalanceIcon sx={{marginRight: '1rem'}}/>
+          <div className='prop-list-mob-info'>
+            <AccountBalanceIcon sx={{marginRight: '4rem'}}/>
             <Typography variant='body2'>{holding.revenue} in 2021 Revenue</Typography>
           </div>
-          <div className='prop-list-card-right-info'>
-            <StarOutlineIcon sx={{marginRight: '1rem'}}/>
+          <div className='prop-list-mob-info'>
+            <StarOutlineIcon sx={{marginRight: '4rem'}}/>
             <Typography variant='body2'>{holding.rating} Rating</Typography>
           </div>
         </Grid>

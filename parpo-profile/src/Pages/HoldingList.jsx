@@ -3,6 +3,8 @@ import { ButtonBase, Card, CardHeader, Grid, Paper, Typography } from "@mui/mate
 import { styled } from "@mui/material/styles";
 import PropertyType from "../Components/HoldingList/PropertyType";
 import HoldingCard from "../Components/HoldingList/HoldingCard.js";
+import MobHoldingCard from '../Components/HoldingList/MobHoldingCard'
+import FilterDropdown from "../Components/HoldingList/FilterDropdown";
 import holdingData from "../Lib/data/holdingData.json";
 import { propertyTypes } from "../Lib/data/propertyTypeData";
 import { getHoldings } from "../Lib/utils/holdingsFetcher";
@@ -15,6 +17,8 @@ const HoldingList = () => {
     const [ visibleHoldings, setVisibleHoldings ] = useState([''])
     const [ listCount, setListCount ] = useState(0)
     const [ filterList, setFilterList ] = useState([])
+    const [ mobFilter, setMobFilter ] = useState([])
+
     // console.log("holdings:", holdings);
     // TODO: Make dynamic Holdings count based on how many are rendered w/ HoldingCount
 
@@ -29,6 +33,10 @@ const HoldingList = () => {
         } else {
             setFilterList([...filterList, propType])
         }
+    }
+
+    const mobFilterListHandler = (propTypes) => {
+        setFilterList(propTypes);
     }
 
     useEffect(() => {
@@ -55,21 +63,34 @@ const HoldingList = () => {
 
     return (
         <div id="holding-list-container">
-            <Grid container width="90%" style={{ margin: "auto" }}>
-                <Grid item lg />
-                <Grid item md={4} lg={2}>
+            {/* Desktop implementation */}
+            <Grid container width="80%" sx={{ margin: "auto", display: {xs: 'none', sm: 'flex'} }}>
+                <Grid item md={4} lg={3}>
                     <p style={{ margin: "1rem" }}>Property Type</p>
                     {propertyTypes.map((property, i) => (
                         <PropertyType key={i} property={property} filterListHandler={filterListHandler} />
                     ))}
                 </Grid>
-                <Grid item md={8} lg={5}>
+                <Grid item md={8} lg={9}>
                     <p style={{ margin: "1rem" }}>{listCount} Properties</p>
                     {visibleHoldings.map((holding, i) => (
                         <HoldingCard key={i} holding={holding} />
                     ))}
                 </Grid>
-                <Grid item lg />
+            </Grid>
+            {/* Mobile implementation */}
+            <Grid container sx={{margin: 'auto', display: {xs: 'flex', sm: 'none'}}}>
+                <Grid item xs={6}>
+                    <p style={{ margin: "1rem" }}>{listCount} Properties</p>
+                </Grid>
+                <Grid item xs={6}>
+                    <FilterDropdown propertyTypes={propertyTypes} mobFilterListHandler={mobFilterListHandler}/>
+                </Grid>
+                <Grid item xs={12}>
+                    {visibleHoldings.map((holding, i) => (
+                        <MobHoldingCard key={i} holding={holding} />
+                    ))}
+                </Grid>
             </Grid>
         </div>
     );

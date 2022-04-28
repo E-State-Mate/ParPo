@@ -29,8 +29,9 @@ const FeaturedCard = ({data}) => {
             </div>
             <div className='feat-card-banner'>
                 <div>
-                    <p>{data.street}</p>
-                    <p>Managed by: {data.manager[0]}</p>
+                    <p style={{fontSize: '0.75rem'}}>{data.street}</p>
+                    <p style={{fontSize: '0.75rem'}}>{data.city}, {data.state} {data.zipCode}</p>
+                    <p style={{fontSize: '0.5rem'}}>Managed by: <i>{data.manager[0]}</i></p>
                 </div>
                 <>
                     <p>${data.estimatedValue.toLocaleString()}</p>
