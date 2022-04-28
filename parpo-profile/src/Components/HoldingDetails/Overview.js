@@ -14,7 +14,7 @@ import Layers from '@mui/icons-material/Layers';
 const OverviewCard = ({stat}) => {
   // console.log(stat)
   return (
-    <Card sx={{width: '80%', margin: '1rem'}}>
+    <Card sx={{width: '80%', margin: '1rem auto'}}>
       <SvgIcon component={stat.icon} inheritViewBox sx={{width: '100%', fontSize: 60, paddingTop: '1rem'}}/>
       <CardContent sx={{margin: 'auto', padding: '0'}} align='center'>
         <p style={{fontSize: '1.25rem', fontWeight: 'bold', margin: 0}}>{stat.value}</p>
@@ -39,7 +39,8 @@ function Overview(props) {
       {
         icon: CurrencyExchangeIcon,
         label: 'ROI Revenue',
-        value: props.featHolding.roiRevenue
+        // value: props.featHolding.roiRevenue
+        value: '$20,000'
       },
       {
         icon: StarBorderOutlinedIcon,
@@ -49,7 +50,7 @@ function Overview(props) {
       {
         icon: LayersOutlinedIcon,
         label: 'Square Footage',
-        value: `${props.featHolding.sqft.toLocaleString()} sq. ft.`
+        value: `${props.featHolding.sqft !== undefined ? props.featHolding.sqft.toLocaleString() : 0} sq. ft.`
       },
       {
         icon: EmojiPeopleOutlinedIcon,
@@ -63,81 +64,42 @@ function Overview(props) {
 
   return (
     <>
-      <Divider className='dividers' style={{marginTop: '6rem'}}>OVERVIEW</Divider>
-      <Grid container spacing={2} justifyContent='center'>
+      <Divider className='dividers' style={{marginTop: '6rem', marginBottom: '2rem'}}>OVERVIEW</Divider>
+      <Grid container style={{width: '90%', margin: 'auto'}} spacing={2} justifyContent='center'>
+        <Grid item lg={1} sx={{display: {xs: 'none', md: 'flex'}}} />
           {overviewContent.map((stat, index) => (
-            <Grid item xs={8} md={6} lg={3} key={index}>
+            <Grid item xs={12} sm={12} md={6} lg={2} key={index}>
               <OverviewCard stat={stat} />
             </Grid>
-          ))}   
+          ))}
+        <Grid item lg={1} sx={{display: {xs: 'none', md: 'flex'}}} />   
       </Grid>
-      {/* Overview Section #1 */}
-          <Grid container id='overview-card' >
-            <Card className='mini-card'>
-              {/* General Icon Format */}
-              <SvgIcon sx={{ fontSize: 60 }} component={CottageOutlinedIcon} />
-              <Typography variant='subtitle2' fontSize='1rem'>{props.featHolding.propertyType}</Typography>
-              <Typography variant='caption'>Building</Typography>
-              {/* <Typography className='mini-bar'>{miniBar}</Typography> */}
-              <div style={{height: '0.5rem'}}></div>
-              <Divider width='30%' margin='auto' />
-            </Card>
-
-            <Card className='mini-card'>
-              <SvgIcon sx={{ fontSize: 60 }} component={HomeWorkOutlinedIcon} />
-              <Typography variant='subtitle2' fontSize='1rem'>{props.featHolding.roiRevenue}</Typography>
-              <Typography variant='caption'>ROI Revenue</Typography>
-              {/* <Typography className='mini-bar'>{miniBar}</Typography> */}
-              <div style={{height: '0.5rem'}}></div>
-              <Divider width='30%' margin='auto' />
-            </Card>
-
-            <Card className='mini-card'>
-              <SvgIcon sx={{ fontSize: 60 }} component={StarBorderOutlinedIcon} />
-              <Typography variant='subtitle2' fontSize='1rem'>{props.featHolding.rating}</Typography>
-              <Typography variant='caption'>Class Rating</Typography>
-              {/* <Typography className='mini-bar'>{miniBar}</Typography> */}
-              <div style={{height: '0.5rem'}}></div>
-              <Divider width='30%' margin='auto' />
-            </Card>
-
-            <Card className='mini-card'>
-              <SvgIcon sx={{ fontSize: 60 }} component={LayersOutlinedIcon} />
-              <Typography variant='subtitle2' fontSize='1rem'>{props.featHolding.sqft}</Typography>
-              <Typography variant='caption'>Sqft</Typography>
-              {/* <Typography className='mini-bar'>{miniBar}</Typography> */}
-              <div style={{height: '0.5rem'}}></div>
-              <Divider width='30%' margin='auto' />
-            </Card>
-
-            <Card className='mini-card'>
-              <SvgIcon sx={{ fontSize: 60 }} component={EmojiPeopleOutlinedIcon} />
-              <Typography variant='subtitle2' fontSize='1rem'>{props.featHolding.occupancyPercentage*100}%</Typography>
-              <Typography variant='caption'>Occupancy</Typography>
-              {/* <Typography className='mini-bar'>{miniBar}</Typography> */}
-              <div style={{height: '0.5rem'}}></div>
-              <Divider width='30%' margin='auto' />
-            </Card>
-          </Grid>
         
       {/* Overview Section #2 */}
-      <div>
-        <Card id='overview-card2'>
-          <Grid item align='center'>
-          <SvgIcon sx={{ fontSize: 60 }} component={StickyNote2OutlinedIcon} />
-            <Typography variant='subtitle2' 
-            sx={{
-              marginBottom: '1rem',
-              fontWeight:'bold',
-              fontSize: '1.2rem'}}>
-              Executive Summary</Typography>
-              <Divider width='30%' margin='auto' />
-            <Typography sx={{marginTop: '1rem'}}>
-            {props.featHolding.executiveSummary}
-            </Typography>
-          </Grid>  
+        <Card id='overview-card2' style={{margin: '2rem auto', width: '90%'}}>
+          <Grid container style={{margin: '2rem auto'}}>
+            <Grid item xs={4}>
+              <SvgIcon sx={{ fontSize: 60 }} style={{display: 'block', margin: 'auto'}} component={StickyNote2OutlinedIcon} />
+            </Grid>
+            <Grid item xs={8}>
+              <Typography
+                align='center'
+                sx={{
+                  fontWeight:'bold',
+                  fontSize: '1.2rem',
+                  padding: '1rem'
+                }}>
+                  Executive Summary
+                </Typography>
+            </Grid>
+            <Grid item xs={12}>
+              <Divider width='90%' sx={{m: '1rem auto'}}/>
+            </Grid>
+            <Grid item xs={12} style={{minHeight: '200px'}}>
+              <Typography align='center' sx={{marginTop: '2rem'}}>{props.featHolding.executiveSummary}</Typography>
+            </Grid>
+          </Grid> 
         </Card>
-      </div> 
     </>
   )
 }

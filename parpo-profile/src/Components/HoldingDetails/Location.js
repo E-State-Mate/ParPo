@@ -35,13 +35,12 @@ function Location(props) {
 
     if (loadError) return "Error loading map";
     if (!isLoaded) return "Loading map"
-  
     
     return (
         <>
             {/* Overview Section #1 */}
             <div align='center'>
-                <Card xs={4} id='location-card'>
+                <Card id='location-card' sx={{width: '90%'}}>
                     <Grid item>
                         {/* General Icon Format */}
                         <SvgIcon sx={{ fontSize: 60 }} component={PlaceOutlinedIcon} />
@@ -56,7 +55,7 @@ function Location(props) {
                         <SvgIcon sx={{ fontSize: 60 }} component={PlaceOutlinedIcon} />
                         <Typography variant='subtitle2' fontSize='1rem'>Full Address
                         </Typography>
-                        <Typography variant='caption'>{props.featHolding.street}, {props.featHolding.state} {props.featHolding.zipCode}</Typography>
+                        <Typography variant='caption'>{props.featHolding.street},<br/> {props.featHolding.city}, {props.featHolding.state} {props.featHolding.zipCode}</Typography>
                         <div style={{height: '0.5rem'}}></div>
                         <Divider width='30%' margin='auto' />
                     </Grid>
@@ -64,13 +63,13 @@ function Location(props) {
             </div>
 
             <div align='center'>
-                <Card id='google-map'>
-                <div >
+                <Card id='google-map' sx={{width: '90%'}}>
+                <div>
                     <GoogleMap 
-                    mapContainerStyle={mapContainerStyle} 
-                    zoom={13} 
-                    center={center}
-                    options={options}
+                        mapContainerStyle={mapContainerStyle} 
+                        zoom={13} 
+                        center={center}
+                        options={options}
                     >
                     <Marker position={{ lat: props.featHolding.lat, lng: props.featHolding.lng }} />
                     </GoogleMap>
@@ -78,8 +77,6 @@ function Location(props) {
 
                 </Card>
             </div>
-        {/* Pushing the footer down   */}
-        <div style={{marginBottom: '2rem'}}><span><p></p></span></div>
         </>
     )
 }
