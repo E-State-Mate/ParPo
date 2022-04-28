@@ -115,31 +115,31 @@ const HoldingDetails = ({data}) => {
       
       {/* Overview Section */}
         <Grid item md={8}>
-          <Divider className='dividers' style={{marginTop: '4rem'}}>OVERVIEW</Divider>
+          <Divider className='dividers' style={{marginTop: '6rem'}}>OVERVIEW</Divider>
           <Overview featHolding={featHolding} />
         </Grid>
 
     {/* Location Section */}
         <Grid item md={8}>
-          <Divider className='dividers' style={{marginTop: '4rem'}}>LOCATION</Divider>
+          <Divider className='dividers' style={{marginTop: '6rem'}}>LOCATION</Divider>
           <Location featHolding={featHolding}/>
         </Grid>
 
     {/* Financial Section */}
         <Grid item md={8}>
-          <Divider className='dividers' style={{marginTop: '4rem'}}>FINANCIAL</Divider><br/><br/>
+          <Divider className='dividers' style={{marginTop: '6rem'}}>FINANCIAL</Divider><br/><br/>
           <Financial featHolding={featHolding}/>
         </Grid>
 
     {/* Property Section */}
         <Grid item md={8}>
-          <Divider className='dividers' style={{marginTop: '4rem'}}>PROPERTY</Divider><br/><br/>
+          <Divider className='dividers' style={{marginTop: '6rem'}}>PROPERTY</Divider><br/><br/>
           <Property featHolding={featHolding}/>
         </Grid>
 
     {/* Tenant */}
       <Grid item md={8}>
-        <Divider className='dividers' style={{marginTop: '4rem'}}>TENANT</Divider>
+        <Divider className='dividers' style={{marginTop: '6rem'}}>TENANT</Divider>
         <Tenant featHolding={featHolding}/>
       </Grid>
     </Grid>
