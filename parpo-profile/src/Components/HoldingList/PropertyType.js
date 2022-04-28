@@ -1,11 +1,11 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Card, CardContent, Icon, Typography } from "@mui/material";
 import { SvgIcon } from "@mui/material";
 import CheckIcon from "@mui/icons-material/Check";
 
 import { PropertyTypeContext } from "../../Context/PropertyTypeContext";
 
-const PropertyType = ({ property }) => {
+const PropertyType = ({ property, filterListHandler }) => {
     const [selected, isSelected] = useState(false);
     // console.log(property);
 
@@ -13,10 +13,8 @@ const PropertyType = ({ property }) => {
 
     // Can add selection logic here
     const handleSelect = () => {
-        setActivePropertyTypes({
-            ...ActivePropertyTypes,
-            [property.propertyType]: !ActivePropertyTypes[property.propertyType],
-        });
+        isSelected(!selected)
+        filterListHandler(property.propertyType)
     };
 
     return (
@@ -24,7 +22,7 @@ const PropertyType = ({ property }) => {
             <CardContent>
                 <CheckIcon
                     className="prop-type-check"
-                    color={ActivePropertyTypes[property.propertyType] ? "primary" : "action"}
+                    color={selected ? "primary" : "action"}
                 />
                 <Typography align="center" sx={{ fontSize: "1rem" }}>
                     {property.propertyType}

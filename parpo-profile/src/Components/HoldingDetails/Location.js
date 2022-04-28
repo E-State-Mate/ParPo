@@ -1,9 +1,6 @@
 import React from 'react';
 import { Card, Grid, SvgIcon, Typography } from '@mui/material';
 import './detailsView.css';
-import {locationData} from '../../Lib/data/locationData';
-import Tooltip from '@mui/material/Tooltip';
-import HoldingDetails from '../../Pages/HoldingDetails';
 import HouseIcon from '@mui/icons-material/House';
 
 

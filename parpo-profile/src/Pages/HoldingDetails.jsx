@@ -24,28 +24,6 @@ const HoldingDetails = ({data}) => {
   const { currentUser } = useAuth()
   let slug = useParams();
 
-//   const fetchHolding = async (id, e) => {
-//     if(featHolding.length === 0){
-//     setFeatHolding(await getHoldingById(id));
-//     console.log(id)
-//     console.log(featHolding)
-//   }  else {
-//     console.log(e)
-//   }}
-
-// useEffect(() => {
-//   fetchHolding(slug.slug)
-// })
-
-  // if(!featHolding.sqft){
-  //   setFeatHolding(await getDetailsByCategory(id));
-  //   // console.log(id)
-  //   // console.log(featHolding)
-  // }  else {
-  //   console.log(e)
-  // }}
-
-
   useEffect(() => {
     const id = slug.slug
      const fetchHolding = async () => {
@@ -54,27 +32,6 @@ const HoldingDetails = ({data}) => {
     fetchHolding()
     console.log(featHolding)
   }, [slug]) //only called when component mounts
-
-  // useEffect(() => {
-  //   getHoldingById(slug.slug);
-  //   // console.log('REFERENCE:', slug.slug)
-  // }, [slug])
-  
-
-  // useEffect(() => {
-  //   getHoldings(slug.slug);
-  //   // console.log(slug.slug)
-  // }, [slug])
-  
-  // useEffect(() => {
-  //   getDetailsByCategory()
-  // })
-
-  // useEffect(() => {
-  //   console.log('current featHolding', featHolding)
-  // }, [featHolding])
-
-
 
   const getProfileData = async () => {
     if(currentUser.uid !== null){
@@ -114,37 +71,37 @@ const HoldingDetails = ({data}) => {
         }
       
       {/* Overview Section */}
-        <Grid item md={8}>
+        <Grid item md={8} id='overview'>
           <Divider className='dividers' style={{marginTop: '4rem'}}>OVERVIEW</Divider>
           <Overview featHolding={featHolding} />
         </Grid>
 
     {/* Location Section */}
-        <Grid item md={8}>
+        <Grid item md={8} id='location'>
           <Divider className='dividers' style={{marginTop: '4rem'}}>LOCATION</Divider>
           <Location featHolding={featHolding}/>
         </Grid>
 
     {/* Financial Section */}
-        <Grid item md={8}>
+        <Grid item md={8} id='financial'>
           <Divider className='dividers' style={{marginTop: '4rem'}}>FINANCIAL</Divider><br/><br/>
           <Financial featHolding={featHolding}/>
         </Grid>
 
     {/* Property Section */}
-        <Grid item md={8}>
+        <Grid item md={8} id='property'>
           <Divider className='dividers' style={{marginTop: '4rem'}}>PROPERTY</Divider><br/><br/>
           <Property featHolding={featHolding}/>
         </Grid>
 
     {/* Tenant */}
-      <Grid item md={8}>
+      <Grid item md={8} id='tenant'>
         <Divider className='dividers' style={{marginTop: '4rem'}}>TENANT</Divider>
         <Tenant featHolding={featHolding}/>
       </Grid>
     </Grid>
 
-    {editing && <EditPropertyModal handleCancel={handleCancel} handleClose={handleClose}/>}
+    {editing && <EditPropertyModal handleCancel={handleCancel} handleClose={handleClose} propertyID={slug.slug} data={featHolding}/>}
   </div>
   )
 }

@@ -1,12 +1,12 @@
 import { Card, Grid } from '@material-ui/core';
 import { Divider, SvgIcon, Typography } from '@mui/material';
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import './detailsView.css'
 import Cottage from '@mui/icons-material/House';
 
 
 function Overview(props) {
-  const miniBar = (<div className='miniBar'></div>)
+  // const miniBar = (<div className='miniBar'></div>)
 
   // useEffect(() => {
   //   if(featHolding.length === 1 && isLoaded === false){

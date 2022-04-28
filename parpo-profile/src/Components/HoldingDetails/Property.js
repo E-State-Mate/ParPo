@@ -1,14 +1,11 @@
 import React from 'react'
 import { Card, Divider, Grid, SvgIcon, Typography } from '@mui/material'
 import './detailsView.css'
-import {propertyData} from '../../Lib/data/propertyData'
 import {amenitiesData} from '../../Lib/data/amenitiesData'
 import HouseIcon from '@mui/icons-material/House'
-import HoldingDetails from '../../Pages/HoldingDetails';
-
 
 function Property(props) {
-    const miniBar = (<div className='miniBar'></div>)
+    // const miniBar = (<div className='miniBar'></div>)
 
     return (
         <>
@@ -67,7 +64,7 @@ function Property(props) {
                     <Grid item style={{width: '33%'}}>
                         <SvgIcon sx={{ fontSize: 60 }} component={HouseIcon} />
                         <Typography variant='subtitle2' fontSize='1rem'>Opportunity Zone</Typography>
-                        <Typography variant='caption'>{} // ADD //</Typography>
+                        <Typography variant='caption'>// ADD //</Typography>
                         <div style={{height: '0.5rem'}}></div>
                         <Divider width='30%' margin='auto' />
                     </Grid>

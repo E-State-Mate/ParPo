@@ -16,7 +16,7 @@ const FeaturedCard = ({data}) => {
     useEffect(() => {
       getPics();
       console.log(fileURL)
-    }, [,fileURL])
+    }, [])
 
   return (
     <Card className='featured-card'>

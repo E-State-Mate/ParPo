@@ -64,10 +64,16 @@ const AddUserModal = ({open, handleClose, isUserAdded}) => {
         const response = await fetch(`https://us-central1-auth-development-92670.cloudfunctions.net/addUser/?email=${email}&role=${role}`, {mode: 'cors'})
         .then(() => {
             setMsg('Invite sent to user\'s email')
+            setTimeout(() => {
+                setMsg('')  
+            }, 5000)
             isUserAdded()
         })
         .catch((e) => {
             setMsg('Issue adding user. Try again later.')
+            setTimeout(() => {
+                setMsg('')
+            }, 5000)
             console.log(e);
         })
     }
@@ -78,6 +84,7 @@ const AddUserModal = ({open, handleClose, isUserAdded}) => {
             <Box sx={style}>
                 <Typography variant='h4' gutterBottom style={{textAlign: 'center'}}>Add user</Typography>
                 {/* NEED TO ADD CONFIRMATION OF REQUEST HANDLER */}
+                {msg!==false && <p style={{fontSize: '0.6rem', fontWeight: 'bold', textAlign: 'center'}}>{msg}</p>}
                 <form onSubmit={(e) => handleSubmit(e)}>
                     <TextField fullWidth label='Email'/>
                     <FormHelperText sx={{mb: 2, mt: 1, pl: 1}}>Enter user email</FormHelperText>
@@ -91,7 +98,6 @@ const AddUserModal = ({open, handleClose, isUserAdded}) => {
                     </TextField>
                     <FormHelperText sx={{mb: 2, mt: 1, pl: 1}}>Select user's role</FormHelperText>
                     <Button variant='contained' type='submit'>Submit</Button>
-                    {msg!==false && <p>{msg}</p>}
                 </form>
             </Box>
         </Modal>

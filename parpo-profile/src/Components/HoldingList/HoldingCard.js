@@ -20,6 +20,8 @@ const HoldingCard = ({holding}) => {
   const classes = useStyles()
 
   const [fileURL, setFileURL] = useState(null);
+  const [ sqft, setSqft ] = useState(holding.sqft);
+  const [ loading, setLoading ] = useState(true)
 
   const getPics = async () => {
     const storage = getStorage();
@@ -28,9 +30,16 @@ const HoldingCard = ({holding}) => {
   }
   
   useEffect(() => {
+    console.log(holding)
     getPics();
     console.log(fileURL)
   }, [,fileURL])
+
+  useEffect(() => {
+    if(holding !== null){
+      setLoading(false);
+    }
+  }, [holding])
 
   return (
     <Card className='prop-list-card'>
@@ -54,7 +63,7 @@ const HoldingCard = ({holding}) => {
         <Grid item xs={12} sm={4} mt={2}>
           <div className='prop-list-card-title'>
             <Typography variant='h6'>{holding.buildingName}</Typography>
-            <Typography variant='body1'>{holding.propertyType.toUpperCase()}</Typography>
+            <Typography variant='body1' style={{textTransform: 'uppercase'}}>{holding.propertyType}</Typography>
           </div>
           <div className='prop-list-card-address'>
             <Typography variant='body2'>{holding.address}</Typography>
@@ -69,11 +78,11 @@ const HoldingCard = ({holding}) => {
         <Grid item xs={12} sm={4} className='prop-list-card-right' mt={2}>
           <div className='prop-list-card-right-info'>
             <PeopleIcon sx={{marginRight: '1rem'}}/>
-            <Typography variant='body2'>{holding.occupancy}% occupancy</Typography>
+            <Typography variant='body2'>{holding.occupancyPercentage}% occupancy</Typography>
           </div>
           <div className='prop-list-card-right-info'>
             <LayersIcon sx={{marginRight: '1rem'}}/>
-            <Typography variant='body2'>{holding.sqft} Sq Ft</Typography>
+            <Typography variant='body2'>{loading ? sqft : sqft.toLocaleString()} Sq Ft</Typography>
           </div>
           <div className='prop-list-card-right-info'>
             <AccountBalanceIcon sx={{marginRight: '1rem'}}/>

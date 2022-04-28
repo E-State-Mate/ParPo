@@ -1,13 +1,11 @@
 import React from 'react'
 import { Card, Divider, Grid, SvgIcon, Typography } from '@mui/material'
 import './detailsView.css'
-import {financialData} from '../../Lib/data/financialData'
-import HoldingDetails from '../../Pages/HoldingDetails';
 import HouseIcon from '@mui/icons-material/House';
 
 
 function Financial(props) {
-    const miniBar = (<div className='miniBar'></div>)
+    // const miniBar = (<div className='miniBar'></div>)
 
     return (
         <>

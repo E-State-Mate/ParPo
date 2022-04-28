@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import { Card, CardActionArea, CardMedia } from '@mui/material'
 import { getStorage, ref, getDownloadURL } from 'firebase/storage'
-import { Link } from 'react-router-dom';
 
 const TeamCard = ({data}) => {
 
@@ -13,10 +12,7 @@ const TeamCard = ({data}) => {
     .catch((error) => console.log(error))
   }
 
-  useEffect(() => {
-    getPics();
-    console.log(fileURL)
-  }, [,fileURL])
+  useEffect(() => { getPics() }, [])
 
   return (
     <Card className='team-card'> 

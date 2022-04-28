@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Button, Divider, Grid, TextField } from '@mui/material'
+import { Button, Divider, Grid } from '@mui/material'
 import { useAuth } from '../Context/AuthContext'
 import { db } from '../firebase'
 import { doc, getDoc } from 'firebase/firestore'
@@ -7,7 +7,6 @@ import {useNavigate} from 'react-router-dom'
 
 const Footer = () => {
 
-    const [error, setError] = useState("")
     const [userData, setUserData] = useState({
         role: 'N/A'
       });
@@ -15,7 +14,6 @@ const Footer = () => {
     const { currentUser, logout } = useAuth()
     const navigate = useNavigate()
     
-
     const getProfileData = async () => {
         if(currentUser.uid !== null){
           const docRef = doc(db, "users", currentUser.uid)
@@ -25,13 +23,11 @@ const Footer = () => {
       }
 
       async function handleLogout() {
-        setError('')
-  
         try {
             await logout()
             await navigate('/login')
         }   catch {
-            setError('Could not Log Out')
+            console.error('Couldn\'t log out.')
         }
       }
 

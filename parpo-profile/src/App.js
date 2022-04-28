@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react'
-import TabContainer  from './Components/TabContainer'
+import React from 'react'
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import Login from "./Components/UserAuth/Login"
 import PrivateRoute from './Components/PrivateRoute';
@@ -18,31 +17,6 @@ import HoldingProvider from "./Context/HoldingContext";
 import PropertyTypeProvider from "./Context/PropertyTypeContext";
 
 function App() {
-
-  const [imglight, setImglight] = useState(true);
-  const [navClass, setNavClass] = useState("");
-  const [pos, setPos] = useState(document.documentElement.scrollTop);
-
-  useEffect(() => {
-      window.addEventListener("scroll", scrollNavigation, true);
-  }, [])
-
-  useEffect(() => {
-      return () => {
-          window.removeEventListener("scroll", scrollNavigation, true);
-      }
-    }, []);
-
-  const scrollNavigation = () => {
-      const scrollUp = document.documentElement.scrollTop;
-      if(scrollUp > pos){
-          setNavClass('nav-sticky');
-          setImglight(false);
-      } else {
-          setNavClass('');
-          setImglight(true);
-      }
-  }
 
   return (
         <Router>

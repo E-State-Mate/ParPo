@@ -6,7 +6,7 @@ import HeaderImg from '../../Lib/img/header-skyline.jpg'
 const Header = () => {
   return (
     <div id='header'>
-        <img src={HeaderImg} id='header-bg'/>
+        <img src={HeaderImg} id='header-bg' alt='Header background'/>
         <Navbar/>
         <PageTitle title={'The Wideman Company'} subtitle={'It is your dream we are building'}/>
     </div>
