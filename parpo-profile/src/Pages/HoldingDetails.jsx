@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import {Button, Divider, Grid} from '@mui/material';
+import {Button, Divider, Grid, Paper} from '@mui/material';
 import Overview from '../Components/HoldingDetails/Overview';
 import Location from '../Components/HoldingDetails/Location';
 import Financial from '../Components/HoldingDetails/Financial'
@@ -11,7 +11,9 @@ import EditPropertyModal from '../Components/HoldingDetails/EditPropertyModal';
 import { useAuth } from '../Context/AuthContext'
 import { db } from '../firebase'
 import { doc, getDoc } from 'firebase/firestore'
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams, useHistory } from 'react-router-dom';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import EditIcon from '@mui/icons-material/Edit';
 
 
 const HoldingDetails = ({data}) => {
@@ -21,8 +23,10 @@ const HoldingDetails = ({data}) => {
   })
   const [featHolding, setFeatHolding] = useState({})
   const [editing, setEditing] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
   const { currentUser } = useAuth()
   let slug = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const id = slug.slug
@@ -45,45 +49,65 @@ const HoldingDetails = ({data}) => {
     setEditing(false);
   }
 
-  const handleClose = (data) => {
-    console.log(data);
+  const handleClose = async (data) => {
     setEditing(false);
+    setFeatHolding(await getHoldingById(slug.slug))
   }
 
   useEffect(() => getProfileData(), [])
 
-  useEffect(() => {console.log(userData)}, [userData])
-
-  useEffect(() => console.log(editing), [editing])
+  useEffect(() => {
+    if(Object.keys(featHolding).length !== 0 && isLoaded===false){
+      setIsLoaded(true);
+    }
+  }, [featHolding])
 
 
   return (
     <div id='details-container'>
     <DetailsNav />
-    {/* {console.log('featHolding ==>', featHolding)} */}
       {/* Edit Property Button (if user is an Admin) */}
-        {(userData.role === 'Admin' && editing === false) && 
-            <Button variant='contained' size='large' onClick={() => setEditing(true)}>Edit Property</Button>
-        }
-      
-      {/* Overview Section */}
-      <Overview featHolding={featHolding} />
-
-    {/* Location Section */}
-          <Divider className='dividers' style={{marginTop: '6rem'}}>LOCATION</Divider>
-          <Location featHolding={featHolding}/>
-
-    {/* Financial Section */}
-          <Divider className='dividers' style={{marginTop: '6rem'}}>FINANCIAL</Divider><br/><br/>
-          <Financial featHolding={featHolding}/>
-
-    {/* Property Section */}
-          <Divider className='dividers' style={{marginTop: '6rem'}}>PROPERTY</Divider><br/><br/>
-          <Property featHolding={featHolding}/>
-
-    {/* Tenant */}
-        <Divider className='dividers' style={{marginTop: '6rem'}}>TENANT</Divider>
-        <Tenant featHolding={featHolding}/>
+      <Paper style={{width: '80%', margin: '4rem auto', padding: '0.5rem'}}>
+        <Grid container spacing={8} style={{width: '80%', margin: 'auto'}}>
+          <Grid item xs={12} md={6} sx={{margin: '1rem'}}>
+            <Button 
+              fullWidth variant='contained' size='large' 
+              startIcon={<ArrowBackIosIcon />} 
+              onClick={() => navigate('/holdings')}
+              style={{
+                backgroundColor: '#5ca8b2',
+                borderRadius: 50
+                }}>
+                Go Back
+              </Button>
+          </Grid>
+            {(userData.role === 'Admin' && editing === false) && 
+            <>
+              <Grid item xs={12} sx={{display: {md: 'none !important'}}}>
+                <Divider width='80%' variant='middle' />
+              </Grid>
+              <Grid item xs={12} md={6}>
+                <Button 
+                  fullWidth variant='contained' size='large' 
+                  startIcon={<EditIcon />} 
+                  onClick={() => setEditing(true)}
+                  style={{
+                    backgroundColor: '#5ca8b2',
+                    borderRadius: 50
+                  }}
+                >
+                  Edit Property
+                </Button>
+              </Grid>
+            </>
+            }
+        </Grid>
+      </Paper>
+      <Overview featHolding={featHolding} isLoaded={isLoaded}/>
+      <Location featHolding={featHolding} isLoaded={isLoaded}/>
+      <Financial featHolding={featHolding} isLoaded={isLoaded}/>
+      <Property featHolding={featHolding} isLoaded={isLoaded}/>
+      <Tenant featHolding={featHolding} isLoaded={isLoaded}/>
 
     {editing && <EditPropertyModal handleCancel={handleCancel} handleClose={handleClose} propertyID={slug.slug} data={featHolding}/>}
   </div>

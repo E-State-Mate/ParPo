@@ -44,6 +44,7 @@ const EditPropertyModal = ({handleCancel, handleClose, propertyID, data}) => {
             // featured: e.target[56].value
         }
         await updateHolding(propertyID, data)
+        .then(() => handleClose())
     }
   return (
     <div id='property-edit-modal-container'>
@@ -184,7 +185,16 @@ const EditPropertyModal = ({handleCancel, handleClose, propertyID, data}) => {
             <p>Lease End Date</p>
             <TextField fullWidth variant='outlined' label='Enter lease end date' defaultValue={data.leaseEndDate}/>
             
-            <Button variant='contained' type='submit'>Save Changes</Button>
+            <Button variant='contained' type='submit' 
+                style={{
+                    backgroundColor: '#5ca8b2',
+                    borderRadius: 50,
+                    margin: '2rem auto'
+                }}
+                fullWidth
+                >
+                    Save Changes
+                </Button>
         </form>
     </div>
   )

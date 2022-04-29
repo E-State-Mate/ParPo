@@ -64,7 +64,7 @@ const HoldingList = () => {
     return (
         <div id="holding-list-container">
             {/* Desktop implementation */}
-            <Grid container width="80%" sx={{ margin: "auto", display: {xs: 'none', sm: 'flex'} }}>
+            <Grid container width="80%" sx={{ margin: "auto", display: {xs: 'none !important', sm: 'flex !important'} }}>
                 <Grid item md={4} lg={3}>
                     <p style={{ margin: "1rem" }}>Property Type</p>
                     {propertyTypes.map((property, i) => (
@@ -79,7 +79,7 @@ const HoldingList = () => {
                 </Grid>
             </Grid>
             {/* Mobile implementation */}
-            <Grid container sx={{margin: 'auto', display: {xs: 'flex', sm: 'none'}}}>
+            <Grid container sx={{margin: 'auto', display: {xs: 'flex !important', sm: 'none !important'}}}>
                 <Grid item xs={6}>
                     <p style={{ margin: "1rem" }}>{listCount} Properties</p>
                 </Grid>
