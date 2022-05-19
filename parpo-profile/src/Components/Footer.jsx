@@ -36,21 +36,24 @@ const Footer = () => {
   return (
     <div id='footer'>
      <Grid container alignItems='center' id='footer-main-ctr' mt={2}>
-        <Grid item sm={10} md={4} className='footer-txt'>
-          <h3>ParPo</h3>
-          <p></p>
+
+        <Grid item xs={12} sm={12} md={4} className='footer-txt'>
+          <h3 style={{textAlign: 'center'}}>ParPo</h3>
+          <p style={{textAlign: 'center'}}>It is your dream we are building.</p>
         </Grid>
-        <Grid item sm={10} md={6} className='footer-txt'>
-          {/* <p>Enter your email to stay up to date on any Longwood Trade Center news.</p>
-          <div id='email-ctr'>
-            <TextField label="Enter email" variant="filled" sx={{width: '70%'}} InputLabelProps={{style: {color: 'white'}}}/>
-            <Button alignItems='center'>Subscribe</Button>
-          </div> */}
-          <h3>{`You are signed in as a: ${userData.role}`}</h3>
-          <Button variant='contained' onClick={handleLogout} label='Logout' style={{margin: '1rem auto'}}>Logout</Button>
+
+        <Grid container item xs={12} md={6}>
+            <Grid item xs />
+            <Grid item xs={7} md={12} className='footer-txt'>
+              <h5>{`You are signed in as a: ${userData.role}`}</h5>
+            </Grid>
+            <Grid item xs={3} md={12} className='footer-txt' justifyContent='center'>
+              <Button variant='contained' onClick={handleLogout} label='Logout' style={{margin: '1rem auto'}}>Logout</Button>
+            </Grid>
+            <Grid item xs />
         </Grid>
-        <Grid item xs={12} md={2}>
-          <Grid container>
+
+        <Grid container item xs={12} md={2}>
             <Grid item xs />
             <Grid item xs={5} md={12} className='footer-txt'>
               <p><b>Call us</b></p>
@@ -61,18 +64,22 @@ const Footer = () => {
               <p>Email address</p>
             </Grid>
             <Grid item xs />
-          </Grid>
         </Grid>
+
       </Grid>
       <div id='footer-btm'>
         <Divider variant='middle' color='lightgray'/>
-        <Grid container id='footer-btm-txt'>
-          <Grid item sm={12} md={6} lg={6}>
+        <Grid container id='footer-btm-txt' mt={2}>
+          <Grid item xs={1} md={3}/>
+          <Grid item xs={10} md={6} lg={6}>
             <p>©2022 E-State Mate Services, a Real Estate Tech Company. Orlando, FL. All Rights Reserved.</p>
           </Grid>
-          <Grid item sm={12} md={6} lg={6}>
+          <Grid item xs={1} md={3}/>
+          <Grid item xs={1} md={3}/>
+          <Grid item xs={10} md={6} lg={6}>
             <p>Designed by E-State Mate Services</p>
           </Grid>
+          <Grid item xs={1} md={3}/>
       </Grid>
       </div>
     </div>

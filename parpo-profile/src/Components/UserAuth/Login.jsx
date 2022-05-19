@@ -60,9 +60,8 @@
         }, [currentUser])
 
     return (        
-        <>
-            <Container className='d-flex align-items-center justify-content-center' style={{ minHeight: "100vh" }}>
-                <div className="w-100"  style={{ maxWidth: "400px"}}>
+        <Container id='login-holder'>
+            <div className="w-100"  style={{ maxWidth: "400px", margin: 'auto'}}>
                 <Card>  
                     <Card.Body>
                         <h2 className="text-center mb-4">Log In</h2>
@@ -92,11 +91,10 @@
                         </div>
                     </Card.Body>
                 </Card>
-                {/* <div className= "w-100 text-center mt-2">
-                    Don't have an account? <Link to="/signup">Sign Up</Link>
-                </div> */}
-                </div>
-            </Container>
-        </>
+            {/* <div className= "w-100 text-center mt-2">
+                Don't have an account? <Link to="/signup">Sign Up</Link>
+            </div> */}
+            </div>
+        </Container>
         )
     }
