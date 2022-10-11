@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Card, Container, Form, Button, Row, Col } from 'react-bootstrap' 
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../../Context/AuthContext'
 import { db } from '../../firebase';
 import { doc, setDoc } from 'firebase/firestore'

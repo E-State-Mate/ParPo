@@ -1,4 +1,3 @@
-import React from 'react'
 import { Card, Divider, Grid, SvgIcon, Typography } from '@mui/material'
 import './detailsView.css'
 import EmojiPeopleOutlinedIcon from '@mui/icons-material/EmojiPeopleOutlined';

@@ -1,4 +1,3 @@
-import React from 'react'
 import ApartmentIcon from '@mui/icons-material/Apartment';
 import SavingsIcon from '@mui/icons-material/Savings';
 import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';

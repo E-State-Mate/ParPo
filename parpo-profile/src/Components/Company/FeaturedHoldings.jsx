@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import {useEffect, useState} from 'react'
 import FeaturedCard from './FeaturedCard'
 import { css } from '@emotion/react'
 import { Divider, Grid } from '@mui/material'

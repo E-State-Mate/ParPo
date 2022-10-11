@@ -1,9 +1,5 @@
-import * as react from 'react';
-import { useEffect, useState } from 'react';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import Modal from '@mui/material/Modal';
+import { useState } from 'react';
+import { Box, Modal, Typography } from '@mui/material';
 import HelpOutlineOutlined from '@mui/icons-material/HelpOutlineOutlined';
 
 const style = {
@@ -34,12 +30,8 @@ const style = {
           aria-describedby="modal-modal-description"
         >
           <Box sx={style}>
-            {/* <Typography id="modal-modal-title" variant="h6" component="h2">
-              Text in a modal
-            </Typography> */}
             <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            {props.tooltipData}
-       
+              {props.tooltipData}
             </Typography>
           </Box>
         </Modal>

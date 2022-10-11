@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Box, Button, Card, CardActions, CardContent, CardHeader, Divider, Grid, TextField, Typography } from '@mui/material';
+import { Button, Card, CardContent, CardHeader, Divider, Grid, TextField, Typography } from '@mui/material';
 import { db } from '../../firebase';
 import { doc, getDoc, setDoc } from 'firebase/firestore'
 import { useAuth } from '../../Context/AuthContext';
@@ -50,7 +50,7 @@ const profileForm = [
   }
 ]
 
-export const ProfileDetails = (props) => {
+const ProfileDetails = (props) => {
   const [editing, setEditing] = useState(false);
   const [profileData, setProfileData] = useState({
     firstName: '',
@@ -125,141 +125,7 @@ export const ProfileDetails = (props) => {
         </Grid>
       </CardContent>
     </Card>
-    // <form>
-    //   <Card>
-    //     <CardHeader
-    //       subheader="The information can be edited"
-    //       title="Profile"
-    //     />
-    //     <Divider />
-    //     <CardContent>
-    //       <Grid
-    //         container
-    //         spacing={3}
-    //       >
-    //         <Grid
-    //           item
-    //           md={6}
-    //           xs={12}
-    //         >
-    //           <TextField
-    //             fullWidth
-    //             helperText="Please specify the first name"
-    //             label="First name"
-    //             name="firstName"
-    //             required
-    //             value={currentUser.firstName || ''}
-    //             variant="outlined"
-    //           />
-    //         </Grid>
-    //         <Grid
-    //           item
-    //           md={6}
-    //           xs={12}
-    //         >
-    //           <TextField
-    //             fullWidth
-    //             label="Last name"
-    //             name="lastName"
-    //             required
-    //             value={currentUser.lastName || ''}
-    //             variant="outlined"
-    //           />
-    //         </Grid>
-    //         <Grid
-    //           item
-    //           md={6}
-    //           xs={12}
-    //         >
-    //           <TextField
-    //             fullWidth
-    //             label="Email Address"
-    //             name="email"
-    //             required
-    //             value={currentUser.email || ''}
-    //             variant="outlined"
-    //           />
-    //         </Grid>
-    //         <Grid
-    //           item
-    //           md={6}
-    //           xs={12}
-    //         >
-    //           <TextField
-    //             fullWidth
-    //             label="Phone Number"
-    //             name="phone"
-    //             type="number"
-    //             value={currentUser.phone || ''}
-    //             variant="outlined"
-    //           />
-    //         </Grid>
-    //         <Grid
-    //           item
-    //           md={12}
-    //           xs={12}
-    //         >
-    //           <TextField
-    //             fullWidth
-    //             label="Country"
-    //             name="country"
-    //             required
-    //             value={currentUser.country || ''}
-    //             variant="outlined"
-    //           />
-    //         </Grid>
-    //         <Grid
-    //           item
-    //           md={6}
-    //           xs={12}
-    //         >
-    //           <TextField
-    //             fullWidth
-    //             label="Select State"
-    //             name="state"
-    //             required
-    //             select
-    //             SelectProps={{ native: true }}
-    //             value={currentUser.state || ''}
-    //             variant="outlined"
-    //           >
-    //             {states.map((option) => (
-    //               <option
-    //                 key={option.value}
-    //                 value={option.value}
-    //               >
-    //                 {option.label}
-    //               </option>
-    //             ))}
-    //           </TextField>
-    //         </Grid>
-    //       </Grid>
-    //     </CardContent>
-    //     <Divider />
-    //     <Box
-    //       sx={{
-    //         display: 'flex',
-    //         justifyContent: 'flex-end',
-    //         p: 2
-    //       }}
-    //     >
-    //     { props.editing ? 
-    //       <Button
-    //       color="primary"
-    //       variant="contained"
-    //       >
-    //         Save details
-    //       </Button>
-    //       :
-    //       <Button
-    //       color="primary"
-    //       variant="contained"
-    //       >
-    //         Edit Profile
-    //       </Button>
-    //     }  
-    //     </Box>
-    //   </Card>
-    // </form>
   );
 };
+
+export default ProfileDetails;

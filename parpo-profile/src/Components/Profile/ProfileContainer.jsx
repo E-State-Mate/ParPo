@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { Box, Container, Grid, Typography } from '@mui/material';
 import Profile from './Profile';
-import { ProfileDetails } from './ProfileDetails';
+import ProfileDetails from './ProfileDetails';
 
 const Account = () => {
   const [fName, setFName] = useState('Jon')

@@ -1,20 +1,13 @@
-import React, { useEffect, useState } from 'react'
-import {Button, Divider, Grid, Paper} from '@mui/material';
-import Overview from '../Components/HoldingDetails/Overview';
-import Location from '../Components/HoldingDetails/Location';
-import Financial from '../Components/HoldingDetails/Financial'
-import Property from '../Components/HoldingDetails/Property';
-import Tenant from '../Components/HoldingDetails/Tenant';
-import DetailsNav from '../Components/HoldingDetails/DetailsNav';
-import { getDetailsByCategory, getHoldingById, getHoldings } from '../Lib/utils/holdingsFetcher';
-import EditPropertyModal from '../Components/HoldingDetails/EditPropertyModal';
+import { useEffect, useState } from 'react'
+import { Button, Divider, Grid, Paper } from '@mui/material';
+import { DetailsNav, EditPropertyModal, Financial, Location, Overview, Property, Tenant } from '../Components/HoldingDetails/holdingDetails'
+import { getHoldingById } from '../Lib/utils/holdingsFetcher';
 import { useAuth } from '../Context/AuthContext'
 import { db } from '../firebase'
 import { doc, getDoc } from 'firebase/firestore'
-import { useNavigate, useParams, useHistory } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import EditIcon from '@mui/icons-material/Edit';
-
 
 const HoldingDetails = ({data}) => {
 

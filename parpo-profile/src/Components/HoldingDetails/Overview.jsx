@@ -1,6 +1,6 @@
+import { useEffect, useState } from 'react'
 import { Card, CardContent, Grid } from '@material-ui/core';
 import { Divider, SvgIcon, Typography } from '@mui/material';
-import React, { useEffect, useState } from 'react'
 import './detailsView.css'
 import CottageOutlinedIcon from '@mui/icons-material/CottageOutlined';
 import HomeWorkOutlinedIcon from '@mui/icons-material/HomeWorkOutlined';

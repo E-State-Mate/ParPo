@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react'
-import { Box, Button, Divider, FormHelperText, InputLabel, MenuItem, Modal, TextField, Typography } from '@mui/material'
+import { useState } from 'react'
+import { Box, Button, FormHelperText, MenuItem, Modal, TextField, Typography } from '@mui/material'
 import { sendSignInLinkToEmail } from "firebase/auth";
 import { auth } from '../../firebase'
-import { Select } from '@mui/material';
 
 const actionCodeSettings = {
     url: 'www.estatemateservices.com',

@@ -1,4 +1,3 @@
-import React from 'react'
 import { Card, Divider, Grid, SvgIcon, Typography } from '@mui/material'
 import './detailsView.css'
 import {amenitiesData} from '../../Lib/data/amenitiesData'
@@ -12,7 +11,6 @@ import RadarOutlinedIcon from '@mui/icons-material/RadarOutlined';
 import DirectionsCarFilledOutlinedIcon from '@mui/icons-material/DirectionsCarFilledOutlined';
 import HolidayVillageOutlinedIcon from '@mui/icons-material/HolidayVillageOutlined';
 import IronOutlinedIcon from '@mui/icons-material/IronOutlined';
-import HoldingDetails from '../../Pages/HoldingDetails';
 import { tooltipData } from '../../Lib/data/tooltipData';
 import DetailsModal from './DetailsModal';
 import {BounceLoader} from 'react-spinners';

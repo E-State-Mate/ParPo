@@ -1,5 +1,3 @@
-import React from 'react'
-
 const PageTitle = ({title, subtitle}) => {
   return (
     <div id='page-title'>

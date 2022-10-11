@@ -1,7 +1,6 @@
-import React from 'react'
 import { Card, Grid, SvgIcon, Typography } from '@mui/material'
-import './detailsView.css'
-import {tenantData} from './tenantData'
+import '../HoldingDetails/detailsView.css'
+import { tenantData } from '../../Lib/data/tenantData'
 import HouseIcon from '@mui/icons-material/House'
 
 function Tenant ({data}) {

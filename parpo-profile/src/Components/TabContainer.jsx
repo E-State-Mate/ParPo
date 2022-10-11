@@ -4,7 +4,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import ProfileList from './ProfileList/ProfilesList'
+import ProfileList from './ProfileList/ProfileList'
 import ProfileContainer from './Profile/ProfileContainer'
 import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom'

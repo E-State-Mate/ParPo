@@ -1,5 +1,5 @@
 import React from 'react'
-import ProfilesList from '../Components/ProfileList/ProfilesList'
+import ProfilesList from '../Components/ProfileList/ProfileList'
 const Profiles = () => {
   return (
     <ProfilesList />

@@ -1,9 +1,9 @@
-import { Card, CardActionArea, CardContent, CardHeader, CardMedia, Grid, Paper, Typography } from '@mui/material'
+import { useEffect, useState } from 'react'
+import { Card, CardActionArea, CardMedia, Grid, Typography } from '@mui/material'
 import PeopleIcon from '@mui/icons-material/People';
 import LayersIcon from '@mui/icons-material/Layers';
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 import StarOutlineIcon from '@mui/icons-material/StarOutline';
-import React, { useEffect, useState } from 'react'
 import { makeStyles } from '@material-ui/core'
 import { getStorage, ref, getDownloadURL} from 'firebase/storage'
 import { Link } from 'react-router-dom'

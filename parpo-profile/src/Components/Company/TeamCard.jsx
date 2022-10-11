@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import {useEffect, useState} from 'react'
 import { Card, CardActionArea, CardMedia } from '@mui/material'
 import { getStorage, ref, getDownloadURL } from 'firebase/storage'
 

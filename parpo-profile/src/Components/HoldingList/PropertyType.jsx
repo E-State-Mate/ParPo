@@ -1,5 +1,5 @@
-import React, { useState, useContext, useEffect } from "react";
-import { Card, CardContent, Icon, Typography } from "@mui/material";
+import { useState, useContext } from "react";
+import { Card, CardContent, Typography } from "@mui/material";
 import { SvgIcon } from "@mui/material";
 import CheckIcon from "@mui/icons-material/Check";
 

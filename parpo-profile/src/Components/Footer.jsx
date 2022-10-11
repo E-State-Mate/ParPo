@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Button, Divider, Grid } from '@mui/material'
 import { useAuth } from '../Context/AuthContext'
 import { db } from '../firebase'

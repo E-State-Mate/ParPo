@@ -1,15 +1,8 @@
-import React, { useContext, useEffect, useState } from "react";
-import { ButtonBase, Card, CardHeader, Grid, Paper, Typography } from "@mui/material";
-import { styled } from "@mui/material/styles";
-import PropertyType from "../Components/HoldingList/PropertyType";
-import HoldingCard from "../Components/HoldingList/HoldingCard.js";
-import MobHoldingCard from '../Components/HoldingList/MobHoldingCard'
-import FilterDropdown from "../Components/HoldingList/FilterDropdown";
-import holdingData from "../Lib/data/holdingData.json";
+import { useEffect, useState } from "react";
+import { Grid } from "@mui/material";
+import { FilterDropdown, HoldingCard, MobHoldingCard, PropertyType } from "../Components/components";
 import { propertyTypes } from "../Lib/data/propertyTypeData";
 import { getHoldings } from "../Lib/utils/holdingsFetcher";
-import { HoldingContext } from "../Context/HoldingContext";
-import { PropertyTypeContext } from "../Context/PropertyTypeContext";
 // When you make components (Filter Type card, Holding card, etc), put them in Components/HoldingList to help keep things organized
 
 const HoldingList = () => {
@@ -17,8 +10,7 @@ const HoldingList = () => {
     const [ visibleHoldings, setVisibleHoldings ] = useState([''])
     const [ listCount, setListCount ] = useState(0)
     const [ filterList, setFilterList ] = useState([])
-    const [ mobFilter, setMobFilter ] = useState([])
-
+    
     // console.log("holdings:", holdings);
     // TODO: Make dynamic Holdings count based on how many are rendered w/ HoldingCount
 

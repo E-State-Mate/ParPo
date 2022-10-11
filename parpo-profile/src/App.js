@@ -1,20 +1,10 @@
-import React from 'react'
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
-import Login from "./Components/UserAuth/Login"
-import PrivateRoute from './Components/PrivateRoute';
-import Onboarding from './Components/Onboarding/Onboarding'
-import './App.css';
+import { Company, HoldingDetails, HoldingList, Profiles, UserProfile } from './Pages/pages'
+import { Login, PrivateRoute, Onboarding, ForgotPassword, Signup, Layout } from './Components/components'
 import { AuthProvider } from './Context/AuthContext';
-import ForgotPassword from './Components/UserAuth/ForgotPassword';
-import Signup from './Components/Onboarding/Signup';
-import HoldingList from './Pages/HoldingList';
-import Layout from './Components/Layout';
-import Company from './Pages/Company';
-import HoldingDetails from './Pages/HoldingDetails';
-import Profiles from './Pages/Profiles';
-import UserProfile from './Pages/UserProfile';
 import HoldingProvider from "./Context/HoldingContext";
 import PropertyTypeProvider from "./Context/PropertyTypeContext";
+// import { Footer, Game, HowToPlay, Navbar, PingHandler, Settings, SolveToStart, Stats, VersionNotes } from './Components'
 
 function App() {
 
