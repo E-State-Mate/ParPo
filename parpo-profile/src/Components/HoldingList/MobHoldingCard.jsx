@@ -30,9 +30,7 @@ const HoldingCard = ({holding}) => {
   }
   
   useEffect(() => {
-    console.log(holding)
     getPics();
-    console.log(fileURL)
   }, [,fileURL])
 
   useEffect(() => {

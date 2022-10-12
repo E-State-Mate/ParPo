@@ -1,0 +1,11 @@
+#header {
+    position: relative;
+    height: 400px;
+    overflow-y: none;
+  }
+  
+#header-bg{
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+}

@@ -1,17 +1,23 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { holdingList, company } from './initialState'
+import { holdingDetails, holdingList, company, profile } from './initialState'
+import holdingDetailsReducer from '../_features/holdingDetailsSlice'
 import holdingListReducer from '../_features/holdingListSlice'
 import companyReducer from '../_features/companySlice'
+import profileReducer from '../_features/profileSlice'
 
 export const initialState = {
+    holdingDetails,
     holdingList,
-    company
+    company,
+    profile
 }
 
 export const store = configureStore({
     reducer: {
+        holdingDetails: holdingDetailsReducer,
         holdingList: holdingListReducer,
-        company: companyReducer
+        company: companyReducer,
+        profile: profileReducer
     },
     initialState
 })

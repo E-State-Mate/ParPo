@@ -1,11 +1,7 @@
 import { useEffect, useState }from 'react';
-import OutlinedInput from '@mui/material/OutlinedInput';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import ListItemText from '@mui/material/ListItemText';
-import Select from '@mui/material/Select';
-import Checkbox from '@mui/material/Checkbox';
+import { useDispatch } from 'react-redux'
+import { Checkbox, FormControl, InputLabel, ListItemText, MenuItem, OutlinedInput, Select } from '@mui/material';
+import { setFilterList } from '../../_features/holdingListSlice';
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -31,21 +27,21 @@ const names = [
   'Kelly Snyder',
 ];
 
-export default function FilterDropdown({propertyTypes, mobFilterListHandler}) {
-  const [personName, setPersonName] = useState([]);
+export default function FilterDropdown({ propertyTypes }) {
+
+  const dispatch = useDispatch();
+
   const [ propType, setPropType ] = useState([]);
 
   const handleChange = (event) => {
-    const {
-      target: { value },
-    } = event;
+    const {target: { value },} = event;
     setPropType(
       // On autofill we get a stringified value.
       typeof value === 'string' ? value.split(',') : value,
     );
   };
 
-  useEffect(() => {mobFilterListHandler(propType)}, [propType])
+  useEffect(() => {dispatch(setFilterList(propType))}, [propType])
 
   return (
     <div>

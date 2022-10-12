@@ -1,5 +1,4 @@
 import { Card, Grid, SvgIcon, Typography } from '@mui/material'
-import '../HoldingDetails/detailsView.css'
 import { tenantData } from '../../Lib/data/tenantData'
 import HouseIcon from '@mui/icons-material/House'
 

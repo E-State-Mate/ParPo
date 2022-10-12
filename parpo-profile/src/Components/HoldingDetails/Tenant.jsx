@@ -1,11 +1,19 @@
-import { Card, Divider, Grid, SvgIcon, Typography } from '@mui/material'
-import './detailsView.css'
-import EmojiPeopleOutlinedIcon from '@mui/icons-material/EmojiPeopleOutlined';
-import FamilyRestroomOutlinedIcon from '@mui/icons-material/FamilyRestroomOutlined';
-import StickyNote2OutlinedIcon from '@mui/icons-material/StickyNote2Outlined';
-import ThumbsUpDownOutlinedIcon from '@mui/icons-material/ThumbsUpDownOutlined';
-import ScheduleOutlinedIcon from '@mui/icons-material/ScheduleOutlined';
-import InsertInvitationOutlinedIcon from '@mui/icons-material/InsertInvitationOutlined';
+import { 
+        Card,
+        Divider,
+        Grid,
+        SvgIcon,
+        Typography
+    } from '@mui/material'
+import { 
+        EmojiPeopleOutlined,
+        FamilyRestroomOutlined,
+        StickyNote2Outlined,
+        ThumbsUpDownOutlined,
+        ScheduleOutlined,
+        InsertInvitationOutlined
+    } from '@mui/icons-material'
+    
 import {BounceLoader} from 'react-spinners';
 import { css } from '@emotion/react'
 
@@ -29,7 +37,7 @@ function Tenant (props) {
                         <Grid container spacing={10} alignItems='space-between' justifyContent='space-between'>
                             <Grid item xs={6} sm={4} md={3}>
                                 {/* General Icon Format */}
-                                <SvgIcon sx={{ fontSize: 60 }} component={EmojiPeopleOutlinedIcon} />
+                                <SvgIcon sx={{ fontSize: 60 }} component={EmojiPeopleOutlined} />
                                 <Typography variant='subtitle2' fontSize='1rem'>Occupancy Percentage</Typography>
                                 <Typography variant='caption'>{props.featHolding.occupancyPercentage*100}%</Typography>
                                 <div style={{height: '0.5rem'}}></div>
@@ -38,7 +46,7 @@ function Tenant (props) {
 
                             <Grid item xs={6} sm={4} md={3}>
                                 {/* General Icon Format */}
-                                <SvgIcon sx={{ fontSize: 60 }} component={FamilyRestroomOutlinedIcon} />
+                                <SvgIcon sx={{ fontSize: 60 }} component={FamilyRestroomOutlined} />
                                 <Typography variant='subtitle2' fontSize='1rem'>Unit Type</Typography>
                                 <Typography variant='caption'>{props.featHolding.singleOrMultiTenant} </Typography>
                                 <div style={{height: '0.5rem'}}></div>
@@ -47,7 +55,7 @@ function Tenant (props) {
 
                             <Grid item xs={6} sm={4} md={3}>
                                 {/* General Icon Format */}
-                                <SvgIcon sx={{ fontSize: 60 }} component={StickyNote2OutlinedIcon} />
+                                <SvgIcon sx={{ fontSize: 60 }} component={StickyNote2Outlined} />
                                 <Typography variant='subtitle2' fontSize='1rem'>Lease Type</Typography>
                                 <Typography variant='caption'>{props.featHolding.leaseType}</Typography>
                                 <div style={{height: '0.5rem'}}></div>
@@ -56,7 +64,7 @@ function Tenant (props) {
 
                             <Grid item xs={6} sm={4} md={3}>
                                 {/* General Icon Format */}
-                                <SvgIcon sx={{ fontSize: 60 }} component={ThumbsUpDownOutlinedIcon} />
+                                <SvgIcon sx={{ fontSize: 60 }} component={ThumbsUpDownOutlined} />
                                 <Typography variant='subtitle2' fontSize='1rem'>Lease Renewal</Typography>
                                 <Typography variant='caption'>{props.featHolding.leaseRenewal}</Typography>
                                 <div style={{height: '0.5rem'}}></div>
@@ -65,7 +73,7 @@ function Tenant (props) {
 
                             <Grid item xs={6} sm={4} md={3}>
                                 {/* General Icon Format */}
-                                <SvgIcon sx={{ fontSize: 60 }} component={ScheduleOutlinedIcon} />
+                                <SvgIcon sx={{ fontSize: 60 }} component={ScheduleOutlined} />
                                 <Typography variant='subtitle2' fontSize='1rem'>Years Left on Lease</Typography>
                                 <Typography variant='caption'>{props.featHolding.yearsLeftOnLease} years</Typography>
                                 <div style={{height: '0.5rem'}}></div>
@@ -74,7 +82,7 @@ function Tenant (props) {
                             
                             <Grid item xs={6} sm={4} md={3}>
                                 {/* General Icon Format */}
-                                <SvgIcon sx={{ fontSize: 60 }} component={InsertInvitationOutlinedIcon} />
+                                <SvgIcon sx={{ fontSize: 60 }} component={InsertInvitationOutlined} />
                                 <Typography variant='subtitle2' fontSize='1rem'>Lease End Date</Typography>
                                 <Typography variant='caption'>{Date(props.featHolding.leaseEndDate)}</Typography>
                                 <div style={{height: '0.5rem'}}></div>

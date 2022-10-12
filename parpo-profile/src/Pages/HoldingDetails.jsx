@@ -1,34 +1,40 @@
 import { useEffect, useState } from 'react'
+import { useNavigate, useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import { Button, Divider, Grid, Paper } from '@mui/material';
+import { ArrowBackIos, Edit } from '@mui/icons-material';
 import { DetailsNav, EditPropertyModal, Financial, Location, Overview, Property, Tenant } from '../Components/HoldingDetails/holdingDetails'
-import { getHoldingById } from '../Lib/utils/holdingsFetcher';
+import { fetchHolding } from '../_features/holdingDetailsSlice';
 import { useAuth } from '../Context/AuthContext'
 import { db } from '../firebase'
 import { doc, getDoc } from 'firebase/firestore'
-import { useNavigate, useParams } from 'react-router-dom';
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-import EditIcon from '@mui/icons-material/Edit';
+
 
 const HoldingDetails = ({data}) => {
+
+  let slug = useParams();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { currentUser } = useAuth()
+
+  const { featHolding } = useSelector(state => state.holdingDetails)
 
   const [userData, setUserData] = useState({
     role: 'N/A'
   })
-  const [featHolding, setFeatHolding] = useState({})
+
   const [editing, setEditing] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
-  const { currentUser } = useAuth()
-  let slug = useParams();
-  const navigate = useNavigate();
 
   useEffect(() => {
-    const id = slug.slug
-     const fetchHolding = async () => {
-       setFeatHolding(await getHoldingById(id));
+    const fetchHoldingByID = async () => {
+      dispatch(await fetchHolding(slug.slug))
     }
-    fetchHolding()
-    console.log(featHolding)
+
+    fetchHoldingByID()
   }, [slug]) //only called when component mounts
+
+
 
   const getProfileData = async () => {
     if(currentUser.uid !== null){
@@ -44,7 +50,7 @@ const HoldingDetails = ({data}) => {
 
   const handleClose = async (data) => {
     setEditing(false);
-    setFeatHolding(await getHoldingById(slug.slug))
+    dispatch(await fetchHolding(slug.slug))
   }
 
   useEffect(() => getProfileData(), [])
@@ -57,15 +63,15 @@ const HoldingDetails = ({data}) => {
 
 
   return (
-    <div id='details-container'>
-    <DetailsNav />
+    <div className='outlet-container'>
+      <DetailsNav />
       {/* Edit Property Button (if user is an Admin) */}
       <Paper style={{width: '80%', margin: '4rem auto', padding: '0.5rem'}}>
         <Grid container spacing={8} style={{width: '80%', margin: 'auto'}}>
           <Grid item xs={12} md={6} sx={{margin: '1rem'}}>
             <Button 
               fullWidth variant='contained' size='large' 
-              startIcon={<ArrowBackIosIcon />} 
+              startIcon={<ArrowBackIos />} 
               onClick={() => navigate('/holdings')}
               style={{
                 backgroundColor: '#5ca8b2',
@@ -82,7 +88,7 @@ const HoldingDetails = ({data}) => {
               <Grid item xs={12} md={6}>
                 <Button 
                   fullWidth variant='contained' size='large' 
-                  startIcon={<EditIcon />} 
+                  startIcon={<Edit />} 
                   onClick={() => setEditing(true)}
                   style={{
                     backgroundColor: '#5ca8b2',
@@ -102,7 +108,7 @@ const HoldingDetails = ({data}) => {
       <Property featHolding={featHolding} isLoaded={isLoaded}/>
       <Tenant featHolding={featHolding} isLoaded={isLoaded}/>
 
-    {editing && <EditPropertyModal handleCancel={handleCancel} handleClose={handleClose} propertyID={slug.slug} data={featHolding}/>}
+    {/* {editing && <EditPropertyModal handleCancel={handleCancel} handleClose={handleClose} propertyID={slug.slug} data={featHolding}/>} */}
   </div>
   )
 }

@@ -35,8 +35,7 @@ const Footer = () => {
   
   return (
     <div id='footer'>
-     <Grid container alignItems='center' id='footer-main-ctr' mt={2}>
-
+     <Grid container alignItems='center' id='footer-main-ctr'>
         <Grid item xs={12} sm={12} md={4} className='footer-txt'>
           <h3 style={{textAlign: 'center'}}>ParPo</h3>
           <p style={{textAlign: 'center'}}>It is your dream we are building.</p>

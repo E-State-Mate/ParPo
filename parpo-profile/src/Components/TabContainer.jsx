@@ -1,12 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import { Box, Button, Tab, Tabs, Typography } from '@mui/material'
 import PropTypes from 'prop-types';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
 import ProfileList from './ProfileList/ProfileList'
 import ProfileContainer from './Profile/ProfileContainer'
-import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from "../Context/AuthContext"
 import { db } from '../firebase'

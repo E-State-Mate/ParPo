@@ -1,11 +1,10 @@
+import { useEffect, useState } from 'react'
 import { Card, CardActionArea, CardContent, CardHeader, CardMedia, Grid, Paper, Typography } from '@mui/material'
-import PeopleIcon from '@mui/icons-material/People';
-import LayersIcon from '@mui/icons-material/Layers';
-import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
-import StarOutlineIcon from '@mui/icons-material/StarOutline';
-import React, { useEffect, useState } from 'react'
+import { AccountBalance, Layers, People, StarOutline } from '@mui/icons-material';
 import { makeStyles } from '@material-ui/core'
 import { getStorage, ref, getDownloadURL} from 'firebase/storage'
+import { BounceLoader } from 'react-spinners';
+import { css } from '@emotion/react'
 import { Link } from 'react-router-dom'
 
 const useStyles = makeStyles({
@@ -13,6 +12,12 @@ const useStyles = makeStyles({
     position: "relative left"
   }
 })
+
+const override = css`
+  display: block;
+  margin: 2rem auto;
+  border-color: red
+  `;
 
 const rightCol = ['occupancy', 'sqft', 'revenue', 'rating']
 
@@ -22,18 +27,19 @@ const HoldingCard = ({holding}) => {
   const [fileURL, setFileURL] = useState(null);
   const [ sqft, setSqft ] = useState(holding.sqft);
   const [ loading, setLoading ] = useState(true)
+  const [ imgLoading, setImgLoading ] = useState(true)
 
   const getPics = async () => {
     const storage = getStorage();
-    setFileURL(await getDownloadURL(ref(storage, holding.fileURL)))
-    .catch((error) => console.log(error))
+    setFileURL(await getDownloadURL(ref(storage, holding.fileURL))).catch((error) => console.log(error))
   }
-  
+
   useEffect(() => {
-    console.log(holding)
     getPics();
-    console.log(fileURL)
-  }, [,fileURL])
+    if(fileURL !== null){
+      setImgLoading(false)
+    }
+  }, [fileURL])
 
   useEffect(() => {
     if(holding !== null){
@@ -49,14 +55,19 @@ const HoldingCard = ({holding}) => {
       <Grid container align='left' style={{height: '100%'}}>
         
         <Grid item xs={12} sm={4}>
-          <CardMedia
-            className= {classes.image}
-            display= "flex !important"
-            component="img"
-            image={fileURL}
-            height='200px'
-            alt="Property header photo"
-          />
+          {imgLoading ? 
+            <BounceLoader loading={true} color={'#5ca8b2'} style={{margin: '2rem auto'}} css={override}/> 
+            :
+            <CardMedia
+              className= {classes.image}
+              display= "flex !important"
+              component="img"
+              image={fileURL}
+              height='200px'
+              alt="Property header photo"
+            />
+          }
+          
         </Grid>
 
         {/* Center column -- includes building name, type, address and price */}
@@ -77,19 +88,19 @@ const HoldingCard = ({holding}) => {
         {/* Right column -- features specific building data */}
         <Grid item xs={12} sm={4} className='prop-list-card-right' mt={2}>
           <div className='prop-list-card-right-info'>
-            <PeopleIcon sx={{marginRight: '1rem'}}/>
+            <People sx={{marginRight: '1rem'}}/>
             <Typography variant='body2'>{holding.occupancyPercentage*100}% occupancy</Typography>
           </div>
           <div className='prop-list-card-right-info'>
-            <LayersIcon sx={{marginRight: '1rem'}}/>
+            <Layers sx={{marginRight: '1rem'}}/>
             <Typography variant='body2'>{loading ? sqft : sqft.toLocaleString()} Sq Ft</Typography>
           </div>
           <div className='prop-list-card-right-info'>
-            <AccountBalanceIcon sx={{marginRight: '1rem'}}/>
+            <AccountBalance sx={{marginRight: '1rem'}}/>
             <Typography variant='body2'>{holding.revenue} in 2021 Revenue</Typography>
           </div>
           <div className='prop-list-card-right-info'>
-            <StarOutlineIcon sx={{marginRight: '1rem'}}/>
+            <StarOutline sx={{marginRight: '1rem'}}/>
             <Typography variant='body2'>{holding.rating} Rating</Typography>
           </div>
         </Grid>

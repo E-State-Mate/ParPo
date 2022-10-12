@@ -1,15 +1,12 @@
 import { useEffect, useState } from 'react'
 import { Card, CardContent, Grid } from '@material-ui/core';
 import { Divider, SvgIcon, Typography } from '@mui/material';
-import './detailsView.css'
 import CottageOutlinedIcon from '@mui/icons-material/CottageOutlined';
-import HomeWorkOutlinedIcon from '@mui/icons-material/HomeWorkOutlined';
 import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
 import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
 import LayersOutlinedIcon from '@mui/icons-material/LayersOutlined';
 import EmojiPeopleOutlinedIcon from '@mui/icons-material/EmojiPeopleOutlined';
 import StickyNote2OutlinedIcon from '@mui/icons-material/StickyNote2Outlined';
-import Layers from '@mui/icons-material/Layers';
 import {BounceLoader} from 'react-spinners';
 import { css } from '@emotion/react'
 

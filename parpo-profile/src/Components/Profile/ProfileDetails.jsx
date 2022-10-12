@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux'
 import { Button, Card, CardContent, CardHeader, Divider, Grid, TextField, Typography } from '@mui/material';
 import { db } from '../../firebase';
 import { doc, getDoc, setDoc } from 'firebase/firestore'
@@ -50,7 +51,8 @@ const profileForm = [
   }
 ]
 
-const ProfileDetails = (props) => {
+const ProfileDetails = () => {
+
   const [editing, setEditing] = useState(false);
   const [profileData, setProfileData] = useState({
     firstName: '',

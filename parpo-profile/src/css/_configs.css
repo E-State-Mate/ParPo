@@ -1,0 +1,9 @@
+:root {
+    --primary-color: #444;
+    --secondary-color: #ccc;
+    --tertiary-color: #fff;
+    --primary-accent: #5ca8b2;
+    --secondary-accent: red;
+    --primary-text: black;
+    --secondary-text: blue;
+}

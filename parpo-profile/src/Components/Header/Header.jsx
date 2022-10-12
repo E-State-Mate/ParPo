@@ -1,6 +1,6 @@
 import Navbar from './Navbar'
 import PageTitle from './PageTitle'
-import HeaderImg from '../../Lib/img/header-skyline.jpg'
+import HeaderImg from '../../Lib/img/header.jpg'
 
 const Header = () => {
   return (

@@ -1,8 +1,8 @@
-import React from 'react'
-import ProfilesList from '../Components/ProfileList/ProfileList'
+import ProfileList from '../Components/ProfileList/ProfileList'
+
 const Profiles = () => {
   return (
-    <ProfilesList />
+    <ProfileList />
   )
 }
 

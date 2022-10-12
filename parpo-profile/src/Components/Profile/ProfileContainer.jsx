@@ -1,16 +1,20 @@
 import { useState } from 'react'
+import { useSelector } from 'react-redux'
 import { Box, Container, Grid, Typography } from '@mui/material';
 import Profile from './Profile';
 import ProfileDetails from './ProfileDetails';
 
 const Account = () => {
-  const [fName, setFName] = useState('Jon')
-  const [lName, setLName] = useState('Snow')
-  const [email, setEmail] = useState('jon@snow.com')
-  const [phone, setPhone] = useState('(407) 885-1232')
-  const [location, setLocation] = useState('Westeros')
-  const [profilePic, setProfPic] = useState()
-  const [editing, setEditing] = useState(false);
+
+  const {
+    firstName,
+    lastName,
+    email,
+    phone,
+    location,
+    profilePic,
+    editing
+  } = useSelector(state => state.profile)
 
     return(
 <>
@@ -36,7 +40,7 @@ const Account = () => {
             <Profile profilePic={profilePic}/>
           </Grid>
           <Grid item xs={12}>
-            <ProfileDetails fName={fName} lName={lName} email={email} phone={phone} editing={editing} />
+            <ProfileDetails />
           </Grid>
         </Grid>
       </Container>

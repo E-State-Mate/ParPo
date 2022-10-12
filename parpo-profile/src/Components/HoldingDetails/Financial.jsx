@@ -1,5 +1,4 @@
 import { Card, Divider, Grid, SvgIcon, Typography } from '@mui/material'
-import './detailsView.css'
 import LocalOfferOutlinedIcon from '@mui/icons-material/LocalOfferOutlined';
 import TrendingUpOutlinedIcon from '@mui/icons-material/TrendingUpOutlined';
 import SavingsOutlinedIcon from '@mui/icons-material/SavingsOutlined';

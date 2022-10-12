@@ -3,7 +3,7 @@ import FeaturedCard from './FeaturedCard'
 import { css } from '@emotion/react'
 import { Divider, Grid } from '@mui/material'
 import { getFeaturedHoldings } from '../../Lib/utils/holdingsFetcher';
-import {BounceLoader} from 'react-spinners';
+import { BounceLoader } from 'react-spinners';
 
 const override = css`
   display: block;
@@ -31,7 +31,7 @@ const FeaturedHoldings = () => {
   }, [featHoldings])
 
   return (
-    <div style={{backgroundColor: 'white', padding: '2rem 0'}} id='featured'>
+    <div id='featured'>
       <div style={{padding: '2rem 0'}}>
         <p style={{textAlign: 'center'}}>Who Are We?</p>
         <h2 style={{textAlign: 'center'}}>Featured</h2>

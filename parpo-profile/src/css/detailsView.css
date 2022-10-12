@@ -1,0 +1,81 @@
+body {
+    background-color: #f4f4f4;
+}
+
+.details-dividers{
+    color: #5ca8b2;
+    font-weight: bold;
+    letter-spacing: 2px;
+    font-size: x-large;
+    width: 80%;
+}
+
+.mini-bar {
+    width: 1.5rem;
+    height: 0.2rem;
+    background-color: #5ca8b2;;
+    align-items: flex-end;
+}
+
+#overview-card {
+    /* margin-top: 3rem; */
+    /* margin-bottom: 2rem; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 12rem
+}
+
+.mini-card{
+    width: 10rem;
+    height: 8rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#location-card {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: auto
+}
+
+#google-map {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.details-card {
+    padding: 2rem;
+    width: 80%;
+}
+
+#tenant-card-item {
+    padding: 2rem
+}
+
+.modal-placement {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.modal-placement :hover{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#execSummary-details{
+    margin: 2rem auto;
+    width: 80%;
+}

@@ -1,9 +1,6 @@
 import { useState } from 'react';
 import {Box, Button, Divider, Drawer, IconButton, List, ListItem, ListItemIcon, ListItemText, Typography } from '@mui/material';
-import InfoIcon from '@mui/icons-material/Info';
-import BusinessIcon from '@mui/icons-material/Business';
-import GroupIcon from '@mui/icons-material/Group';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import { Info, Business, Group, AccountCircle } from '@mui/icons-material'
 import { Link } from 'react-router-dom'
 import MenuIcon from '@mui/icons-material/Menu';
 
@@ -33,7 +30,7 @@ export default function NavDrawer({links}) {
         {links.map((link, index) => (
           <ListItem button key={link.route} component={Link} to={link.route} style={{textDecoration: 'none'}}>
             <ListItemIcon>
-              {index === 0 ? <InfoIcon /> : index === 1 ? <BusinessIcon /> : index === 2 ? <GroupIcon/> : index === 3 && <AccountCircleIcon />}
+              {index === 0 ? <Info /> : index === 1 ? <Business /> : index === 2 ? <Group /> : index === 3 && <AccountCircle />}
             </ListItemIcon>
             <ListItemText primary={link.label} sx={{ml: 2}}/>
           </ListItem>
