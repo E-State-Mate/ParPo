@@ -15,12 +15,12 @@ There may be additional authentication required by Firebase. Please reach out to
 
 ##  Current Works-in-Progress
 
-The current version of the project is missing some key features, which will be added as development continues:
+The current version of this project is the publicly visible demo for ParPo. In future iterations, we are planning to:
 
-    -   Replayability of previous levels (still need to figure out implementation)
-    -   Strike out clues in correctly completed rows
-    -   Add color to post-game pixel picture
-    -   Improved analytics and game tracking on back-end
+    -   Fully containerize app to deploy on K8s
+    -   Improved error handling for edge cases to allow easier scaling of functionality later
+    -   Finish updating profile section to separate user lists by company
+    -   Add company specific log in to have defined different views by logged in organizations.
 
 ##  How to Use This Project
 
