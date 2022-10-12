@@ -1,70 +1,44 @@
-# Getting Started with Create React App
+#   ParPo by PropTerra
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+ParPo, or Partner Portfolio, is an edible portfolio visualizer and manager. ParPo allows Real Estate brokerages to display and share their portfolios with prospective investors.
 
-## Available Scripts
+## Installation
 
-In the project directory, you can run:
+This is the front-end portion of ParPo. You can clone this repo to your desktop and run it with:
 
-### `npm start`
+npm install
+npm start
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+There may be additional authentication required by Firebase. Please reach out to zach@propterra.io if you have issues.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+##  Current Works-in-Progress
 
-### `npm test`
+The current version of the project is missing some key features, which will be added as development continues:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+    -   Replayability of previous levels (still need to figure out implementation)
+    -   Strike out clues in correctly completed rows
+    -   Add color to post-game pixel picture
+    -   Improved analytics and game tracking on back-end
 
-### `npm run build`
+##  How to Use This Project
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+To have partial admin access, login with "admin@gmail.com", "password" to have the full view. In this repo, some functionality has been stripped away for data integrity purposes. Otherwise, log in with your Google account to access the project as a normal viewer. Peruse through the various properties to help you decide whether to invest with this hypothetical firm!
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+##  External Integrations
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+ParPo leverages Firebase, Firestore, MongoDB and GCP Cloud Functions to handle most of the backend and data storage. As such, some access may be limited if running from a local machine without authentication. If this is the case, please reach out to zach@propterra.io to discuss project access.
 
-### `npm run eject`
+##  Credits
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Thank you to the E-StateMate Services Team for putting this project together.
+- Eddie Wideman
+- Zach Tippit
+- Sylvia Jung
+- Kalju Nekvasil
+- Alejandro Terra
+- Larry Howell
+- Paola Garcia
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## License
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This app is not intended for commercial use for anyone outside of PropTerra LLC or E-StateMate Services.
