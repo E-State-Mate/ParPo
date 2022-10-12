@@ -6,8 +6,10 @@ ParPo, or Partner Portfolio, is an edible portfolio visualizer and manager. ParP
 
 This is the front-end portion of ParPo. You can clone this repo to your desktop and run it with:
 
+```
 npm install
 npm start
+```
 
 There may be additional authentication required by Firebase. Please reach out to zach@propterra.io if you have issues.
 
