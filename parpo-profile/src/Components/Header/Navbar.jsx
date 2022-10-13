@@ -62,7 +62,7 @@ const Navbar = () => {
           <NavDrawer links={links}/>
         </Grid>
         {links.map(link => (
-            <Grid key={link.label} item md sx={{display: {xs: 'none', md: 'flex'}}} justifyContent='center' >
+            <Grid key={link.label} item md sx={{display: {xs: 'none', md: 'flex'}}}  justifyContent='center' >
               <Button component={Link} to={link.route} style={{
                 color: (link.route === location.pathname ? '#5CA8B2' : 'white'),
                 borderBottom: (link.route === location.pathname ? '2px solid #5CA8B2' : 'white')}}>{link.label}</Button>
@@ -71,5 +71,7 @@ const Navbar = () => {
     </Grid>
   )
 }
+
+// style={{visibility: 'hidden'}}
 
 export default Navbar

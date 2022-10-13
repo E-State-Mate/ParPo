@@ -5,6 +5,16 @@ import { getStorage, ref, getDownloadURL} from 'firebase/storage'
 
 const FeaturedCard = ({data}) => {
 
+  const { 
+    _id,
+    propertyType,
+    sqft,
+    creditRating,
+    street, city, state, zipCode,
+    manager,
+    estimatedValue 
+  } = data;
+
     const [fileURL, setFileURL] = useState(null);
 
     const getPics = async () => {
@@ -19,21 +29,21 @@ const FeaturedCard = ({data}) => {
 
   return (
     <Card className='featured-card'>
-        <CardActionArea component={Link} to={`/property/${data._id}`} replace className='relative'>
+        <CardActionArea component={Link} to={`/property/${_id}`} replace className='relative'>
         <CardMedia component='img' image={fileURL} height='250px' />
           <div className='feat-card-top'>
-            <p>{data.propertyType} Building</p>
-            <p>{data.sqft.toLocaleString()} Sq Ft.</p>
-            <p>{data.creditRating}</p>
+            <p>{propertyType} Building</p>
+            <p>{sqft.toLocaleString()} Sq Ft.</p>
+            <p>{creditRating}</p>
           </div>
           <div className='feat-card-banner'>
             <div>
-                <p>{data.street}</p>
-                <p>{data.city}, {data.state} {data.zipCode}</p>
-                <p>Managed by: <i>{data.manager[0]}</i></p>
+                <p>{street}</p>
+                <p>{city}, {state} {zipCode}</p>
+                <p>Managed by: <i>{manager[0]}</i></p>
             </div>
             <>
-                <p>${data.estimatedValue.toLocaleString()}</p>
+                <p>${estimatedValue.toLocaleString()}</p>
             </>
           </div>
         </CardActionArea>
