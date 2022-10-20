@@ -5,6 +5,8 @@
 @import "css/company.css";
 @import "css/footer.css";
 @import "css/header.css";
+@import "css/navbar.css";
+@import "css/onboarding.css";
 
 body {
   margin: 0;

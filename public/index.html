@@ -16,5 +16,27 @@
   </head>
   <body>
     <div id="root"></div>
+    <script>
+    
+      window.onscroll = function() {scrollFunction()};
+
+      function scrollFunction() {
+        if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+          document.getElementById("navbar-container").style.height = "3rem";
+          document.getElementById("navbar-title").style.padding = "0.25rem 0";
+          document.getElementById("navbar-title").style.fontSize = "1.5rem";
+          document.getElementById("navbar-title").style.margin = "0.25rem 0";
+          document.getElementById("navbar-logo").style.width = "3rem";
+          document.getElementsByClassName("nav-link").style.height = "1.5rem";
+        } else {
+          document.getElementById("navbar-container").style.height = "5rem";
+          document.getElementById("navbar-title").style.padding = "0"
+          document.getElementById("navbar-title").style.fontSize = "2rem";
+          document.getElementById("navbar-title").style.margin = "1rem 0";
+          document.getElementById("navbar-logo").style.width = "4rem";
+          document.getElementsByClassName("nav-link").style.height = "3rem";
+        }
+      }
+    </script>
   </body>
 </html>

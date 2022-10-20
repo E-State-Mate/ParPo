@@ -1,0 +1,49 @@
+#navbar-container{
+    position: fixed;
+    width: 100%;
+    z-index: 5;
+    top: 0%;
+    height: 5rem;
+    background-color: white;
+    box-shadow: 0px 4px rgba(40,40,40,0.25);
+    transition: 0.8s all ease-in-out;
+}
+
+#navbar {
+    width: 80%;
+    margin: auto;
+}
+
+#navbar-title {
+    margin: 1rem 0;
+    color: #444;
+    text-decoration: none;
+    transition: 0.8s all ease-in-out;
+}
+
+#drawer-navbar-title{
+    color: #444;
+    text-decoration: none;
+    text-align: center;
+    padding: 0.5rem 0 0 0;
+}
+
+#navbar-logo{
+    padding-right: 1rem;
+    width: 4rem;
+    transition: 0.8s all ease-in-out;
+  }
+
+.active{ 
+    color: var(--primary-color) !important;
+}
+
+.inactive {
+    color: var(--secondary-accent) !important;
+}
+
+@media only screen and (max-width: 600px) {
+    #navbar-container{
+        height: 5rem;
+    }
+  }

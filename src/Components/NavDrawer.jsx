@@ -2,6 +2,7 @@ import { useState } from 'react';
 import {Box, Button, Divider, Drawer, IconButton, List, ListItem, ListItemIcon, ListItemText, Typography } from '@mui/material';
 import { Info, Business, Group, AccountCircle } from '@mui/icons-material'
 import { Link } from 'react-router-dom'
+import { default as ParPoLogo } from '../Lib/img/parpo-logo.png';
 import MenuIcon from '@mui/icons-material/Menu';
 
 export default function NavDrawer({links}) {
@@ -24,8 +25,8 @@ export default function NavDrawer({links}) {
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
-    <Typography variant='h3' align='center' sx={{m: 2}}>ParPo</Typography>
-    <Divider />
+      <h3 id='drawer-navbar-title'><img src={ParPoLogo} id='navbar-logo' />ParPo</h3>
+      <Divider />
       <List>
         {links.map((link, index) => (
           <ListItem button key={link.route} component={Link} to={link.route} style={{textDecoration: 'none'}}>
@@ -41,13 +42,14 @@ export default function NavDrawer({links}) {
         <Button variant='contained' id='mob-menu-logout'>Logout</Button>
         <p id='mob-menu-btm-txt'>Powered by <b style={{color: '#555'}}>PropTerra</b></p>
       </div>
-      
     </Box>
   );
 
   return (
-    <div>
-        <IconButton aria-label='open side menu' onClick={toggleDrawer('right', true)} id='mob-menu-btn' style={{color: 'white'}}><MenuIcon/></IconButton>
+    <>
+      <div style={{position: 'relative', width: '100%', height: '100%'}} onClick={toggleDrawer('right', true)}>
+        <IconButton aria-label='open side menu' id='mob-menu-btn'><MenuIcon/></IconButton>
+      </div>
         <Drawer
             anchor={'right'}
             open={state['right']}
@@ -55,6 +57,6 @@ export default function NavDrawer({links}) {
         >
             {list('right')}
         </Drawer>
-    </div>
+    </>
   );
 }

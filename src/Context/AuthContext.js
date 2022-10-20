@@ -17,7 +17,8 @@ const AuthContext = createContext()
           return auth.createUserWithEmailAndPassword(email, password)
       }
   
-      function login(email, password) {
+      const login = async (email, password) => {
+        const response = await auth.signInWithEmailAndPassword(email, password)
           return auth.signInWithEmailAndPassword(email, password)
       }
   

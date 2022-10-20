@@ -19,7 +19,7 @@ export const overviewData = [
     {
         holdingIcon: HouseIcon,
         holdingLabel: "Sqft",
-        holdingData: 420690
+        holdingData: 422697
     },
     {
         holdingIcon: HouseIcon,

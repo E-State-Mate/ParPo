@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { Button, Grid } from '@mui/material'
 import { Link, useLocation } from 'react-router-dom'
+import { default as ParPoLogo } from '../../Lib/img/parpo-logo.png';
 import NavDrawer from '../NavDrawer'
 
 const links = [
@@ -53,25 +54,25 @@ const Navbar = () => {
 
 
   return (
-    <Grid container id='navbar' direction='row' alignItems='center'>
-        <Grid item sm={1}/>
-        <Grid item sm={6} md={4} component={Link} to={'/holdings'} style={{textDecoration: 'none'}} sx={{m: 3}}>
-            <h1 style={{color: 'white', textDecoration: 'none'}}>ParPo</h1>
+    <div id='navbar-container'>
+      <Grid container id='navbar' direction='row' alignItems='space-between'>
+        <Grid item xs={10} sm={8} lg={4} md={4} component={Link} to={'/holdings'} style={{textDecoration: 'none'}}>
+            <h1 id='navbar-title'><img src={ParPoLogo} id='navbar-logo' />ParPo</h1>
         </Grid>
-        <Grid item sm={4} sx={{ display: {md: 'none'}}}>
+        <Grid item xs={2} sm={4} sx={{ display: {md: 'none'}}} alignItems="center" justify="flex-end">
           <NavDrawer links={links}/>
         </Grid>
+        <Grid item lg={2} md={1} sx={{ display: {sm: 'none', md: 'flex'}}}></Grid>
         {links.map(link => (
-            <Grid key={link.label} item md sx={{display: {xs: 'none', md: 'flex'}}}  justifyContent='center' >
-              <Button component={Link} to={link.route} style={{
-                color: (link.route === location.pathname ? '#5CA8B2' : 'white'),
-                borderBottom: (link.route === location.pathname ? '2px solid #5CA8B2' : 'white')}}>{link.label}</Button>
-            </Grid>
+          <Grid key={link.label} item md sx={{display: {xs: 'none', md: 'flex'}}}  justifyContent='center' >
+            <Button component={Link} to={link.route} className={'nav-link ' + ((link.route === location.pathname) ? ' active ' : ' inactive ')}>
+            {link.label}
+            </Button>
+          </Grid>
         ))}
-    </Grid>
+      </Grid>
+    </div>
   )
 }
-
-// style={{visibility: 'hidden'}}
 
 export default Navbar
