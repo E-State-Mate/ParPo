@@ -1,3 +1,4 @@
+import React from 'react';
 import { Card, Divider, Grid, SvgIcon, Typography } from '@mui/material';
 import PlaceOutlinedIcon from '@mui/icons-material/PlaceOutlined';
 import {
@@ -26,7 +27,7 @@ const options = {
     zoomControl: true,
 }
 
-function Location(props) {
+const Location = (props: any) => {
     const miniBar = (<div className='miniBar'></div>)   
 
     const center = {
@@ -38,7 +39,7 @@ function Location(props) {
         <>
             <Divider className='details-dividers' style={{margin: '6rem auto 2rem auto'}}>LOCATION</Divider>
 
-            <div align='center'>
+            <div>
                 <Card id='location-card' sx={{width: '80%', margin: 'auto'}}>
                     <Grid item>
                         {/* General Icon Format */}
@@ -47,10 +48,10 @@ function Location(props) {
                         { props.isLoaded ?
                             <Typography variant='caption'>{props.featHolding.city}<br/><br/></Typography>
                             :
-                            <BounceLoader loading={!props.isLoaded} color={'#5ca8b2'} style={{margin: '2rem auto'}} css={override}/>
+                            <BounceLoader loading={!props.isLoaded} color={'#5ca8b2'} css={override}/>
                         }
                         <div style={{height: '0.5rem'}}></div>
-                        <Divider width='30%' margin='auto' />
+                        <Divider />
                     </Grid>
                     <Grid item>
                         {/* General Icon Format */}
@@ -59,10 +60,10 @@ function Location(props) {
                         { props.isLoaded ?
                             <Typography variant='caption'>{props.featHolding.street},<br/> {props.featHolding.city}, {props.featHolding.state} {props.featHolding.zipCode}</Typography>
                             :
-                            <BounceLoader loading={!props.isLoaded} color={'#5ca8b2'} style={{margin: '2rem auto'}} css={override}/>
+                            <BounceLoader loading={!props.isLoaded} color={'#5ca8b2'} css={override}/>
                         }
                         <div style={{height: '0.5rem'}}></div>
-                        <Divider width='30%' margin='auto' />
+                        <Divider />
                     </Grid>
                 </Card>
             </div>
@@ -80,7 +81,7 @@ function Location(props) {
                         </GoogleMap>
                     </LoadScript>
                     :
-                    <BounceLoader loading={!props.isLoaded} color={'#5ca8b2'} style={{margin: '2rem auto'}} css={override}/>
+                    <BounceLoader loading={!props.isLoaded} color={'#5ca8b2'} css={override}/>
                 }
             </Card>
         </>
