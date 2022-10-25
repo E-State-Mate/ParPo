@@ -52,20 +52,18 @@ const DetailsNav = () => {
             open={Boolean(anchorEl)}
             onClose={handleMenuClose}
           >
-            <ScrollspyNav scrollTargetIds={targetId} scrollDuration='800' activeNavClass='active'>
+            <ScrollspyNav scrollTargetIds={targetId} scrollDuration='800' activeNavClass='active' />
                 {detailLinks.map((link, index) => (
                     <MenuItem href={`#${link.idnm}`} key={index}>{link.navHeading}</MenuItem>
                 ))}
-            </ScrollspyNav>
           </Menu>
         </Grid>
         <Grid item md={8} sx={{ display: {xs: 'none', md: 'block'}}}>
             <Grid container direction='row' justifyContent='flex-end' alignItems='center'>
-                <ScrollspyNav scrollTargetIds={targetId} scrollDuration='800' activeNavClass='active'>
+                <ScrollspyNav scrollTargetIds={targetId} scrollDuration='800' activeNavClass='active' />
                     {detailLinks.map((link, index) => (
                         <Button href={`#${link.idnm}`} style={{textDecoration: 'none', color: 'black'}} key={index}>{link.navHeading}</Button>
                     ))}
-                </ScrollspyNav>
             </Grid>
         </Grid>
     </Grid>

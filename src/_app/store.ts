@@ -19,5 +19,7 @@ export const store = configureStore({
         company: companyReducer,
         profile: profileReducer
     },
-    initialState
 })
+
+export type AppDispatch = typeof store.dispatch;
+export type RootState = ReturnType<typeof store.getState>;

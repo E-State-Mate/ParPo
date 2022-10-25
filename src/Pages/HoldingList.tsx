@@ -7,6 +7,7 @@ import { propertyTypes } from "../Lib/data/propertyTypeData";
 import { fetchHoldings, setListCount } from "../_features/holdingListSlice";
 import { BounceLoader } from 'react-spinners';
 import { css } from '@emotion/react'
+import type { AppDispatch } from '../_app/store'
 
 const override = css`
   display: block;
@@ -16,7 +17,7 @@ const override = css`
 
 const HoldingList = () => {
 
-    const dispatch = useDispatch()
+    const dispatch = useDispatch<AppDispatch>()
     let slug = useParams();
     const { filterList, holdings, listCount, status } = useSelector((state: any) => state.holdingList)
 

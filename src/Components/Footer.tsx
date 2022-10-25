@@ -9,18 +9,20 @@ import { default as PropTerraLogo } from '../Lib/img/propterra-logo.png'
 
 const Footer = () => {
 
-    const [userData, setUserData] = useState({
+    const [userData, setUserData] = useState<any>({
         role: 'N/A'
       });
 
-    const { currentUser, logout } = useAuth()
+    const { currentUser, logout }: any = useAuth()
     const navigate = useNavigate()
     
     const getProfileData = async () => {
         if(currentUser.uid !== null){
           const docRef = doc(db, "users", currentUser.uid)
           const docSnap = await getDoc(docRef);
-          setUserData(docSnap.data());
+          if(docSnap.data() !== undefined){
+            setUserData(docSnap.data());
+          }
         }
       }
 

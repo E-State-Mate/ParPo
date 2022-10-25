@@ -43,18 +43,21 @@ const a11yProps = (index: number) => {
 }
 
 export default function TabContainer() {
-  const [value, setValue] = React.useState(0);
-  const [userData, setUserData] = useState({
+  const [value, setValue] = useState<number>(0);
+  const [profileSelect, setProfileSelect] = useState<boolean>(false);
+  const [addingUser, setAddingUser] = useState<boolean>(false);
+  const [userSelected, setUserSelected] = useState<number>(0);
+  const [userData, setUserData] = useState<any>({
     role: ''
   });
   
 
-  const { currentUser, logout } = useAuth()
+  const { currentUser, logout }: any = useAuth()
   const navigate = useNavigate()
 
  
 
-  const isProfileSelected = (e: { id: any; }) => {
+  const isProfileSelected = (e: { id: any; }): void => {
     setProfileSelect(true);
     setUserSelected(e.id)
   }

@@ -15,20 +15,25 @@ import { useAuth } from '../../Context/AuthContext';
   
   const Profile = (props: any) => {
 
-    const [profileData, setProfileData] = useState({
-      firstName: '',
-      lastName: '',
-      phone: '',
-      location: ''
-    });
+    const [fName, setFName] = useState<string>('')
+    const [lName, setLName] = useState<string>('')
+    const [phone, setPhone] = useState<string>('')
+    const [location, setLocation] = useState<string>('')
     
-    const { currentUser } = useAuth();
+    const { currentUser }: any = useAuth();
   
     const getProfileData = async () => {
       if(currentUser.uid !== null){
         const docRef = doc(db, "users", currentUser.uid)
         const docSnap = await getDoc(docRef);
-        setProfileData(docSnap.data());
+        const user = docSnap.data();
+        if(user !== undefined){
+          setFName(user.firstName);
+          setLName(user.lastName);
+          setPhone(user.phone);
+          setLocation(user.location);
+        }
+        
       }
     }
   
@@ -58,7 +63,7 @@ import { useAuth } from '../../Context/AuthContext';
             gutterBottom
             variant="h5"
           >
-            {`${profileData.firstName} ${profileData.lastName}`}
+            {`${fName} ${lName}`}
           </Typography>
           <Typography
             color="textSecondary"

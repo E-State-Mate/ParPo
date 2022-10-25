@@ -15,8 +15,7 @@
     export default function Login() {
         const emailRef = useRef<any>();
         const passwordRef = useRef<any>();        
-        const { login } = useAuth();
-        const { currentUser } = useAuth();
+        const { login, currentUser }: any = useAuth();
         const [error, setError] = useState("");
         const [loading, setLoading] = useState(false);
         const navigate = useNavigate();

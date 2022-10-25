@@ -27,11 +27,10 @@ const AppNav = () => {
     <Grid container style={{backgroundColor: 'white', boxShadow: 'darkgray 0px 3px'}} alignItems='center' p={1} sx={{ display: {xs: 'none', md: 'block'}}}>
         <Grid item md={12} sx={{ display: {xs: 'none', md: 'block'}}}>
             <Grid container direction='row' justifyContent='flex-end' alignItems='center'>
-                <ScrollspyNav scrollTargetIds={targetId} scrollDuration='800' activeNavClass='active'>
-                    {navLinks.map((link, index) => (
-                        <Button component='a' href={`#${link.idnm}`} style={{textDecoration: 'none', color: 'black'}} key={index}>{link.navHeading}</Button>
-                    ))}
-                </ScrollspyNav>
+                <ScrollspyNav scrollTargetIds={targetId} scrollDuration='800' activeNavClass='active' />
+                {navLinks.map((link, index) => (
+                    <Button component='a' href={`#${link.idnm}`} style={{textDecoration: 'none', color: 'black'}} key={index}>{link.navHeading}</Button>
+                ))}
             </Grid>
         </Grid>
     </Grid>

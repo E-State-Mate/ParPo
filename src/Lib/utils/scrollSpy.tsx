@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const ScrollspyNav = (props: { scrollTargetIds: any; activeNavClass: any; scrollDuration: any; router: string; }) => {
+const ScrollspyNav = (props: { scrollTargetIds: any; activeNavClass: any; scrollDuration: any; }) => {
 
     const [scrollTargetIDs, setScrollTargetIDs] = useState(props.scrollTargetIds)
     const [activeNavClass, setActiveNavClass] = useState(props.activeNavClass)
@@ -8,15 +8,15 @@ const ScrollspyNav = (props: { scrollTargetIds: any; activeNavClass: any; scroll
     const [homeDefaultLink, setHomeDefaultLink] = useState('/')
     const [hashID, setHashID] = useState('#')
 
-    useEffect(() => {
-        if(props.router && props.router === 'HashRouter'){
-            setHomeDefaultLink('#/')
-            setHashID('#/#')
-        } else {
-            setHomeDefaultLink('/')
-            setHashID('#')
-        }
-    }, [props.router])
+    // useEffect(() => {
+    //     if(props.router && props.router === 'HashRouter'){
+    //         setHomeDefaultLink('#/')
+    //         setHashID('#/#')
+    //     } else {
+    //         setHomeDefaultLink('/')
+    //         setHashID('#')
+    //     }
+    // }, [props.router])
 
     const easeInOutQuad = (current_time: number, start: number, change: number, duration: number) => {
         current_time /= duration / 2;
@@ -46,7 +46,7 @@ const ScrollspyNav = (props: { scrollTargetIds: any; activeNavClass: any; scroll
         return document.querySelector(`a[href='${hashID}${sectionID}']`);
     }
 
-    const getNavToSectionID = (navHref: string) => {
+    const getNavToSectionID = (navHref: any) => {
         return navHref.includes(hashID) ? navHref.replace(hashID, "") : "";
     }
 
@@ -101,19 +101,20 @@ const ScrollspyNav = (props: { scrollTargetIds: any; activeNavClass: any; scroll
                     return;
                 } else{
                     scrollSectionOffsetTop = document.getElementById(sectionID)!.offsetTop;
+                    var navElement: any = getNavLinkElement(sectionID);
                     if (window.pageYOffset >= scrollSectionOffsetTop && window.pageYOffset < scrollSectionOffsetTop + document.getElementById(sectionID)!.scrollHeight) {
                         // console.log(sectionID)
                         getNavLinkElement(sectionID)!.classList.add(activeNavClass);
-                        getNavLinkElement(sectionID)!.parentNode!.classList.add(activeNavClass);
+                        (navElement.parentNode as HTMLElement).classList.add(activeNavClass);
                         clearOtherNavLinkActiveStyle(sectionID)
                     } else {
                         getNavLinkElement(sectionID)!.classList.remove(activeNavClass);
-                        getNavLinkElement(sectionID)!.parentNode!.classList.remove(activeNavClass);
+                        (navElement.parentNode as HTMLElement).classList.remove(activeNavClass);
                     }
     
                     if (window.innerHeight + window.pageYOffset >= document.body.scrollHeight && index === scrollTargetIDs.length - 1) {
                         getNavLinkElement(sectionID)!.classList.add(activeNavClass);
-                        getNavLinkElement(sectionID)!.parentNode!.classList.add(activeNavClass);
+                        (navElement.parentNode as HTMLElement).classList.add(activeNavClass);
                         clearOtherNavLinkActiveStyle(sectionID);
                     }
                 }               
@@ -122,16 +123,16 @@ const ScrollspyNav = (props: { scrollTargetIds: any; activeNavClass: any; scroll
     
     const clearOtherNavLinkActiveStyle = (excludeSectionID: any) => {
         scrollTargetIDs.forEach((sectionID: any, index: any) => {
+            var navElement: any = getNavLinkElement(sectionID);
             if (sectionID !== excludeSectionID) {
                 getNavLinkElement(sectionID)!.classList.remove(activeNavClass);
-                getNavLinkElement(sectionID)!.parentNode!.classList.remove(activeNavClass);
+                (navElement.parentNode as HTMLElement).classList.remove(activeNavClass);
             }
         });
     }
 
     return (
-        <div data-nav="list" className={props.className}>
-            {props.children}
+        <div data-nav="list">
         </div>
     );
 }

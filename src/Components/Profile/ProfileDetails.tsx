@@ -60,7 +60,7 @@ const ProfileDetails = () => {
     phone: '',
     location: ''
   });
-  const { currentUser } = useAuth();
+  const { currentUser }: any = useAuth();
 
   const getProfileData = async () => {
     if(currentUser.uid !== null){

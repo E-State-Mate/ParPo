@@ -61,9 +61,9 @@ const FilterDropdown: React.FunctionComponent<FilterDropdownProps> = ({ property
           renderValue={(selected) => selected.join(', ')}
           MenuProps={MenuProps}
         >
-          {propertyTypes.map((propertyType: { propertyType: {} | null | undefined; }) => (
+          {propertyTypes.map((propertyType: { propertyType: any | {} | null | undefined; }) => (
             <MenuItem>
-              <Checkbox checked={propType.indexOf(propertyType.propertyType) > -1} />
+              {/* <Checkbox checked={propType.indexOf(propertyType.propertyType) > -1} /> */}
               <ListItemText primary={propertyType.propertyType} />
             </MenuItem>
           ))}

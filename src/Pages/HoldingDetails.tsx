@@ -8,20 +8,21 @@ import { fetchHolding } from '../_features/holdingDetailsSlice';
 import { useAuth } from '../Context/AuthContext'
 import { db } from '../firebase'
 import { doc, getDoc } from 'firebase/firestore'
+import type { AppDispatch } from '../_app/store'
 
 const HoldingDetails = () => {
 
   let slug = useParams();
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
-  const { currentUser } = useAuth()
+  const { currentUser }: any = useAuth()
 
   const { featHolding } = useSelector((state: any) => state.holdingDetails)
 
   const [userData, setUserData] = useState<any | null>()
 
-  const [editing, setEditing] = useState(false);
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [editing, setEditing] = useState<boolean>(false);
+  const [isLoaded, setIsLoaded] = useState<boolean>(false);
 
   useEffect(() => {
     const fetchHoldingByID = async () => {

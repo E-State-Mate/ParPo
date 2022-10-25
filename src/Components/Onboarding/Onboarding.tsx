@@ -8,7 +8,7 @@ import { doc, setDoc } from 'firebase/firestore'
 
 const Onboarding = () => {
     const navigate = useNavigate();
-    const { currentUser } = useAuth();
+    const { currentUser }: any = useAuth();
     const [name, setName] = useState(['','']);
     const [nextPage, setNextPage] = useState(false);
 

@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { holdingDetails } from "../_app/initialState";
 
-export const fetchHolding = createAsyncThunk('holdingDetails/fetchHolding', async (id) => {
+export const fetchHolding = createAsyncThunk('holdingDetails/fetchHolding', async (id: string | undefined) => {
     const response = await fetch(`https://us-central1-auth-development-92670.cloudfunctions.net/getHoldingById/?id=${id}`, { mode: 'cors'})
     .then(response => response.json())
     return response;

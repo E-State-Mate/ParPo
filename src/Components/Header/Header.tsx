@@ -7,7 +7,7 @@ import { doc, getDoc } from 'firebase/firestore'
 
 const Header = () => {
 
-  const { currentUser } = useAuth();
+  const { currentUser }: any = useAuth();
 
   const [loggedIn, setLoggedIn] = useState(false)
 

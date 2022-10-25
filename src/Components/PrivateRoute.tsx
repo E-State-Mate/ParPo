@@ -7,7 +7,7 @@ type PrivateRouteProps = {
 }
 
 const PrivateRoute: React.FunctionComponent<PrivateRouteProps> = ({children}) => {
-    const { currentUser } = useAuth();
+    const { currentUser }: any = useAuth();
   return currentUser ? children : <Navigate to="/login" />
 }
 

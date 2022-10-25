@@ -26,6 +26,7 @@ const options = {
     disableDefaultUI: true,
     zoomControl: true,
 }
+const googleMapsKey: string = (process.env.REACT_APP_GOOGLE_MAPS_API_KEY as string);
 
 const Location = (props: any) => {
     const miniBar = (<div className='miniBar'></div>)   
@@ -70,7 +71,7 @@ const Location = (props: any) => {
 
             <Card id='google-map' sx={{width: '80%', margin: 'auto'}}>
                 { props.isLoaded ?
-                    <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}>
+                    <LoadScript googleMapsApiKey={googleMapsKey}>
                         <GoogleMap 
                             mapContainerStyle={mapContainerStyle} 
                             zoom={13} 
