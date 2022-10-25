@@ -1,9 +1,13 @@
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Card, CardActionArea, CardMedia } from '@mui/material'
 import { Link } from 'react-router-dom'
 import { getStorage, ref, getDownloadURL} from 'firebase/storage'
 
-const FeaturedCard = ({data}) => {
+type FeaturedCardProps = {
+  data: any;
+}
+
+const FeaturedCard: React.FunctionComponent<FeaturedCardProps> = ({data}) => {
 
   const { 
     _id,
@@ -15,12 +19,11 @@ const FeaturedCard = ({data}) => {
     estimatedValue 
   } = data;
 
-    const [fileURL, setFileURL] = useState(null);
+    const [fileURL, setFileURL] = useState('');
 
     const getPics = async () => {
       const storage = getStorage();
       setFileURL(await getDownloadURL(ref(storage, data.fileURL)))
-      .catch((error) => console.log(error))
     }
   
     useEffect(() => {

@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import FeaturedCard from './FeaturedCard'
 import { css } from '@emotion/react'
 import { Divider, Grid } from '@mui/material'
@@ -35,7 +35,7 @@ const FeaturedHoldings = () => {
       <div style={{padding: '2rem 0'}}>
         <p style={{textAlign: 'center'}}>Who Are We?</p>
         <h2 style={{textAlign: 'center'}}>Featured</h2>
-        <Divider variant='middle' width='20%' sx={{margin: '1rem auto', borderBottomWidth: 4, backgroundColor: '#5ca8b2' }} />
+        <Divider variant='middle' sx={{margin: '1rem auto', borderBottomWidth: 4, backgroundColor: '#5ca8b2' }} />
       </div>
       <Grid container>
         {
@@ -49,7 +49,7 @@ const FeaturedHoldings = () => {
           </>
           :
           <Grid item xs={12}>
-            <BounceLoader loading={!isLoaded} color={'#5ca8b2'} style={{margin: '2rem auto'}} css={override}/>
+            <BounceLoader loading={!isLoaded} color={'#5ca8b2'} css={override}/>
           </Grid>
         }
       </Grid>

@@ -9,11 +9,7 @@ import { useAuth } from '../Context/AuthContext'
 import { db } from '../firebase'
 import { doc, getDoc } from 'firebase/firestore'
 
-type HoldingDetailsProps = {
-  data: any;
-}
-
-const HoldingDetails: React.FunctionComponent<HoldingDetailsProps> = ({data}) => {
+const HoldingDetails = () => {
 
   let slug = useParams();
   const dispatch = useDispatch();
@@ -29,7 +25,7 @@ const HoldingDetails: React.FunctionComponent<HoldingDetailsProps> = ({data}) =>
 
   useEffect(() => {
     const fetchHoldingByID = async () => {
-      dispatch(fetchHolding(slug.slug))
+      await dispatch(fetchHolding(slug.slug))
     }
 
     fetchHoldingByID()

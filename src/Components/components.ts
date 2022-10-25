@@ -33,7 +33,6 @@ export { default as HoldingCard } from './HoldingList/HoldingCard'
 export { default as PropertyType } from './HoldingList/PropertyType'
 export { default as Tenant } from './HoldingList/Tenant'
 export { default as FilterDropdown } from './HoldingList/FilterDropdown'
-export { default as MobHoldingCard } from './HoldingList/MobHoldingCard'
 
 // Company Page
 export { default as AboutUs } from './Company/AboutUs'

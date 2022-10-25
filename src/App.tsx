@@ -1,3 +1,4 @@
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import { Company, HoldingDetails, HoldingList, Profiles, UserProfile } from './Pages/pages'
 import { Login, PrivateRoute, Onboarding, ForgotPassword, Signup, Layout } from './Components/components'
@@ -14,7 +15,7 @@ function App() {
             <HoldingProvider>
               <PropertyTypeProvider>
                 <Routes>
-                  <Route exact element={<Layout />}>
+                  <Route element={<Layout />}>
                       <Route path='profiles' element={<PrivateRoute><Profiles /></PrivateRoute>} />
                       <Route path='profile' element={<PrivateRoute><UserProfile /></PrivateRoute>} />
                       <Route path='login' element={<Login />} />
