@@ -4,7 +4,14 @@
     overflow-y: none;
     z-index: -1;
   }
-  
+
+#header-full {
+  height: 100%;
+  overflow-y: none;
+  z-index: -1;
+}
+
+
 #header-bg{
     width: 100%;
     height: 400px;

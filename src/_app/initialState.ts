@@ -19,5 +19,6 @@ export const profile: any = {
     phone: '(407) 885-1232',
     location: 'Westeros',
     profilePic: '',
-    editing: false
+    editing: false,
+    isLoggedIn: false
 }

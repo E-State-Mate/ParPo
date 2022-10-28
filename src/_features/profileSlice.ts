@@ -5,6 +5,9 @@ export const profileSlice = createSlice({
     name: 'profile',
     initialState: profile,
     reducers: {
+        setLoggedIn: (profile, action) => {
+            profile.isLoggedIn = action.payload;
+        },
         setFirstName: (profile, action) => {
             profile.firstName = action.payload;
         },
@@ -29,6 +32,6 @@ export const profileSlice = createSlice({
     },
 })
 
-export const {setFirstName, setLastName, setEmail, setPhone, setLocation, setProfilePic, setEditing } = profileSlice.actions;
+export const { setLoggedIn, setFirstName, setLastName, setEmail, setPhone, setLocation, setProfilePic, setEditing } = profileSlice.actions;
 
 export default profileSlice.reducer;

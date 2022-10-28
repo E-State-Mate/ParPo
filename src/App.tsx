@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import { Company, HoldingDetails, HoldingList, Profiles, UserProfile } from './Pages/pages'
 import { Login, PrivateRoute, Onboarding, ForgotPassword, Signup, Layout } from './Components/components'
 import { AuthProvider } from './Context/AuthContext';
 import HoldingProvider from "./Context/HoldingContext";
 import PropertyTypeProvider from "./Context/PropertyTypeContext";
+
+
 // import { Footer, Game, HowToPlay, Navbar, PingHandler, Settings, SolveToStart, Stats, VersionNotes } from './Components'
 
 function App() {
