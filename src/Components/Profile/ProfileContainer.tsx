@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useSelector } from 'react-redux'
 import { Box, Container, Grid, Typography } from '@mui/material';
 import Profile from './Profile';

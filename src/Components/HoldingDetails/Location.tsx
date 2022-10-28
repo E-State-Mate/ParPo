@@ -17,7 +17,7 @@ const override = css`
 
 
 // Google Map
-const libraries= ["places"]
+// const libraries= ["places"]
 const mapContainerStyle = {
     width: '100%',
     height: '300px',
@@ -29,7 +29,6 @@ const options = {
 const googleMapsKey: string = (process.env.REACT_APP_GOOGLE_MAPS_API_KEY as string);
 
 const Location = (props: any) => {
-    const miniBar = (<div className='miniBar'></div>)   
 
     const center = {
         lat: props.featHolding.lat,

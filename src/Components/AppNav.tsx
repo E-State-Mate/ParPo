@@ -11,17 +11,8 @@ const navLinks = [
 ]
  
 const AppNav = () => {
-    const [anchorEl, setAnchorEl] = useState(null);
 
     let targetId = navLinks.map(item => {return (item.idnm)})
-
-    const handleMenu = (event: any) => {
-        setAnchorEl(event.currentTarget)
-      }    
-
-    const handleMenuClose = () => {
-        setAnchorEl(null);
-      };
 
   return (
     <Grid container style={{backgroundColor: 'white', boxShadow: 'darkgray 0px 3px'}} alignItems='center' p={1} sx={{ display: {xs: 'none', md: 'block'}}}>

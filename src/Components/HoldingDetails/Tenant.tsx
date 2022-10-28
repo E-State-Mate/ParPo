@@ -26,7 +26,6 @@ const override = css`
 
 
 function Tenant (props: any) {
-    const miniBar = (<div className='miniBar'></div>)
 
     return (
         <>

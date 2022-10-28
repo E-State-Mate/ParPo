@@ -45,7 +45,7 @@
     }        
 
     return (        
-        <Container id='onboarding-container'>
+        <Container fluid id='onboarding-container'>
             {switchOnboardingCardTo(onboardingCard)}
         </Container>
         )

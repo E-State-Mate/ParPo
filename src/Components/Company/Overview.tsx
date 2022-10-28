@@ -38,8 +38,8 @@ const OverviewCard: React.FunctionComponent<OverviewCardProps> = ({stat}) => {
     <Card sx={{width: '80%', margin: '1rem auto', paddingTop: '8px'}}>
       <SvgIcon component={stat.icon} inheritViewBox sx={{width: '100%', fontSize: 50, paddingTop: '1rem'}}/>
       <CardContent sx={{margin: 'auto', padding: '0'}}>
-        <p style={{fontSize: '1.5rem', fontWeight: 'bold', margin: 0}}>{stat.value}</p>
-        <p>{stat.label}</p>
+        <p style={{fontSize: '1.5rem', fontWeight: 'bold', margin: 0, textAlign: 'center'}}>{stat.value}</p>
+        <p style={{textAlign: 'center'}}>{stat.label}</p>
       </CardContent>
     </Card>
   )

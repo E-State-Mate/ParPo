@@ -14,15 +14,15 @@ const LandingCard: React.FunctionComponent<LandingCardProps> = ({switchCardTo}) 
     const { login }: any = useAuth();
 
     return (
-        <Card id='landing-card'>  
+        <Card id='landing-card' >  
             <Card.Body>
                 <h2 className="text-center mb-4">Welcome to ParPo!</h2>
                 <p>ParPo is an edible portfolio manager and viewer for use in the commercial real estate brokerage market.</p>
-                <p>Request access to the latest build below, or see an earlier demo at the link provided.</p>
+                <p>Check out the pre-alpha prototype below, request access to the latest build, or log in if you are a current user.</p>
                 <Divider />
                 <div className='onboarding-button-container'>
-                    <Button className='test' onClick={() => login('admin@gmail.com', 'password')}>See Pre-Alpha Demo</Button>
-                    <Button className='test'>Request Access</Button>
+                    <Button className='test' onClick={() => login('admin@gmail.com', 'password')}>See Pre-Alpha Prototype</Button>
+                    <Button className='test' onClick={() => switchCardTo('register-card')}>Request Access</Button>
                     <Button className='test' onClick={() => switchCardTo('login-card')}>Log In to Latest</Button>
                 </div>
                 <Divider />

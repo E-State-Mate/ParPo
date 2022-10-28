@@ -2,12 +2,6 @@ import React, { useState, useEffect } from 'react';
 
 const ScrollspyNav = (props: { scrollTargetIds: any; activeNavClass: any; scrollDuration: any; }) => {
 
-    const [scrollTargetIDs, setScrollTargetIDs] = useState(props.scrollTargetIds)
-    const [activeNavClass, setActiveNavClass] = useState(props.activeNavClass)
-    const [scrollDuration, setScrollDuration] = useState(props.scrollDuration || 1000)
-    const [homeDefaultLink, setHomeDefaultLink] = useState('/')
-    const [hashID, setHashID] = useState('#')
-
     // useEffect(() => {
     //     if(props.router && props.router === 'HashRouter'){
     //         setHomeDefaultLink('#/')
@@ -43,19 +37,19 @@ const ScrollspyNav = (props: { scrollTargetIds: any; activeNavClass: any; scroll
     }
 
     const getNavLinkElement = (sectionID: any) => {
-        return document.querySelector(`a[href='${hashID}${sectionID}']`);
+        return document.querySelector(`a[href='#${sectionID}']`);
     }
 
     const getNavToSectionID = (navHref: any) => {
-        return navHref.includes(hashID) ? navHref.replace(hashID, "") : "";
+        return navHref.includes('#') ? navHref.replace('#', "") : "";
     }
 
     useEffect(() => {
 
-        if (document.querySelector(`a[href='${homeDefaultLink}']`)) {
-            document.querySelector(`a[href='${homeDefaultLink}']`)!.addEventListener("click", (event) => {
+        if (document.querySelector(`a[href='/']`)) {
+            document.querySelector(`a[href='/']`)!.addEventListener("click", (event) => {
                 event.preventDefault();
-                scrollTo(window.pageYOffset, 0, scrollDuration);
+                scrollTo(window.pageYOffset, 0, props.scrollDuration);
                 window.location.hash = "";
             });
         }
@@ -73,11 +67,11 @@ const ScrollspyNav = (props: { scrollTargetIds: any; activeNavClass: any; scroll
                 }
 
                 if(scrollTargetPosition === undefined || scrollTargetPosition === 0){
-                    scrollTo(window.pageYOffset, 0, scrollDuration);
+                    scrollTo(window.pageYOffset, 0, props.scrollDuration);
                     // console.log(scrollTargetPosition)
                 } else {
                     // console.log(scrollTargetPosition)
-                    scrollTo(window.pageYOffset, scrollTargetPosition, scrollDuration);
+                    scrollTo(window.pageYOffset, scrollTargetPosition, props.scrollDuration);
                 }
                 
             });
@@ -95,7 +89,7 @@ const ScrollspyNav = (props: { scrollTargetIds: any; activeNavClass: any; scroll
     
     const scrollSection = () => {
             let scrollSectionOffsetTop;
-            scrollTargetIDs.forEach((sectionID: string, index: number) => {
+            props.scrollTargetIds.forEach((sectionID: string, index: number) => {
                 if(document.getElementById(sectionID) === null){
                     scrollSectionOffsetTop = 0
                     return;
@@ -104,17 +98,17 @@ const ScrollspyNav = (props: { scrollTargetIds: any; activeNavClass: any; scroll
                     var navElement: any = getNavLinkElement(sectionID);
                     if (window.pageYOffset >= scrollSectionOffsetTop && window.pageYOffset < scrollSectionOffsetTop + document.getElementById(sectionID)!.scrollHeight) {
                         // console.log(sectionID)
-                        getNavLinkElement(sectionID)!.classList.add(activeNavClass);
-                        (navElement.parentNode as HTMLElement).classList.add(activeNavClass);
+                        getNavLinkElement(sectionID)!.classList.add(props.activeNavClass);
+                        (navElement.parentNode as HTMLElement).classList.add(props.activeNavClass);
                         clearOtherNavLinkActiveStyle(sectionID)
                     } else {
-                        getNavLinkElement(sectionID)!.classList.remove(activeNavClass);
-                        (navElement.parentNode as HTMLElement).classList.remove(activeNavClass);
+                        getNavLinkElement(sectionID)!.classList.remove(props.activeNavClass);
+                        (navElement.parentNode as HTMLElement).classList.remove(props.activeNavClass);
                     }
     
-                    if (window.innerHeight + window.pageYOffset >= document.body.scrollHeight && index === scrollTargetIDs.length - 1) {
-                        getNavLinkElement(sectionID)!.classList.add(activeNavClass);
-                        (navElement.parentNode as HTMLElement).classList.add(activeNavClass);
+                    if (window.innerHeight + window.pageYOffset >= document.body.scrollHeight && index === props.scrollTargetIds.length - 1) {
+                        getNavLinkElement(sectionID)!.classList.add(props.activeNavClass);
+                        (navElement.parentNode as HTMLElement).classList.add(props.activeNavClass);
                         clearOtherNavLinkActiveStyle(sectionID);
                     }
                 }               
@@ -122,11 +116,11 @@ const ScrollspyNav = (props: { scrollTargetIds: any; activeNavClass: any; scroll
     }
     
     const clearOtherNavLinkActiveStyle = (excludeSectionID: any) => {
-        scrollTargetIDs.forEach((sectionID: any, index: any) => {
+        props.scrollTargetIds.forEach((sectionID: any, index: any) => {
             var navElement: any = getNavLinkElement(sectionID);
             if (sectionID !== excludeSectionID) {
-                getNavLinkElement(sectionID)!.classList.remove(activeNavClass);
-                (navElement.parentNode as HTMLElement).classList.remove(activeNavClass);
+                getNavLinkElement(sectionID)!.classList.remove(props.activeNavClass);
+                (navElement.parentNode as HTMLElement).classList.remove(props.activeNavClass);
             }
         });
     }

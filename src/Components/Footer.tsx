@@ -49,12 +49,12 @@ const Footer = () => {
           </div>
         </Grid>
 
-        <Grid container item xs={12} md={3}>
+        <Grid container item xs={6} md={3}>
           <Grid item xs />
-          <Grid item xs={7} md={12}>
+          <Grid item xs={12} md={12}>
             <h5>About Us</h5>
           </Grid>
-          <Grid item xs={3} md={12} justifyContent='center'>
+          <Grid item xs={12} md={12} justifyContent='center'>
             <ul id='footer-propterra-links'>
               <li><a href='https://www.propterra.io' target='_blank'>PropTerra</a></li>
               <li><a href='https://www.propterra.io/careers' target='_blank'>Careers</a></li>
@@ -64,13 +64,13 @@ const Footer = () => {
           <Grid item xs />
         </Grid>
 
-        <Grid container item xs={12} md={3}>
+        <Grid container item xs={6} md={3}>
           <Grid item xs />
-          <Grid item xs={7} md={12}>
+          <Grid item xs={12} md={12}>
             <h5>User role</h5>
             <h6>{`${userData.role}`}</h6>
           </Grid>
-          <Grid item xs={3} md={12} justifyContent='center'>
+          <Grid item xs={12} md={12} justifyContent='center'>
             <Button variant='contained' onClick={handleLogout} style={{margin: '1rem auto'}}>Logout</Button>
           </Grid>
           <Grid item xs />
@@ -78,11 +78,11 @@ const Footer = () => {
 
         <Grid container item xs={12} md={2}>
           <Grid item xs />
-          <Grid item xs={5} md={12}>
+          <Grid item xs={6} md={12}>
             <p><b>Call us</b></p>
             <p>Phone number</p>
           </Grid>
-          <Grid item xs={5} md={12}>
+          <Grid item xs={6} md={12}>
             <p><b>Email us</b></p>
             <p>Email address</p>
           </Grid>

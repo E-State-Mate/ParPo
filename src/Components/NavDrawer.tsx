@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import {Box, Button, Divider, Drawer, IconButton, List, ListItem, ListItemIcon, ListItemText, Typography } from '@mui/material';
 import { Info, Business, Group, AccountCircle } from '@mui/icons-material'
 import { Link } from 'react-router-dom'
+import { useAuth } from "../Context/AuthContext"
 import { default as ParPoLogo } from '../Lib/img/parpo-logo.png';
 import MenuIcon from '@mui/icons-material/Menu';
 
@@ -13,6 +14,8 @@ const NavDrawer: React.FunctionComponent<NavDrawerProps> = ({links}) => {
   const [state, setState] = useState({
     right: false,
   })
+
+  const { logout }: any = useAuth();
 
   const toggleDrawer = (anchor: string, open: boolean) => (event: any) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
@@ -43,7 +46,7 @@ const NavDrawer: React.FunctionComponent<NavDrawerProps> = ({links}) => {
       </List>
       <Divider />
       <div id='mob-menu-bottom'>
-        <Button variant='contained' id='mob-menu-logout'>Logout</Button>
+        <Button variant='contained' id='mob-menu-logout' onClick={() => logout()}>Logout</Button>
         <p id='mob-menu-btm-txt'>Powered by <b style={{color: '#555'}}>PropTerra</b></p>
       </div>
     </Box>

@@ -14,11 +14,22 @@
     z-index: 2;
 }
 
-#landing-card, #register-card, #login-card {
+#register-card, #login-card {
     min-width: 300px;
     position: absolute;
     top: 50%; left: 50%;
     transform: translate(-50%,-50%);
+    -webkit-animation: slide-in-left 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: slide-in-left 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+#landing-card{
+    min-width: 300px;
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+    -webkit-animation: fade-in-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: fade-in-bottom 0.75s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
 
 #onboarding-card-footer-txt{
