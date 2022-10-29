@@ -78,7 +78,7 @@ const HoldingDetails = () => {
                 Go Back
               </Button>
           </Grid>
-            {(userData.role === 'Admin' && editing === false) && 
+            {/* {(userData.role === 'Admin' && editing === false) && 
             <>
               <Grid item xs={12} sx={{display: {md: 'none !important'}}}>
                 <Divider variant='middle' />
@@ -97,7 +97,7 @@ const HoldingDetails = () => {
                 </Button>
               </Grid>
             </>
-            }
+            } */}
         </Grid>
       </Paper>
       <Overview featHolding={featHolding} isLoaded={isLoaded}/>

@@ -44,32 +44,11 @@ const a11yProps = (index: number) => {
 
 export default function TabContainer() {
   const [value, setValue] = useState<number>(0);
-  const [profileSelect, setProfileSelect] = useState<boolean>(false);
-  const [addingUser, setAddingUser] = useState<boolean>(false);
-  const [userSelected, setUserSelected] = useState<number>(0);
   const [userData, setUserData] = useState<any>({
     role: ''
   });
   
-
-  const { currentUser, logout }: any = useAuth()
-  const navigate = useNavigate()
-
- 
-
-  const isProfileSelected = (e: { id: any; }): void => {
-    setProfileSelect(true);
-    setUserSelected(e.id)
-  }
-
-  const openAddUserModal = (e: any) => {
-    setAddingUser(true);
-  }
-
-  const closeModal = () => {
-    setProfileSelect(false)
-    setAddingUser(false)
-  }
+  const { currentUser, logout }: any = useAuth() 
 
   const handleChange = (event: any, newValue: React.SetStateAction<number>) => {
     setValue(newValue);
@@ -87,10 +66,6 @@ export default function TabContainer() {
     getProfileData();
   }, [currentUser])
 
-  useEffect(() => {
-    console.log(userData.role)
-  }, [userData])
-
   return (
     <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
@@ -100,7 +75,7 @@ export default function TabContainer() {
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
-        <ProfileList isProfileSelected={isProfileSelected} openAddUserModal={openAddUserModal}/>
+        <ProfileList />
       </TabPanel>
       <TabPanel value={value} index={1}>
         <ProfileContainer />

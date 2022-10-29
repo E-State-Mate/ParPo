@@ -1,7 +1,14 @@
-import React, { useEffect, useState }from 'react';
+import React, { useEffect } from 'react';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import ListItemText from '@mui/material/ListItemText';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
+import { Button } from 'react-bootstrap'
+import Checkbox from '@mui/material/Checkbox';
+import { setFilterList } from '../../_features/holdingListSlice'
 import { useDispatch } from 'react-redux'
-import { Checkbox, FormControl, InputLabel, ListItemText, MenuItem, OutlinedInput, Select } from '@mui/material';
-import { setFilterList } from '../../_features/holdingListSlice';
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -28,29 +35,39 @@ const names = [
 ];
 
 type FilterDropdownProps = {
-  propertyTypes: any;
+  propertyTypes: any[],
+  filterPropTypes: any
 }
 
-const FilterDropdown: React.FunctionComponent<FilterDropdownProps> = ({ propertyTypes }) => {
+const FilterDropdown: React.FunctionComponent<FilterDropdownProps> = ({ propertyTypes, filterPropTypes }) => {
+  const [propType, setPropType] = React.useState<string[]>([]);
 
   const dispatch = useDispatch();
 
-  const [ propType, setPropType ] = useState([]);
-
-  const handleChange = (event: any) => {
-    const {target: { value },} = event;
+  const handleChange = (event: SelectChangeEvent<typeof propType>) => {
+    const {
+      target: { value },
+    } = event;
+    console.log(event.target)
+    dispatch(setFilterList(event.target?.value[event.target.value.length-1]))
     setPropType(
       // On autofill we get a stringified value.
       typeof value === 'string' ? value.split(',') : value,
     );
   };
 
-  useEffect(() => {dispatch(setFilterList(propType))}, [propType])
+  useEffect(() => {
+    dispatch(setFilterList(propType))
+  }, [propType])
+
+  const resetFilters = () => {
+    dispatch(setFilterList('reset'))
+  }
 
   return (
-    <div>
-      <FormControl sx={{ width: '90%', backgroundColor: 'white' }}>
-        <InputLabel id="demo-multiple-checkbox-label">Filter by Type</InputLabel>
+    <div id='filter-dropdown'>
+      <FormControl sx={{width: '100%'}}>
+        <InputLabel id="demo-multiple-checkbox-label">Tag</InputLabel>
         <Select
           labelId="demo-multiple-checkbox-label"
           id="demo-multiple-checkbox"
@@ -61,14 +78,17 @@ const FilterDropdown: React.FunctionComponent<FilterDropdownProps> = ({ property
           renderValue={(selected) => selected.join(', ')}
           MenuProps={MenuProps}
         >
-          {propertyTypes.map((propertyType: { propertyType: any | {} | null | undefined; }) => (
-            <MenuItem>
-              {/* <Checkbox checked={propType.indexOf(propertyType.propertyType) > -1} /> */}
+          {propertyTypes.map((propertyType: any, index: number) => (
+            <MenuItem key={index} value={propertyType.propertyType}>
+              <Checkbox checked={propType.indexOf(propertyType.propertyType) > -1} />
               <ListItemText primary={propertyType.propertyType} />
             </MenuItem>
           ))}
         </Select>
       </FormControl>
+      <div className='d-grid gap-2 mt-4'>
+        <Button variant='light' onClick={() => { resetFilters()}}>Reset Filters</Button>
+      </div>
     </div>
   );
 }

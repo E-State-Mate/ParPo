@@ -17,7 +17,9 @@ export const holdingListSlice = createSlice({
         setFilterList: (holdingList: any, action: any) => {
             const propType: any = action.payload;
             const {filterList, holdings} = holdingList
-            if(filterList.includes(propType)){
+            if(action.payload === 'reset'){
+                holdingList.filterList = []
+            } else if(filterList.includes(propType)){
                 holdingList.filterList = filterList.filter((item: any) => item !== propType) // 2nd parameter means remove one item only
             } else {
                 holdingList.filterList = [...filterList, propType]

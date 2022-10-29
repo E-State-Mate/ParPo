@@ -24,14 +24,18 @@ const override = css`
   border-color: red
   `;
 
+type TenantProps = {
+    featHolding: any;
+    isLoaded: any;
+}
 
-function Tenant (props: any) {
+const Tenant: React.FunctionComponent<TenantProps> = ({featHolding, isLoaded}) => {
 
     return (
         <>
             <Divider className='details-dividers' style={{margin: '6rem auto 2rem auto'}}>TENANT</Divider>
 
-            { props.isLoaded ?
+            { isLoaded ?
                 <div>
                     <Card className='details-card'>
                         <Grid container spacing={10} alignItems='space-between' justifyContent='space-between'>
@@ -39,7 +43,7 @@ function Tenant (props: any) {
                                 {/* General Icon Format */}
                                 <SvgIcon sx={{ fontSize: 60 }} component={EmojiPeopleOutlined} />
                                 <Typography variant='subtitle2' fontSize='1rem'>Occupancy Percentage</Typography>
-                                <Typography variant='caption'>{props.featHolding.occupancyPercentage*100}%</Typography>
+                                <Typography variant='caption'>{featHolding.occupancyPercentage*100}%</Typography>
                                 <div style={{height: '0.5rem'}}></div>
                                 <Divider />
                             </Grid>
@@ -48,7 +52,7 @@ function Tenant (props: any) {
                                 {/* General Icon Format */}
                                 <SvgIcon sx={{ fontSize: 60 }} component={FamilyRestroomOutlined} />
                                 <Typography variant='subtitle2' fontSize='1rem'>Unit Type</Typography>
-                                <Typography variant='caption'>{props.featHolding.singleOrMultiTenant} </Typography>
+                                <Typography variant='caption'>{featHolding.singleOrMultiTenant} </Typography>
                                 <div style={{height: '0.5rem'}}></div>
                                 <Divider />
                             </Grid>
@@ -57,7 +61,7 @@ function Tenant (props: any) {
                                 {/* General Icon Format */}
                                 <SvgIcon sx={{ fontSize: 60 }} component={StickyNote2Outlined} />
                                 <Typography variant='subtitle2' fontSize='1rem'>Lease Type</Typography>
-                                <Typography variant='caption'>{props.featHolding.leaseType}</Typography>
+                                <Typography variant='caption'>{featHolding.leaseType}</Typography>
                                 <div style={{height: '0.5rem'}}></div>
                                 <Divider />
                             </Grid>
@@ -66,7 +70,7 @@ function Tenant (props: any) {
                                 {/* General Icon Format */}
                                 <SvgIcon sx={{ fontSize: 60 }} component={ThumbsUpDownOutlined} />
                                 <Typography variant='subtitle2' fontSize='1rem'>Lease Renewal</Typography>
-                                <Typography variant='caption'>{props.featHolding.leaseRenewal}</Typography>
+                                <Typography variant='caption'>{featHolding.leaseRenewal}</Typography>
                                 <div style={{height: '0.5rem'}}></div>
                                 <Divider />
                             </Grid>
@@ -75,7 +79,7 @@ function Tenant (props: any) {
                                 {/* General Icon Format */}
                                 <SvgIcon sx={{ fontSize: 60 }} component={ScheduleOutlined} />
                                 <Typography variant='subtitle2' fontSize='1rem'>Years Left on Lease</Typography>
-                                <Typography variant='caption'>{props.featHolding.yearsLeftOnLease} years</Typography>
+                                <Typography variant='caption'>{featHolding.yearsLeftOnLease} years</Typography>
                                 <div style={{height: '0.5rem'}}></div>
                                 <Divider />
                             </Grid>
@@ -84,7 +88,7 @@ function Tenant (props: any) {
                                 {/* General Icon Format */}
                                 <SvgIcon sx={{ fontSize: 60 }} component={InsertInvitationOutlined} />
                                 <Typography variant='subtitle2' fontSize='1rem'>Lease End Date</Typography>
-                                <Typography variant='caption'>{new Date(props.featHolding.leaseEndDate)}</Typography>
+                                <Typography variant='caption'>{featHolding.leaseEndDate}</Typography>
                                 <div style={{height: '0.5rem'}}></div>
                                 <Divider />
                             </Grid>
@@ -92,7 +96,7 @@ function Tenant (props: any) {
                     </Card>
                 </div>
                 :
-                <BounceLoader loading={!props.isLoaded} color={'#5ca8b2'} css={override}/>
+                <BounceLoader loading={!isLoaded} color={'#5ca8b2'} css={override}/>
             }
         </>
     )

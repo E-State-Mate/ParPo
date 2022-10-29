@@ -10,7 +10,7 @@ import { Box } from '@mui/system';
 import AddUserModal from './AddUserModal';
 import { useEffect } from 'react';
 
-const ProfileList = ({isProfileSelected}: any) => {
+const ProfileList = () => {
     const [openAddUser, setOpenAddUser] = useState<boolean>(false)
     const [users, setUsers] = useState<any>({})
     const [gotUsers, setGotUsers] = useState<boolean>(false)
@@ -30,7 +30,7 @@ const ProfileList = ({isProfileSelected}: any) => {
       })
       setUsers(usersData)
       setGotUsers(true)
-      console.log(usersData);
+      // console.log(usersData);
   }
 
   const isUserAdded = () => {

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from 'react-router-dom'
 import { Grid } from "@mui/material";
-import { HoldingCard, PropertyType } from "../Components/components";
+import { FilterDropdown, HoldingCard, PropertyType } from "../Components/components";
 import { propertyTypes } from "../Lib/data/propertyTypeData";
 import { fetchHoldings, setListCount } from "../_features/holdingListSlice";
 import { BounceLoader } from 'react-spinners';
@@ -49,17 +49,29 @@ const HoldingList = () => {
         dispatch(setListCount(visibleHoldings.length))
     }, [visibleHoldings])
 
+    const filterPropTypes = () => {
+        console.log('test')
+    }
+
     return (
         <div className="outlet-container">
             {/* Desktop implementation */}
             <Grid container width="80%" sx={{ margin: "auto", display: 'flex' }}>
-                <Grid item xs={6} md={4} lg={3}>
+                <Grid item xs={12} md={3} lg={2}>
                     <p style={{ margin: "1rem" }}>Property Type</p>
-                    {propertyTypes.map((property, i) => (
-                        <PropertyType key={i} property={property} />
-                    ))}
+                    <Grid container sx={{display: {xs: 'block', md: 'none'}}}>
+                        <FilterDropdown propertyTypes={propertyTypes} filterPropTypes={filterPropTypes}/>
+                    </Grid>
+                    <Grid container sx={{display: {xs: 'none', md: 'block'}}}>
+                        {propertyTypes.map((property, i) => (
+                           <Grid item xs={12} sm={4} md={12}>
+                               <PropertyType key={i} property={property} />
+                            </Grid>
+                        ))}
+                    </Grid>
+                    
                 </Grid>
-                <Grid item xs={6} md={8} lg={9}>
+                <Grid item xs={12} md={9} lg={10}>
                     <p style={{ margin: "1rem" }}>{listCount} Properties</p>
                     { status === 'succeeded' ? 
                         visibleHoldings.map((holding, i) => ( <HoldingCard key={i} holding={holding} />))

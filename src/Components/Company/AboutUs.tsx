@@ -6,7 +6,9 @@ const AboutUs = () => {
     <div id='about'>
       <h2>About Us</h2>
       <Divider variant='middle' sx={{margin: '1rem auto', borderBottomWidth: 4, backgroundColor: '#5ca8b2' }} />
-      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Enim, quia voluptatem! Maiores quasi blanditiis aliquid minus possimus officiis necessitatibus, mollitia illo. Ipsum, necessitatibus amet! Quibusdam accusamus praesentium nihil possimus voluptatibus. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Enim, quia voluptatem! Maiores quasi blanditiis aliquid minus possimus officiis necessitatibus, mollitia illo. Ipsum, necessitatibus amet! Quibusdam accusamus praesentium nihil possimus voluptatibus. <br/><br/> Lorem, ipsum dolor sit amet consectetur adipisicing elit.  Enim, quia voluptatem! Maiores quasi blanditiis aliquid minus possimus officiis necessitatibus, mollitia illo. Ipsum, necessitatibus amet! Quibusdam accusamus praesentium nihil possimus voluptatibus.</p>
+      <p>Great properties and great investments should go hand in hand. The Lion Company provides investors with the freshest, recognizable commercial assets in your region. Our team of brokers have over 100 years of combined real estate investment knowledge in house.
+        <br/><br/>Check out some of our amazing properties below or reach out to one of our team to discuss investment options that work for you.
+      </p>
     </div>
   )
 }

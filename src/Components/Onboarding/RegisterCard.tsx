@@ -43,6 +43,7 @@ const RegisterCard: React.FunctionComponent<RegisterCardProps> = ({switchCardTo}
 
   const handleSubmit = () => {
 
+    switchCardTo('landing-card');
   }
 
   // const handleSkip = () => {
@@ -50,50 +51,41 @@ const RegisterCard: React.FunctionComponent<RegisterCardProps> = ({switchCardTo}
   // }
 
   return (
-    <Container className={'slide-in-left d-flex align-items-center justify-content-center ' + (nextPage ? ' slide-out-right' : undefined)} style={{ minHeight: "100vh" }}>
-        <div className="w-100"  style={{ maxWidth: "400px"}}>
-          <Card>
-            <Card.Body>
-              <h2 className="text-center mb-4">One more thing...</h2>
-              <p style={{textAlign: 'center'}}>We want to know a little more about you!</p>
-              <Form onSubmit={handleSubmit} >
-                  <p>Profile Pic</p>
-                  <Form.Group id="firstName">
-                    <Form.Label>First Name</Form.Label>
-                    <Form.Control type="firstName" required defaultValue={name[0]}/>
-                  </Form.Group>
-                  <Form.Group id="lastName">
-                    <Form.Label>Last Name</Form.Label>
-                    <Form.Control type="lastName" required defaultValue={name[1]}/>
-                  </Form.Group>
-                  <Form.Group id="phone">
-                    <Form.Label>Phone Number</Form.Label>
-                    <Form.Control type="phone"/>
-                  </Form.Group>
-                  <br/>
-                  <Row>
-                    <Col>
-                        <Button className='w-100' href='/holdings' variant='outline-secondary'>Skip</Button>
-                    </Col>
-                    <Col>
-                    </Col>
-                    <Col>
-                        <Button className="w-100" variant='outline-primary' type="submit">Next</Button>
-                    </Col>
-                  </Row>
-              </Form>
-            </Card.Body>
-          </Card>
-          <Card id='register-card'>  
-            <Card.Body>
-              <h2 className="text-center mb-4">Registration Card</h2>
-              <p>Form to capture user data.</p>
-              <Divider />
-              <Button>Sign in with Google buttons</Button>
-            </Card.Body>
-          </Card>
-        </div>
-    </Container>
+    <Card id='register-card'>
+      <Card.Body>
+        <h2 className="text-center mb-4">ParPo Registration</h2>
+        <p style={{textAlign: 'center'}}>We want to know a little more about you!</p>
+        <Form onSubmit={handleSubmit} >
+            <Form.Group id="firstName">
+              <Form.Label>Name</Form.Label>
+              <Form.Control type="firstName" required defaultValue={name[0]}/>
+            </Form.Group>
+            <Form.Group id="lastName">
+              <Form.Label>Email</Form.Label>
+              <Form.Control type="lastName" required defaultValue={name[1]}/>
+            </Form.Group>
+            <Form.Group id="company">
+              <Form.Label>Company</Form.Label>
+              <Form.Control type="text"/>
+            </Form.Group>
+            <Form.Group id="role">
+              <Form.Label>Role</Form.Label>
+              <Form.Control type="text"/>
+            </Form.Group>
+            <br/>
+            <Row>
+              <Col>
+                  <Button className='w-100' onClick={() => {switchCardTo('landing-card')}} variant='outline-secondary'>Back</Button>
+              </Col>
+              <Col>
+              </Col>
+              <Col>
+                  <Button className="w-100" onClick={() => {handleSubmit()}} variant='outline-primary' type="submit">Submit</Button>
+              </Col>
+            </Row>
+        </Form>
+      </Card.Body>
+    </Card>
   )
 }
 

@@ -11,7 +11,7 @@ const Header = () => {
     <div id={isLoggedIn ? 'header' : 'header-full'}>
       <img src={HeaderImg} id={isLoggedIn ? 'header-bg' : 'header-bg-logged-out'} alt='Header background'/>
       <div className={isLoggedIn ? 'visible' : 'hidden'}>
-        <PageTitle title={'The Wideman Company'} subtitle={'It is your dream we are building'} loggedIn={isLoggedIn}/>
+        <PageTitle title={'The Lion Company'} subtitle={'It is your dream we are building'} loggedIn={isLoggedIn}/>
       </div>
     </div>
   )
