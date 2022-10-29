@@ -1,0 +1,65 @@
+
+#filter-dropdown{
+    margin: 1rem;
+}
+
+.prop-list-card{
+    margin: 1rem;
+  }
+  
+  .prop-list-card:hover{
+    background-color: #eee;
+    transition: all 0.1s ease-in-out;
+    transform: scale(1.02);
+  }
+  
+  .prop-list-card-title{
+    margin: 1rem 0;
+    padding-left: 1rem;
+    border-left: 4px solid var(--primary-accent);
+  }
+  
+  .prop-list-card-address{
+    margin-bottom: 1rem;
+    padding-left: 1rem;
+  }
+  
+  .prop-list-card-price{
+    padding-left: 1rem;
+    color: #5ca8b2
+  }
+  
+  .prop-list-card-right-info{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin: 1rem 0;
+  }
+  
+  .prop-list-mob-info{
+    display: flex;
+    align-items: center;
+    margin: 0.5rem 0;
+  }
+  .prop-list-mob-info:last-child{
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+
+.prop-type-card{
+    position: relative;
+    margin: 1rem;
+}
+
+.prop-type-card:hover{
+    background-color: #eee;
+    transition: all 0.1s ease-in-out;
+    transform: scale(1.02);
+}
+
+.prop-type-check{
+    position: absolute;
+    right: 1rem;
+    padding-bottom: 0.15rem
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"/>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Portfolio Manager and Visualizer for the Commercial Real Estate Industry."
+    />
+    <title>ParPo</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+    
+      window.onscroll = function() {scrollFunction()};
+
+      function scrollFunction() {
+        if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+          document.getElementById("navbar-container").style.height = "3rem";
+          document.getElementById("navbar-title").style.padding = "0.25rem 0";
+          document.getElementById("navbar-title").style.fontSize = "1.5rem";
+          document.getElementById("navbar-title").style.margin = "0.25rem 0";
+          document.getElementById("navbar-logo").style.width = "3rem";
+          document.getElementsByClassName("nav-link").style.height = "1.5rem";
+        } else {
+          document.getElementById("navbar-container").style.height = "5rem";
+          document.getElementById("navbar-title").style.padding = "0"
+          document.getElementById("navbar-title").style.fontSize = "2rem";
+          document.getElementById("navbar-title").style.margin = "1rem 0";
+          document.getElementById("navbar-logo").style.width = "4rem";
+          document.getElementsByClassName("nav-link").style.height = "3rem";
+        }
+      }
+    </script>
+  </body>
+</html>

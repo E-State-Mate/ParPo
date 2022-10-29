@@ -1,0 +1,20 @@
+export const amenitiesData = [
+    '24hour Access', 
+    'Atrium', 
+    'Controlled Access', 
+    'Commuter Rail', 
+    'Security System', 
+    'Reception', 
+    'Fitness Center', 
+    'Roof Terrace', 
+    'Storage Space', 
+    'Bicycle Storage', 
+    'Outdoor Seating', 
+    'High Ceilings', 
+    'Central AC', 
+    'Natural Lights', 
+    'Partitioned Offices', 
+    'Reception', 
+    'Show Facilities', 
+    'High Speed Wifi'
+]

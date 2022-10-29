@@ -1,0 +1,186 @@
+#App {
+  width: 90%;
+  margin: 2rem;
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+#app-container{
+  min-height: 100%;
+  position: relative;
+}
+
+.outlet-container{
+  background-color: #eee;
+  padding: 0rem 0 10rem 0;
+}
+
+.modal-container{
+  position: absolute;
+  top: 7%;
+  left: 0%;
+  width: 100%;
+  height: 80%;
+  background-color: rgba(50,50,50,0.3);
+  z-index: 4
+}
+
+#profile-modal{
+  position: relative;
+  width: 50%;
+  margin: 4rem auto;
+  padding: 2rem;
+  background-color: #fff;
+  box-shadow: darkgray 2px 2px;
+  border-radius: 2px;
+}
+
+#mob-menu-bottom{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  color: darkgray
+}
+
+#mob-menu-logout{
+  display: block;
+  width: 90%;
+  margin: auto;
+}
+
+#mob-menu-btm-txt{
+  width: 100%;
+  text-align: center;
+  font-size: 0.75rem;
+  margin-top: 1rem;
+}
+
+#mob-menu-btn{
+  position: absolute;
+  right: 0;
+  top: 50%;
+  bottom: 50%;
+  transform: translateY(-12px);
+  color: #444;
+}
+
+.close-btn{
+  position: absolute;
+  top: 1rem;
+  right: 2rem;
+}
+
+#users-list{
+  margin: 4rem auto;
+  width: 80%;
+  height: 87.5vh;
+}
+
+.relative{
+  position: relative;
+}
+
+#property-edit-modal-container{
+  position: absolute;
+  top: 0;
+  background-color: rgba(100,100,100,0.3);
+  width: 100%;
+  height: 100%;
+}
+
+#property-edit-modal{
+  position: relative;
+  width: 80%;
+  margin: 4rem auto;
+  background-color: #eee;
+  padding: 2rem;
+}
+
+#property-edit-modal > h3{
+  color: var(--primary-accent);
+  text-align: center;
+}
+
+#property-edit-modal > p {
+  font-weight: bold;
+  font-size: 0.8em;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.form-prompt {
+  font-weight: bold;
+  font-size: 0.8em;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+#page-title{
+  position: absolute;
+  top: 35%;
+  left: 8.7%;
+  padding: 1rem;
+  background-color: rgba(80,80,80,0.5);
+  color: white;
+}
+
+#onboarding-container{
+  min-height: 60vh;
+  margin: 2rem auto 0 auto;
+}
+
+@media only screen and (max-width: 900px) {
+  #onboarding-container{
+    min-height: 90vh;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  #onboarding-container{
+    min-height: 110vh;
+  }
+
+  .prop-list-card-right-info{
+    padding-left: 4rem;
+    margin: 0.25rem auto;
+  }
+
+  .prop-list-card-right-info:last-child{
+    margin-bottom: 1rem;
+  }
+}
+
